@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
       - run: yarn --frozen-lockfile
 
-      - name: Audit
+      - name: Audit dependencies
       - run: yarn audit
 
       - name: esLint
@@ -31,19 +31,6 @@ jobs:
 
       - name: Typecheck
       - run: yarn typescript
-
-  unit-tests:
-    name: Run unit tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repo's default branch
-        uses: actions/checkout@v3
-
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.13.x
-          cache: npm
 
       - name: Run unit tests
       - run: yarn test --coverage
