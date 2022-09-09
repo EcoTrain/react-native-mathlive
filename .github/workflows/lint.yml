@@ -23,8 +23,8 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile --ignore-engines
 
-      - name: Audit dependencies
-        run: yarn audit
+      # - name: Audit dependencies
+      #   run: yarn audit
 
       - name: esLint
         run: yarn lint
