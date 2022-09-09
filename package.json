@@ -23,19 +23,24 @@
   ],
   "scripts": {
     "typescript": "tsc --noEmit",
-    "lint": "eslint . --fix",
+    "lint": "eslint . --fix --ignore-path .eslintignore",
     "prepare": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn && yarn example pods",
-    "test": "jest --passWithNoTests"
+    "test": "jest --passWithNoTests",
+    "np": "np --no-publish",
+    "postversion": "react-native-version"
   },
   "keywords": [
     "react-native",
     "ios",
     "android"
   ],
-  "repository": "https://github.com/coprocoder/react-native-mathlive",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coprocoder/react-native-mathlive"
+  },
   "author": "coprocoder <mog.ie@mail.ru> (https://github.com/coprocoder)",
   "license": "MIT",
   "bugs": {
@@ -62,11 +67,13 @@
     "eslint-plugin-jest": "^27.0.2",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^29.0.2",
+    "np": "^7.6.2",
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
     "react": "17.0.2",
     "react-native": "0.68.2",
     "react-native-builder-bob": "^0.18.3",
+    "react-native-version": "^4.0.0",
     "release-it": "^15.0.0",
     "typescript": "^4.5.2"
   },

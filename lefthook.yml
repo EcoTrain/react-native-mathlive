@@ -4,7 +4,7 @@ pre-commit:
     linter: # Check esLint for staged files on commit
       files: git diff --name-only @{push}
       glob: '*.{js,ts,jsx,tsx}'
-      run: yarn lint --ignore-path .eslintignore {staged_files}
+      run: yarn lint {staged_files}
     tests:
       files: git diff --name-only @{push}
       glob: '*.{js,ts, jsx, tsx}'
