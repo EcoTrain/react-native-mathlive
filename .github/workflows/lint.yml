@@ -1,4 +1,4 @@
-name: Test push in master
+name: Lint files
 
 on:
   push:
