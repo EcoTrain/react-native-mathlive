@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
-import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
-import { MathfieldContext } from '../../../contexts/MathfieldContext';
-import { ThemeContext } from '../../../contexts/ThemeContext';
-import { makeShadow } from '../../../styles/shadow';
+import React, {useContext, useState} from 'react';
+import {StyleSheet, TouchableOpacity, Text, View} from 'react-native';
+import {MathfieldContext} from '../../../contexts/MathfieldContext';
+import {ThemeContext} from '../../../contexts/ThemeContext';
+import {makeShadow} from '../../../styles/shadow';
 
-export const KeyboardKey = (keyConfig) => {
-  const { type } = keyConfig;
+export const KeyboardKey = keyConfig => {
+  const {type} = keyConfig;
 
   // TODO: separate keys by params
   return type && type.includes('separator') ? (
@@ -15,18 +15,18 @@ export const KeyboardKey = (keyConfig) => {
   );
 };
 
-const KeyboardKeySeparator = ({ type }) => {
-  const { UiColors } = useContext(ThemeContext);
+const KeyboardKeySeparator = ({type}) => {
+  const {UiColors} = useContext(ThemeContext);
   const stylesThemed = styles(UiColors);
 
   const widthType = type.split(' ')?.[1];
   let width = widthType.split('w')?.[1];
-  return <View style={[{ flex: (1 / 10) * width }, stylesThemed.keyMargin]} />;
+  return <View style={[{flex: (1 / 10) * width}, stylesThemed.keyMargin]} />;
 };
 
-const KeyboardKeyWithFeedback = ({ type, label, latex, insert, command }) => {
-  const { mathfieldValue, setMathfieldValue } = useContext(MathfieldContext);
-  const { UiColors } = useContext(ThemeContext);
+const KeyboardKeyWithFeedback = ({type, label, latex, insert, command}) => {
+  const {mathfieldValue, setMathfieldValue} = useContext(MathfieldContext);
+  const {UiColors} = useContext(ThemeContext);
   const stylesThemed = styles(UiColors);
   const shadow = makeShadow(20, 0.02);
   const [pressed, setPressed] = useState(false);
@@ -40,13 +40,13 @@ const KeyboardKeyWithFeedback = ({ type, label, latex, insert, command }) => {
       // TODO: define executeCommand in context
       keyLabel = command;
       keyCallback = () => {
-        console.log({ command });
+        console.log({command});
       };
     } else if (latex) {
       // TODO: define LaTex labels & callbacks dict
       keyLabel = latex;
       keyCallback = () => {
-        console.log({ latex });
+        console.log({latex});
       };
     } else {
       // TODO: define command labels & callbacks dict
@@ -57,9 +57,9 @@ const KeyboardKeyWithFeedback = ({ type, label, latex, insert, command }) => {
         setMathfieldValue(newMfValue);
       };
     }
-    return { keyCallback, keyLabel };
+    return {keyCallback, keyLabel};
   };
-  const { keyCallback, keyLabel } = defineKeyCallbackAndLabel();
+  const {keyCallback, keyLabel} = defineKeyCallbackAndLabel();
 
   return (
     <TouchableOpacity
@@ -74,20 +74,18 @@ const KeyboardKeyWithFeedback = ({ type, label, latex, insert, command }) => {
       ]}
       onPressIn={() => setPressed(true)}
       onPressOut={() => setPressed(false)}
-      onPress={keyCallback}
-    >
+      onPress={keyCallback}>
       <Text
         style={{
           fontFamily: 'KaTeX_Size4-Regular',
-        }}
-      >
+        }}>
         {keyLabel}
       </Text>
     </TouchableOpacity>
   );
 };
 
-const styles = (UiColors) =>
+const styles = UiColors =>
   StyleSheet.create({
     keyMargin: {
       margin: 2,

@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { KeyboardContext } from '../../contexts/keyboard/KeyboardContext';
-import { ThemeContext } from '../../contexts/ThemeContext';
-import { VirtualKeyboardElement } from './keyboard';
-import { KeyboardLayer } from './layer';
+import React, {useContext} from 'react';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
+import {ThemeContext} from '../../contexts/ThemeContext';
+import {VirtualKeyboardElement} from './keyboard';
+import {KeyboardLayer} from './layer';
 
 export const VirtualKeyboard = () => {
-  const { isVisible } = useContext(KeyboardContext);
-  const { UiColors } = useContext(ThemeContext);
+  const {isVisible} = useContext(KeyboardContext);
+  const {UiColors} = useContext(ThemeContext);
   const stylesThemed = styles(UiColors);
 
   return (
@@ -17,14 +17,13 @@ export const VirtualKeyboard = () => {
         {
           visibility: isVisible ? 'visible' : 'hidden',
         },
-      ]}
-    >
+      ]}>
       <VirtualKeyboardElement />
     </View>
   );
 };
 
-const styles = (UiColors) =>
+const styles = UiColors =>
   StyleSheet.create({
     container: {
       position: 'absolute',

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { StyleSheet, Text, View } from 'react-native';
-import { App as Mathfield } from 'react-native-mathlive';
+import {StyleSheet, Text, View} from 'react-native';
+import {App as Mathfield} from 'react-native-mathlive';
 
 export default function App() {
   return (
@@ -12,18 +12,11 @@ export default function App() {
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-      }}
-    >
-      <View
-        style={{ height: '80%', width: '80%', backgroundColor: 'lightblue' }}
-      >
-        <Text style={{ height: 60, width: '100%', backgroundColor: '#acb8bc' }}>
-          test text filler
-        </Text>
+      }}>
+      <View style={{height: '80%', width: '80%', backgroundColor: 'lightblue'}}>
+        <Text style={{height: 60, width: '100%', backgroundColor: '#acb8bc'}}>test text filler</Text>
         <Mathfield />
-        <Text style={{ height: 60, width: '100%', backgroundColor: '#acb8bc' }}>
-          test text filler
-        </Text>
+        <Text style={{height: 60, width: '100%', backgroundColor: '#acb8bc'}}>test text filler</Text>
       </View>
     </View>
   );

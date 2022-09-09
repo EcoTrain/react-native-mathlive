@@ -1,0 +1,5 @@
+!.eslintrc.js
+!.prettierrs.js
+!package.json
+/node_modules/**
+/lib/**

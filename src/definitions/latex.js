@@ -1,4 +1,1 @@
-
-const LATEX_LABELS = {
-    
-}
+const LATEX_LABELS = {};

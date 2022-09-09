@@ -1,16 +1,36 @@
 pre-commit:
   parallel: true
   commands:
-    lint:
+    linter: # Check esLint for staged files on commit
       files: git diff --name-only @{push}
-      glob: "*.{js,ts,jsx,tsx}"
-      run: npx eslint {files}
-    types:
+      glob: '*.{js,ts,jsx,tsx}'
+      run: yarn lint --ignore-path .eslintignore {staged_files}
+    tests:
       files: git diff --name-only @{push}
-      glob: "*.{js,ts, jsx, tsx}"
-      run: npx tsc --noEmit
+      glob: '*.{js,ts, jsx, tsx}'
+      run: yarn test --findRelatedTests {files}
+    # spelling: # Spell checking code. (check orphography)
+    #   glob: '*.{js,ts,jsx,tsx,md}'
+    #   run: yarn cspell {staged_files}
+    # type-check:
+    #   glob: '*.{ts,tsx}'
+    #   run: yarn typecheck
+    # markdown-link-check:
+    #   glob: '*.md'
+    #   run: npx markdown-link-check {staged_files}
+
 commit-msg:
   parallel: true
   commands:
-    commitlint:
+    lint-commit-msg:
       run: npx commitlint --edit
+    # spell-check:
+    #   run: yarn cspell --no-summary {1}
+
+pre-push:
+  parallel: true
+  commands:
+    test:
+      run: yarn test
+    packages-audit:
+      run: yarn audit

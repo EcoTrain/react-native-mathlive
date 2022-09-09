@@ -1,21 +1,19 @@
-import React, { useContext } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { KeyboardContext } from '../../contexts/keyboard/KeyboardContext';
-import { ThemeContext } from '../../contexts/ThemeContext';
-import { KeyboardTopLabelsPanel } from './labelsPanel';
-import { KeyboardLayer } from './layer';
+import React, {useContext} from 'react';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
+import {ThemeContext} from '../../contexts/ThemeContext';
+import {KeyboardTopLabelsPanel} from './labelsPanel';
+import {KeyboardLayer} from './layer';
 
 export const VirtualKeyboardElement = () => {
-  const { virtualKeyboards, virtualKeyboardLayers, activeKeyboardName } =
-    useContext(KeyboardContext);
-  const { UiColors } = useContext(ThemeContext);
-  const stylesThemed = styles(UiColors);
-
-  const getActiveKeyboard = () => {
-    const activeLayerName = virtualKeyboards[activeKeyboardName]?.layer;
-    const layer = virtualKeyboardLayers[activeLayerName];
-    return <KeyboardLayer layer={layer} />;
-  };
+  const {virtualKeyboards, virtualKeyboardLayers, activeKeyboardName} = useContext(KeyboardContext),
+    {UiColors} = useContext(ThemeContext),
+    stylesThemed = styles(UiColors),
+    getActiveKeyboard = () => {
+      const activeLayerName = virtualKeyboards[activeKeyboardName]?.layer,
+        layer = virtualKeyboardLayers[activeLayerName];
+      return <KeyboardLayer layer={layer} />;
+    };
 
   return (
     <View style={stylesThemed.container}>
@@ -27,7 +25,7 @@ export const VirtualKeyboardElement = () => {
   );
 };
 
-const styles = (UiColors) =>
+const styles = UiColors =>
   StyleSheet.create({
     container: {
       alignItems: 'center',
@@ -36,5 +34,6 @@ const styles = (UiColors) =>
       maxWidth: 800,
       width: '100%',
       marginVertical: 10,
+      marginHorizontal: 10,
     },
   });

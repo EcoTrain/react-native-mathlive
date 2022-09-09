@@ -20,9 +20,5 @@ export const ThemeContextProvider = ({children}) => {
     setColors: setColors,
   };
 
-  return (
-    <ThemeContext.Provider value={defaultTheme}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={defaultTheme}>{children}</ThemeContext.Provider>;
 };

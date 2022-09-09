@@ -36,9 +36,5 @@ export const KeyboardContextProvider = ({children}) => {
     setActiveKeyboardName: setActiveKbName,
   };
 
-  return (
-    <KeyboardContext.Provider value={defaultContextValues}>
-      {children}
-    </KeyboardContext.Provider>
-  );
+  return <KeyboardContext.Provider value={defaultContextValues}>{children}</KeyboardContext.Provider>;
 };

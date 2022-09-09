@@ -1,15 +1,15 @@
-import React, { useContext, useState } from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { KeyboardContext } from '../../contexts/keyboard/KeyboardContext';
-import { MathfieldContext } from '../../contexts/MathfieldContext';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import React, {useContext, useState} from 'react';
+import {TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
+import {MathfieldContext} from '../../contexts/MathfieldContext';
+import {ThemeContext} from '../../contexts/ThemeContext';
 
-export const Mathfield = (props) => {
-  const { showKeyboard, hideKeyboard } = useContext(KeyboardContext);
-  const { mathfieldValue } = useContext(MathfieldContext);
+export const Mathfield = props => {
+  const {showKeyboard, hideKeyboard} = useContext(KeyboardContext);
+  const {mathfieldValue} = useContext(MathfieldContext);
   const [focused, setFocus] = useState(false);
 
-  const { UiColors } = useContext(ThemeContext);
+  const {UiColors} = useContext(ThemeContext);
   const stylesThemed = styles(UiColors);
 
   return (
@@ -27,18 +27,17 @@ export const Mathfield = (props) => {
         showKeyboard();
       }}
       // TODO: blur mathfield, save keyboard
-      onBlur={(e) => {
+      onBlur={e => {
         console.log('onBlur', e);
         // setFocus(false);
         // hideKeyboard();
-      }}
-    >
-      <Text style={{ height: '100%' }}>{mathfieldValue}</Text>
+      }}>
+      <Text style={{height: '100%'}}>{mathfieldValue}</Text>
     </TouchableOpacity>
   );
 };
 
-const styles = (UiColors) =>
+const styles = UiColors =>
   StyleSheet.create({
     container: {
       height: 40,

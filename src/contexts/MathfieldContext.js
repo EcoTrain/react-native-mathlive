@@ -19,9 +19,5 @@ export const MathfieldContextProvider = ({children}) => {
     },
   };
 
-  return (
-    <MathfieldContext.Provider value={defaultContextValues}>
-      {children}
-    </MathfieldContext.Provider>
-  );
+  return <MathfieldContext.Provider value={defaultContextValues}>{children}</MathfieldContext.Provider>;
 };
