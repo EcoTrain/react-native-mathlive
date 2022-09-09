@@ -19,8 +19,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.13.x
+
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: yarn --frozen-lockfile --ignore-engines
 
       - name: Audit dependencies
         run: yarn audit
