@@ -2,12 +2,14 @@ name: Test push in master
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
   pull_request:
-    branches: [master]
+    branches:
+      - master
 
 jobs:
-  format-and-test:
+  lint-files:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo's default branch
@@ -17,15 +19,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.13.x
-
       - name: Install dependencies
-      - run: yarn --frozen-lockfile
+        run: yarn --frozen-lockfile
 
       - name: Audit dependencies
-      - run: yarn audit
+        run: yarn audit
 
       - name: esLint
-      - run: yarn lint
+        run: yarn lint
 
       - name: Typecheck
-      - run: yarn typescript
+        run: yarn typescript
