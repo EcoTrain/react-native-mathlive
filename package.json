@@ -22,11 +22,11 @@
     "!**/__mocks__"
   ],
   "scripts": {
+    "prepare": "bob build",
+    "example": "yarn --cwd example",
     "typescript": "tsc --noEmit",
     "lint": "eslint . --fix --ignore-path .eslintignore",
-    "prepare": "bob build",
     "release": "release-it",
-    "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn && yarn example pods",
     "test": "jest --passWithNoTests",
     "np": "np --no-publish",
