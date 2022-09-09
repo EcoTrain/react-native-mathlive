@@ -1,11 +1,5 @@
 name: Integration test environments
-
-on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
-
+on: [push]
 jobs:
   integration-tests:
     strategy:
