@@ -1,5 +1,11 @@
 # react-native-mathlive
-test
+
+![Main screen](./coverage/badge-branches.svg)
+![Main screen](./coverage/badge-functions.svg)
+![Main screen](./coverage/badge-lines.svg)
+![Main screen](./coverage/badge-statements.svg)
+![Main screen](./docs/images/main_screen.png)
+
 ## Installation
 
 ```sh
@@ -9,11 +15,15 @@ npm install react-native-mathlive
 ## Usage
 
 ```js
-import { multiply } from "react-native-mathlive";
+import {Mathfield} from 'react-native-mathlive';
 
 // ...
 
-const result = await multiply(3, 7);
+return (
+    ...
+    <Mathfield />
+    ...
+);
 ```
 
 ## Contributing
@@ -23,7 +33,3 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 ## License
 
 MIT
-
----
-
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
