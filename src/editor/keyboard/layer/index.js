@@ -3,10 +3,10 @@ import {StyleSheet, View} from 'react-native';
 import {KeyboardKey} from './key';
 
 export const KeyboardLayer = ({layer}) => {
-  return layer.rows.map((row, i) => (
-    <View key={i} style={styles.kbRow}>
-      {row.map(keyConfig => (
-        <KeyboardKey {...keyConfig} />
+  return layer.rows.map((row, ilayer) => (
+    <View key={ilayer} style={styles.kbRow}>
+      {row.map((keyConfig, irow) => (
+        <KeyboardKey key={irow} {...keyConfig} />
       ))}
     </View>
   ));

@@ -5,10 +5,9 @@ module.exports = {
     jest: true,
   },
   // extends: ['@react-native-community', 'eslint:all'],
-  extends: ['@react-native-community', 'plugin:jest/recommended'],
+  extends: ['react-app', '@react-native-community', 'plugin:jest/recommended'],
   plugins: ['prettier', 'jest'],
   parser: '@babel/eslint-parser',
-  // ignorePatterns: ['node_modules/', 'lib/', '.eslintrc.js', '.prettierrs.js'],
   parserOptions: {
     sourceType: 'module',
     requireConfigFile: false,

@@ -10,10 +10,10 @@ export const KeyboardTopLabelsPanel = () => {
 
   const getKeyboardLabels = () => {
     const labels = [];
-    actualKeyboards.map(kbLayoutName => {
+    actualKeyboards.map((kbLayoutName, ikb) => {
       const keyboardLayout = virtualKeyboards[kbLayoutName];
       if (keyboardLayout) {
-        labels.push(<KeyboardTopLabelItem label={keyboardLayout.label} kbName={kbLayoutName} />);
+        labels.push(<KeyboardTopLabelItem key={ikb} label={keyboardLayout.label} kbName={kbLayoutName} />);
       }
     });
     return labels;
