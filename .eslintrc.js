@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     node: true,
+    'jest/globals': true,
   },
   // extends: ['@react-native-community', 'eslint:all'],
   extends: ['@react-native-community'],
