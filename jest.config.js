@@ -5,8 +5,8 @@ const config = {
   preset: 'react-native',
   moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx'],
   modulePathIgnorePatterns: ['<rootDir>/example/node_modules', '<rootDir>/lib/'],
-  coverageReporters: ['json-summary', 'text', 'lcov'],
-  coverageDirectory: '.coverage/',
+  coverageReporters: ['json-summary', 'lcov', 'text'],
+  coverageDirectory: 'coverage/',
   coverageThreshold: {
     global: {
       branches: 50,

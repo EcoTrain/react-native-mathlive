@@ -29,8 +29,8 @@
     "release": "release-it",
     "bootstrap": "yarn example && yarn && yarn example pods",
     "test": "jest --passWithNoTests",
-    "test:coverage": "yarn test -- --coverage",
-    "test:badges": "yarn run test:coverage  && jest-coverage-badges",
+    "test:coverage": "yarn test --coverage",
+    "test:badges": "yarn test:coverage  && jest-coverage-badges",
     "np": "np --no-publish",
     "postversion": "react-native-version"
   },
