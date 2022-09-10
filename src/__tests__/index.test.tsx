@@ -1,16 +1,16 @@
 it.todo('write a test');
 
-const myBeverage = {
-  delicious: true,
-  sour: false,
-};
-
 describe('my beverage', () => {
+  const testDict = {
+    delicious: true,
+    sour: false,
+  };
+
   test('is delicious', () => {
-    expect(myBeverage.delicious).toBeTruthy();
+    expect(testDict.delicious).toBeTruthy();
   });
 
   test('is not sour', () => {
-    expect(myBeverage.sour).toBeFalsy();
+    expect(testDict.sour).toBeFalsy();
   });
 });
