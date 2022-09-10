@@ -1,0 +1,25 @@
+name: 'Unit tests & coverage'
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source code
+      - uses: actions/checkout@v3
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile --ignore-engines
+
+      - name: Run unit tests
+        run: yarn test --coverage

@@ -1,4 +1,4 @@
-name: 'coverage'
+name: 'Make coverage badge'
 
 on:
   push:
