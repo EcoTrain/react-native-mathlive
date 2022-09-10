@@ -5,7 +5,7 @@ module.exports = {
     jest: true,
   },
   // extends: ['@react-native-community', 'eslint:all'],
-  extends: ['react-app', '@react-native-community', 'plugin:jest/recommended'],
+  extends: ['@react-native-community', 'plugin:jest/recommended'],
   plugins: ['prettier', 'jest'],
   parser: '@babel/eslint-parser',
   parserOptions: {
@@ -44,9 +44,8 @@ module.exports = {
     'react/jsx-sort-prop-types': 0,
     'react/jsx-sort-props': 0,
     'react/jsx-uses-react': 1,
+    'react/jsx-key': 0,
     'react/no-danger': 1,
-    'react/no-did-mount-set-state': 0,
-    'react/no-did-update-set-state': 1,
     'react/react-in-jsx-scope': 1,
     'react/sort-comp': 2,
     'react-hooks/rules-of-hooks': 'off', // Hook startWith use
