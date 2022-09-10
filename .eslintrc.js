@@ -2,11 +2,11 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    'jest/globals': true,
+    jest: true,
   },
   // extends: ['@react-native-community', 'eslint:all'],
-  extends: ['@react-native-community'],
-  plugins: ['prettier'],
+  extends: ['@react-native-community', 'plugin:jest/recommended'],
+  plugins: ['prettier', 'jest'],
   parser: '@babel/eslint-parser',
   // ignorePatterns: ['node_modules/', 'lib/', '.eslintrc.js', '.prettierrs.js'],
   parserOptions: {
@@ -60,4 +60,24 @@ module.exports = {
     ],
     'space-before-blocks': [2, {functions: 'always', keywords: 'always', classes: 'always'}],
   },
+  overrides: [
+    {
+      files: ['**/__tests__/**/*.test.js'],
+      env: {
+        // jest: true, // now **/*.test.js files' env has both es6 *and* jest
+        'jest/globals': true,
+      },
+      // Can't extend in overrides: https://github.com/eslint/eslint/issues/8813
+      // "extends": ["plugin:jest/recommended"]
+      extends: ['plugin:jest/recommended', 'plugin:jest/style'],
+      plugins: ['jest'],
+      rules: {
+        'jest/no-disabled-tests': 'warn',
+        'jest/no-focused-tests': 'error',
+        'jest/no-identical-title': 'error',
+        'jest/prefer-to-have-length': 'warn',
+        'jest/valid-expect': 'error',
+      },
+    },
+  ],
 };
