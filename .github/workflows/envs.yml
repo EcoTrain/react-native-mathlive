@@ -30,7 +30,7 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: ${{ runner.os }}-${{ matrix.node_version }}-${{ hashFiles('**/yarn.json') }}
+          key: ${{ runner.os }}-${{ matrix.node_version }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
         run: yarn --frozen-lockfile --ignore-engines
