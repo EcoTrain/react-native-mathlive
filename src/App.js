@@ -3,14 +3,14 @@ import {KeyboardContextProvider} from './contexts/keyboard/KeyboardContext';
 import {MathfieldContextProvider} from './contexts/MathfieldContext';
 import {ThemeContextProvider} from './contexts/ThemeContext';
 import {VirtualKeyboard} from './editor/keyboard';
-import {Mathfield} from './editor/mathfield';
+import {MathfieldElement} from './editor/mathfield';
 
-export const App = () => {
+export const Mathfield = () => {
   return (
     <ThemeContextProvider>
       <MathfieldContextProvider>
         <KeyboardContextProvider>
-          <Mathfield />
+          <MathfieldElement />
           <VirtualKeyboard />
         </KeyboardContextProvider>
       </MathfieldContextProvider>

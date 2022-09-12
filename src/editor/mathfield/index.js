@@ -4,7 +4,7 @@ import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
 import {MathfieldContext} from '../../contexts/MathfieldContext';
 import {ThemeContext} from '../../contexts/ThemeContext';
 
-export const Mathfield = props => {
+export const MathfieldElement = props => {
   const {showKeyboard, hideKeyboard} = useContext(KeyboardContext);
   const {mathfieldValue} = useContext(MathfieldContext);
   const [focused, setFocus] = useState(false);

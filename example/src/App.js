@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import {StyleSheet, Text, View} from 'react-native';
-import {App as Mathfield} from 'react-native-mathlive';
+import {Mathfield} from 'react-native-mathlive';
 
 export default function App() {
   return (
