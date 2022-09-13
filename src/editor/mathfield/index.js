@@ -1,8 +1,9 @@
 import React, {useContext, useState} from 'react';
-import {TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {TouchableOpacity, Text, StyleSheet, View} from 'react-native';
 import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
 import {MathfieldContext} from '../../contexts/MathfieldContext';
 import {ThemeContext} from '../../contexts/ThemeContext';
+import {Parser} from '../../parser';
 
 export const MathfieldElement = props => {
   const {showKeyboard, hideKeyboard} = useContext(KeyboardContext);
@@ -32,7 +33,9 @@ export const MathfieldElement = props => {
         // setFocus(false);
         // hideKeyboard();
       }}>
-      <Text style={{height: '100%'}}>{mathfieldValue}</Text>
+      <View style={{flex: 1, flexDirection: 'row'}}>
+        <Parser />
+      </View>
     </TouchableOpacity>
   );
 };

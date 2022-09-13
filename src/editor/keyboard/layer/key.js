@@ -25,7 +25,7 @@ const KeyboardKeySeparator = ({type}) => {
 };
 
 const KeyboardKeyWithFeedback = ({type, label, latex, insert, command}) => {
-  const {mathfieldValue, setMathfieldValue} = useContext(MathfieldContext);
+  const {mathfieldValue, setMathfieldValue, executeCommand} = useContext(MathfieldContext);
   const {UiColors} = useContext(ThemeContext);
   const stylesThemed = styles(UiColors);
   const shadow = makeShadow(20, 0.02);
@@ -38,22 +38,26 @@ const KeyboardKeyWithFeedback = ({type, label, latex, insert, command}) => {
     if (type == 'action') {
       // TODO: define command labels & callbacks dict
       // TODO: define executeCommand in context
-      keyLabel = command;
+      keyLabel = label || command;
       keyCallback = () => {
-        console.log({command});
+        executeCommand(command);
       };
     } else if (latex) {
       // TODO: define LaTex labels & callbacks dict
-      keyLabel = latex;
+      keyLabel = label || latex;
       keyCallback = () => {
         console.log({latex});
+        const newMfValue = mathfieldValue + latex;
+        console.log({newMfValue});
+        setMathfieldValue(newMfValue);
       };
     } else {
       // TODO: define command labels & callbacks dict
       // TODO: define executeCommand in context
       keyLabel = label;
       keyCallback = () => {
-        const newMfValue = mathfieldValue + insert;
+        const newMfValue = mathfieldValue + label;
+        console.log({newMfValue});
         setMathfieldValue(newMfValue);
       };
     }
