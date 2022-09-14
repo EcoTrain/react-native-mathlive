@@ -6,6 +6,7 @@ import {Parser} from '../../parser';
 
 export const MathfieldElement = props => {
   const {showKeyboard, hideKeyboard} = useContext(KeyboardContext);
+
   const [focused, setFocus] = useState(false);
 
   const {UiColors} = useContext(ThemeContext);
@@ -21,15 +22,17 @@ export const MathfieldElement = props => {
           borderWidth: focused ? 2 : 1,
         },
       ]}>
-      <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
-        <Parser />
+      <View style={stylesThemed.mathfield}>
+        <View style={stylesThemed.mfFormula}>
+          <Parser />
+        </View>
         <TouchableOpacity
-          style={{height: '100%', aspectRatio: '1/1', marginLeft: 'auto'}}
+          style={stylesThemed.mfKbBtn}
           onPress={() => {
             setFocus(!focused);
             focused ? hideKeyboard() : showKeyboard();
           }}>
-          <Image style={{height: '100%', width: '100%', flex: 1}} source={require('../../assets/icons/keyboard.png')} />
+          <Image style={stylesThemed.mfKbIcon} source={require('../../assets/icons/keyboard.png')} />
         </TouchableOpacity>
       </View>
     </TouchableOpacity>
@@ -39,10 +42,13 @@ export const MathfieldElement = props => {
 const styles = UiColors =>
   StyleSheet.create({
     container: {
-      height: 40,
       minHeight: 40,
       borderRadius: 8,
       padding: 8,
       backgroundColor: UiColors.mathfieldBg,
     },
+    mathfield: {flex: 1, flexDirection: 'row', justifyContent: 'space-between'},
+    mfFormula: {flex: 1, flexDirection: 'row', flexWrap: 'wrap'},
+    mfKbBtn: {height: '100%', maxHeight: 40, aspectRatio: '1/1', marginLeft: 'auto'},
+    mfKbIcon: {height: '100%', width: '100%', flex: 1},
   });
