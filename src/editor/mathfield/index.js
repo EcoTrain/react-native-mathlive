@@ -1,13 +1,11 @@
 import React, {useContext, useState} from 'react';
-import {TouchableOpacity, Text, StyleSheet, View} from 'react-native';
+import {TouchableOpacity, Text, StyleSheet, View, Image} from 'react-native';
 import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
-import {MathfieldContext} from '../../contexts/MathfieldContext';
 import {ThemeContext} from '../../contexts/ThemeContext';
 import {Parser} from '../../parser';
 
 export const MathfieldElement = props => {
   const {showKeyboard, hideKeyboard} = useContext(KeyboardContext);
-  const {mathfieldValue} = useContext(MathfieldContext);
   const [focused, setFocus] = useState(false);
 
   const {UiColors} = useContext(ThemeContext);
@@ -22,19 +20,17 @@ export const MathfieldElement = props => {
           borderColor: focused ? 'lightgray' : 'gray',
           borderWidth: focused ? 2 : 1,
         },
-      ]}
-      onPress={() => {
-        setFocus(true);
-        showKeyboard();
-      }}
-      // TODO: blur mathfield, save keyboard
-      onBlur={e => {
-        console.log('onBlur', e);
-        // setFocus(false);
-        // hideKeyboard();
-      }}>
-      <View style={{flex: 1, flexDirection: 'row'}}>
+      ]}>
+      <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
         <Parser />
+        <TouchableOpacity
+          style={{height: '100%', aspectRatio: '1/1', marginLeft: 'auto'}}
+          onPress={() => {
+            setFocus(!focused);
+            focused ? hideKeyboard() : showKeyboard();
+          }}>
+          <Image style={{height: '100%', width: '100%', flex: 1}} source={require('../../assets/icons/keyboard.png')} />
+        </TouchableOpacity>
       </View>
     </TouchableOpacity>
   );

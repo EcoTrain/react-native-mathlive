@@ -1,9 +1,14 @@
 import * as React from 'react';
 
-import {StyleSheet, Text, View} from 'react-native';
-import {Mathfield} from 'react-native-mathlive';
+import {Button, StyleSheet, Text, View} from 'react-native';
+import {Mathfield, getMathfieldValue} from 'react-native-mathlive';
 
 export default function App() {
+  const onPressGet = () => {
+    const mfVal = getMathfieldValue();
+    console.log({mfVal});
+  };
+
   return (
     <View
       style={{
@@ -17,6 +22,8 @@ export default function App() {
         <Text style={{height: 60, width: '100%', backgroundColor: '#acb8bc'}}>test text filler</Text>
         <Mathfield />
         <Text style={{height: 60, width: '100%', backgroundColor: '#acb8bc'}}>test text filler</Text>
+        <Mathfield />
+        <Button onPress={onPressGet} title={'Get result'} />
       </View>
     </View>
   );

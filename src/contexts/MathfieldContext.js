@@ -7,7 +7,7 @@ export const MathfieldContext = createContext({
   focused: false,
 });
 
-export const MathfieldContextProvider = ({children}) => {
+export const MathfieldContextProvider = ({children, onChangeValue}) => {
   const [mfValue, setMfValue] = useState('');
   const {COMMANDS} = useDefinitions();
 
@@ -15,6 +15,7 @@ export const MathfieldContextProvider = ({children}) => {
     mathfieldValue: mfValue,
     setMathfieldValue: value => {
       setMfValue(value);
+      onChangeValue(value);
     },
     executeCommand: command => {
       console.log('executeCommand', command, COMMANDS);
