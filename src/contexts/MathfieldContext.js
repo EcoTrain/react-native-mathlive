@@ -2,7 +2,7 @@ import React, {createContext, useState} from 'react';
 import {useDefinitions} from '../definitions/commands';
 
 // const defaultValue = '\\frac{4+#0}{16 + \\sqrt{24 + \\frac{3}{4}}} + 3';
-const defaultValue = '\\frac{4+#0}{16 + \\sqrt{24 + \\frac{3}}';
+const defaultValue = '\\frac{4+\\placeholder{}}{16 + \\sqrt{24 + \\frac{3}{4}} + 3';
 
 export const MathfieldContext = createContext({
   mathfieldValue: defaultValue,

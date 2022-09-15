@@ -1,7 +1,7 @@
 import {useContext} from 'react';
 import {MathfieldContext} from '../contexts/MathfieldContext';
-import {parseLatex} from '../core/parser.ts';
-import {defaultGlobalContext} from '../core/core';
+import {parseLatex} from '../core/parser';
+import {defaultGlobalContext} from '../core/context-utils';
 
 export const Parser = () => {
   const {mathfieldValue} = useContext(MathfieldContext);

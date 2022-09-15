@@ -1,44 +1,3 @@
-import type {Dimension, FontSize, ParseMode, Registers, RegisterValue, Style} from '../public/core';
-
-import type {TokenDefinition} from '../core-definitions/definitions-utils';
-import type {PlaceholderAtom} from '../core-atoms/placeholder';
-
-import type {Box} from './box';
-import {FontMetrics, FONT_SCALE} from './font-metrics';
-import {D, Dc, Mathstyle, MathstyleName, MATHSTYLES} from './mathstyle';
-import {convertDimensionToEm} from './registers-utils';
-
-// Using boxes and glue in TeX and LaTeX:
-// https://www.math.utah.edu/~beebe/reports/2009/boxes.pdf
-
-/**
- * The Global Context encapsulates information that atoms
- * may require in order to render correctly. Unlike `ContextInterface`, these
- * values do not depend of the location of the atom in the render tree.
- */
-export interface GlobalContext {
-  readonly registers: Registers;
-  readonly smartFence: boolean;
-  readonly letterShapeStyle: 'tex' | 'french' | 'iso' | 'upright' | 'auto';
-  readonly fractionNavigationOrder: 'numerator-denominator' | 'denominator-numerator';
-  readonly placeholderSymbol: string;
-  getDefinition(token: string, parseMode: ParseMode): TokenDefinition | null;
-}
-
-export interface ContextInterface {
-  registers: Registers;
-  atomIdsSettings?: {
-    overrideID?: string;
-    groupNumbers: boolean;
-    seed: 'random' | number;
-  };
-  renderPlaceholder?: (context: Context, placeholder: PlaceholderAtom) => Box;
-}
-
-export type PrivateStyle = Style & {
-  mathStyle?: MathstyleName;
-};
-
 /**
  * This structure contains the rendering context of the current parse level.
  *
@@ -62,11 +21,12 @@ export type PrivateStyle = Style & {
  * A context is defined for example by:
  * - an explicit group enclosed in braces `{...}`
  * - a semi-simple group enclosed in `\bgroup...\endgroup`
+ * - the cells of a tabular environment
  * - the numerator or denominator of a fraction
  * - the root and radix of a fraction
  *
  */
-export class Context implements ContextInterface {
+export class Context {
   // **overrideID** If not undefined, unique IDs should be generated for each
   // box so they can be mapped back to an atom.
   //
@@ -77,57 +37,53 @@ export class Context implements ContextInterface {
   // box will enclose strings of digits. This is used by read aloud to properly
   // pronounce (and highlight) numbers in expressions.
 
-  atomIdsSettings?: {
-    overrideID?: string;
-    groupNumbers: boolean;
-    seed: 'random' | number;
-  };
-  renderPlaceholder?: (context: Context, placeholder: PlaceholderAtom) => Box;
+  atomIdsSettings;
+  renderPlaceholder;
 
   // Rendering to construct a phantom: don't bind the box.
-  readonly isPhantom: boolean;
+  isPhantom;
 
-  // Inherited from `Style`: size, letterShapeStyle.
+  // Inherited from `Style`: size, letterShapeStyle, color and backgroundColor.
   // Size is the "base" font size (need to add mathstyle.sizeDelta to get effective size)
-  readonly letterShapeStyle: 'tex' | 'french' | 'iso' | 'upright';
+  letterShapeStyle;
+  color;
+  backgroundColor;
 
   /** @internal */
-  readonly _size?: FontSize;
+  _size;
   /** @internal */
-  private _mathstyle?: Mathstyle;
-  registers!: Registers;
+  _mathstyle;
+  registers;
 
-  parent?: Context;
+  parent;
 
-  constructor(
-    parent: Context | ContextInterface,
-    style?: any & {
-      isPhantom?: boolean;
-    },
-    inMathstyle?: 'cramp' | 'superscript' | 'subscript' | 'numerator' | 'denominator' | MathstyleName | '' | 'auto'
-  ) {
+  constructor(parent, style, inMathstyle) {
     // If we don't have a parent context, we must provide an initial
     // mathstyle and fontsize
-    console.assert(parent instanceof Context || style?.fontSize !== undefined);
-    console.assert(parent instanceof Context || inMathstyle !== undefined);
-
+    console.log({...this});
     if (parent instanceof Context) this.parent = parent;
     if (!(parent instanceof Context)) this.registers = parent.registers ?? {};
 
     this.isPhantom = style?.isPhantom ?? this.parent?.isPhantom ?? false;
 
-    const from: {-readonly [key in keyof Context]?: Context[key]} = {
+    const from = {
       ...parent,
     };
     if (style) {
       if (style.letterShapeStyle && style.letterShapeStyle !== 'auto') from.letterShapeStyle = style.letterShapeStyle;
 
+      if (style.color && style.color !== 'none') from.color = style.color;
+
+      if (style.backgroundColor && style.backgroundColor !== 'none') from.backgroundColor = style.backgroundColor;
+
       if (style.fontSize && style.fontSize !== 'auto' && style.fontSize !== this.parent?._size)
         this._size = style.fontSize;
     }
     this.letterShapeStyle = from.letterShapeStyle ?? 'tex';
+    this.color = from.color;
+    this.backgroundColor = from.backgroundColor;
 
-    let mathstyle: Mathstyle | undefined;
+    let mathstyle;
 
     if (typeof inMathstyle === 'string') {
       if (parent instanceof Context) {
@@ -149,23 +105,6 @@ export class Context implements ContextInterface {
             break;
         }
       }
-      switch (inMathstyle) {
-        case 'textstyle':
-          mathstyle = MATHSTYLES.textstyle;
-          break;
-        case 'displaystyle':
-          mathstyle = MATHSTYLES.displaystyle;
-          break;
-        case 'scriptstyle':
-          mathstyle = MATHSTYLES.scriptstyle;
-          break;
-        case 'scriptscriptstyle':
-          mathstyle = MATHSTYLES.scriptscriptstyle;
-          break;
-        case '':
-        case 'auto':
-          break;
-      }
     }
 
     this._mathstyle = mathstyle;
@@ -175,30 +114,40 @@ export class Context implements ContextInterface {
     console.assert(!(parent instanceof Context) || this.atomIdsSettings === parent.atomIdsSettings);
   }
 
-  get mathstyle(): Mathstyle {
+  get mathstyle() {
     let result = this._mathstyle;
     let parent = this.parent;
     while (!result) {
-      result = parent!._mathstyle;
-      parent = parent!.parent;
+      result = parent._mathstyle;
+      parent = parent.parent;
     }
     return result;
   }
 
-  getRegister(name: string): undefined | RegisterValue {
+  getRegister(name) {
     if (this.registers?.[name]) return this.registers[name];
     if (this.parent) return this.parent.getRegister(name);
     return undefined;
   }
 
-  getRegisterAsEm(name: string): number {
-    return convertDimensionToEm(this.getRegisterAsDimension(name));
-  }
-
-  getRegisterAsDimension(name: string): Dimension | undefined {
+  getRegisterAsGlue(name) {
     if (this.registers?.[name]) {
       const value = this.registers[name];
-      if (typeof value === 'object' && 'dimension' in value) return value;
+      if (typeof value === 'object' && 'glue' in value) return value;
+      else if (typeof value === 'object' && 'dimension' in value) return {glue: {dimension: value.dimension}};
+      else if (typeof value === 'number') return {glue: {dimension: value}};
+
+      return undefined;
+    }
+    if (this.parent) return this.parent.getRegisterAsGlue(name);
+    return undefined;
+  }
+
+  getRegisterAsDimension(name) {
+    if (this.registers?.[name]) {
+      const value = this.registers[name];
+      if (typeof value === 'object' && 'glue' in value) return value.glue;
+      else if (typeof value === 'object' && 'dimension' in value) return value;
       else if (typeof value === 'number') return {dimension: value};
 
       return undefined;
@@ -207,7 +156,7 @@ export class Context implements ContextInterface {
     return undefined;
   }
 
-  setRegister(name: string, value: RegisterValue | undefined): void {
+  setRegister(name, value) {
     if (value === undefined) {
       delete this.registers[name];
       return;
@@ -215,9 +164,9 @@ export class Context implements ContextInterface {
     this.registers[name] = value;
   }
 
-  setGlobalRegister(name: string, value: RegisterValue): void {
+  setGlobalRegister(name, value) {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
-    let root: Context = this;
+    let root = this;
     while (root.parent) {
       root.setRegister(name, undefined);
       root = root.parent;
@@ -225,17 +174,17 @@ export class Context implements ContextInterface {
     root.setRegister(name, value);
   }
 
-  get size(): FontSize {
+  get size() {
     let result = this._size;
     let parent = this.parent;
     while (!result) {
-      result = parent!._size;
-      parent = parent!.parent;
+      result = parent._size;
+      parent = parent.parent;
     }
     return result;
   }
 
-  makeID(): string | undefined {
+  makeID() {
     if (!this.atomIdsSettings) return undefined;
 
     if (this.atomIdsSettings.overrideID) return this.atomIdsSettings.overrideID;
@@ -251,36 +200,56 @@ export class Context implements ContextInterface {
 
   // Scale a value, in em, to account for the fontsize and mathstyle
   // of this context
-  scale(value: number): number {
+  scale(value) {
     return value * this.effectiveFontSize;
   }
 
-  get scalingFactor(): number {
+  get scalingFactor() {
     if (!this.parent) return 1.0;
     return this.effectiveFontSize / this.parent.effectiveFontSize;
   }
 
-  get isDisplayStyle(): boolean {
+  get isDisplayStyle() {
     return this.mathstyle.id === D || this.mathstyle.id === Dc;
   }
 
-  get isCramped(): boolean {
+  get isCramped() {
     return this.mathstyle.cramped;
   }
 
-  get isTight(): boolean {
+  get isTight() {
     return this.mathstyle.isTight;
   }
 
   // Return the font size, in em relative to the mathfield fontsize,
   // accounting both for the base font size and the mathstyle
-  get effectiveFontSize(): number {
-    return FONT_SCALE[Math.max(1, this.size + this.mathstyle.sizeDelta) as FontSize]!;
+  get effectiveFontSize() {
+    return FONT_SCALE[Math.max(1, this.size + this.mathstyle.sizeDelta)];
   }
 
-  get metrics(): FontMetrics {
+  get computedColor() {
+    let result = this.color;
+    let parent = this.parent;
+    if (!result && parent) {
+      result = parent.color;
+      parent = parent.parent;
+    }
+
+    return result ?? '';
+  }
+
+  get computedBackgroundColor() {
+    let result = this.backgroundColor;
+    let parent = this.parent;
+    if (!result && parent) {
+      result = parent.backgroundColor;
+      parent = parent.parent;
+    }
+
+    return result ?? '';
+  }
+
+  get metrics() {
     return this.mathstyle.metrics;
   }
 }
-
-export declare function defaultGlobalContext(): GlobalContext;

@@ -1,5 +1,5 @@
-export function stringToCodepoints(string: string): number[] {
-  const result: number[] = [];
+export function stringToCodepoints(string) {
+  const result = [];
   for (let i = 0; i < string.length; i++) {
     let code = string.charCodeAt(i);
     if (code === 0x0d && string.charCodeAt(i + 1) === 0x0a) {
@@ -45,11 +45,11 @@ const ZWJ = 0x200d; // Zero-width joiner
  * - other combinations (for example, rainbow flag)
  */
 
-export function splitGraphemes(string: string): string | string[] {
+export function splitGraphemes(string) {
   // If it's all ASCII, short-circuit the grapheme splitting...
   if (/^[\u0020-\u00FF]*$/.test(string)) return string;
 
-  const result: string[] = [];
+  const result = [];
 
   const codePoints = stringToCodepoints(string);
   let index = 0;

@@ -5,10 +5,8 @@
  * special parsing such as `\char`.
  */
 
-import './extensible-symbols';
-import './functions';
-import './styling';
 import './symbols';
+import './functions';
 
 import './definitions-utils';
 export * from './definitions-utils';

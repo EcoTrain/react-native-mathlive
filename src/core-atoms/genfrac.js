@@ -1,18 +1,5 @@
-import {Atom, AtomJson, ToLatexOptions} from '../core/atom-class';
-import type {MathstyleName} from '../core/mathstyle';
-import type {Context, GlobalContext} from '../core/context';
-
-export type GenfracOptions = {
-  continuousFraction?: boolean;
-  numerPrefix?: string;
-  denomPrefix?: string;
-  leftDelim?: string;
-  rightDelim?: string;
-  hasBarLine?: boolean;
-  mathstyleName?: MathstyleName;
-  style?: any;
-  serialize?: (atom: GenfracAtom, options: ToLatexOptions) => string;
-};
+import {Text, TouchableOpacity, View} from 'react-native';
+import {Atom} from '../core/atom';
 
 /**
  * Genfrac -- Generalized Fraction
@@ -26,18 +13,19 @@ export type GenfracOptions = {
  * to indicate it should use the current mathstyle
  */
 export class GenfracAtom extends Atom {
-  readonly hasBarLine: boolean;
-  readonly leftDelim?: string;
-  readonly rightDelim?: string;
-  private readonly continuousFraction: boolean;
-  private readonly numerPrefix?: string;
-  private readonly denomPrefix?: string;
-  private readonly mathstyleName?: MathstyleName;
+  hasBarLine;
+  leftDelim;
+  rightDelim;
+  continuousFraction;
+  numerPrefix;
+  denomPrefix;
+  mathstyleName;
 
-  constructor(command: string, above: Atom[], below: Atom[], context: GlobalContext, options: GenfracOptions) {
+  constructor(command, above, below, context, options) {
     super('genfrac', context, {
       style: options.style,
       command,
+      serialize: options.serialize,
       displayContainsHighlight: true,
     });
     this.above = above;
@@ -51,12 +39,12 @@ export class GenfracAtom extends Atom {
     this.rightDelim = options?.rightDelim;
   }
 
-  static fromJson(json: AtomJson, context: GlobalContext): GenfracAtom {
-    return new GenfracAtom(json.command, json.above, json.below, context, json as any as GenfracOptions);
+  static fromJson(json, context) {
+    return new GenfracAtom(json.command, json.above, json.below, context, json);
   }
 
-  toJson(): AtomJson {
-    const options: GenfracOptions = {};
+  toJson() {
+    const options = {};
     if (this.continuousFraction) options.continuousFraction = true;
     if (this.numerPrefix) options.numerPrefix = this.numerPrefix;
     if (this.denomPrefix) options.denomPrefix = this.denomPrefix;
@@ -67,31 +55,31 @@ export class GenfracAtom extends Atom {
     return {...super.toJson(), ...options};
   }
 
-  serialize(options: ToLatexOptions): string {
+  serialize(options) {
     return this.command + `{${this.aboveToLatex(options)}}` + `{${this.belowToLatex(options)}}`;
   }
 
   // The order of the children, which is used for keyboard navigation order,
   // may be customized for fractions...
-  get children(): Atom[] {
+  get children() {
     if (this._children) return this._children;
 
-    const result: Atom[] = [];
+    const result = [];
     if (this.context.fractionNavigationOrder === 'numerator-denominator') {
-      for (const x of this.above!) {
+      for (const x of this.above) {
         result.push(...x.children);
         result.push(x);
       }
-      for (const x of this.below!) {
+      for (const x of this.below) {
         result.push(...x.children);
         result.push(x);
       }
     } else {
-      for (const x of this.below!) {
+      for (const x of this.below) {
         result.push(...x.children);
         result.push(x);
       }
-      for (const x of this.above!) {
+      for (const x of this.above) {
         result.push(...x.children);
         result.push(x);
       }
@@ -101,8 +89,19 @@ export class GenfracAtom extends Atom {
     return result;
   }
 
-  render(context: Context): any {
-    console.log('GenFrac', {context});
-    return null;
+  render(context) {
+    console.log({...this});
+    return <GenfracAtomRender context={context} above={this.above} below={this.below} />;
   }
 }
+
+const GenfracAtomRender = ({context, above, below}) => {
+  console.log('GenfracAtomRender', {context, above, below});
+  return (
+    <View style={{display: 'flex'}}>
+      <Text>{above.map(x => x.render(context))}</Text>
+      <View style={{borderBottomWidth: 1}}></View>
+      <Text>{below.map(x => x.render(context))}</Text>
+    </View>
+  );
+};

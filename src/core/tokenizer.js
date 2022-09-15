@@ -7,20 +7,6 @@
 
 import {splitGraphemes} from './grapheme-splitter';
 
-// The 'special' tokens must be of length > 1 to distinguish
-// them from literals.
-// '<space>': whitespace
-// '<$$>'   : display math mode shift
-// '<$>'    : inline math mode shift
-// '<{>'    : begin group
-// '<}>'    : end group
-// '#0'-'#9': argument
-// '#?'     : placeholder
-// '\' + ([a-zA-Z\*]+)|([^a-zAz\*])  : command
-// other (length = 1)   : literal
-//  See: [TeX:289](http://tug.org/texlive/devsrc/Build/source/texk/web2c/tex.web)
-export type Token = string;
-
 /**
  * Given a LaTeX expression represented as a character string,
  * the Lexer class will scan and return Tokens for the lexical
@@ -29,11 +15,7 @@ export type Token = string;
  * @param s A string of LaTeX
  */
 class Tokenizer {
-  obeyspaces: boolean;
-  private readonly s: string | string[];
-  private pos: number;
-
-  constructor(s: string) {
+  constructor(s) {
     this.s = splitGraphemes(s);
     this.pos = 0;
     this.obeyspaces = false;
@@ -42,31 +24,31 @@ class Tokenizer {
   /**
    * @return True if we reached the end of the stream
    */
-  end(): boolean {
+  end() {
     return this.pos >= this.s.length;
   }
 
   /**
    * Return the next char and advance
    */
-  get(): string {
-    return this.pos < this.s.length ? this.s[this.pos++]! : '';
+  get() {
+    return this.pos < this.s.length ? this.s[this.pos++] : '';
   }
 
   /**
    * Return the next char, but do not advance
    */
-  peek(): string {
-    return this.s[this.pos]!;
+  peek() {
+    return this.s[this.pos];
   }
 
   /**
    * Return the next substring matching regEx and advance.
    */
-  match(regEx: RegExp): string {
+  match(regEx) {
     // This.s can either be a string, if it's made up only of ASCII chars
     // or an array of graphemes, if it's more complicated.
-    const execResult: (string | null)[] | null =
+    const execResult =
       typeof this.s === 'string' ? regEx.exec(this.s.slice(this.pos)) : regEx.exec(this.s.slice(this.pos).join(''));
     if (execResult?.[0]) {
       this.pos += execResult[0].length;
@@ -79,7 +61,7 @@ class Tokenizer {
   /**
    * Return the next token, or null.
    */
-  next(): Token | null {
+  next() {
     // If we've reached the end, exit
     if (this.end()) return null;
     // Handle white space
@@ -165,8 +147,8 @@ class Tokenizer {
 
 // Some primitive commands need to be handled in the expansion phase
 // (the 'gullet')
-function expand(lex: Tokenizer, args: null | ((arg: string) => string)): Token[] {
-  const result: Token[] = [];
+function expand(lex, args) {
+  const result = [];
   let token = lex.next();
   if (token) {
     if (token === '\\relax') {
@@ -202,7 +184,7 @@ function expand(lex: Tokenizer, args: null | ((arg: string) => string)): Token[]
 
       let command = '';
       let done = false;
-      let tokens: Token[] = [];
+      let tokens = [];
       do {
         if (tokens.length === 0) {
           // We're out of tokens to look at, get some more
@@ -210,7 +192,7 @@ function expand(lex: Tokenizer, args: null | ((arg: string) => string)): Token[]
             // Expand parameters (but not commands)
             const parameter = lex.get().slice(1);
             tokens = tokenize(args?.(parameter) ?? args?.('?') ?? '\\placeholder{}', args);
-            token = tokens[0]!;
+            token = tokens[0];
           } else {
             token = lex.next();
             tokens = token ? [token] : [];
@@ -256,9 +238,9 @@ function expand(lex: Tokenizer, args: null | ((arg: string) => string)): Token[]
  * @param s - A string of LaTeX. It can include comments (with the `%`
  * marker) and multiple lines.
  */
-export function tokenize(s: string, args: null | ((arg: string) => string) = null): Token[] {
+export function tokenize(s, args) {
   // Merge multiple lines into one, and remove comments
-  const stream: string[] = [];
+  const stream = [];
   let sep = '';
   for (const line of s.toString().split(/\r?\n/)) {
     if (sep) stream.push(sep);
@@ -266,50 +248,13 @@ export function tokenize(s: string, args: null | ((arg: string) => string) = nul
     // Remove everything after a % (comment marker)
     // (but \% should be preserved...)
     const m = line.match(/((?:\\%)|[^%])*/);
-    if (m !== null) stream.push(m[0]!);
+    if (m !== null) stream.push(m[0]);
   }
 
   const tokenizer = new Tokenizer(stream.join(''));
-  const result: Token[] = [];
+  const result = [];
   do result.push(...expand(tokenizer, args));
   while (!tokenizer.end());
 
   return result;
-}
-
-export function joinLatex(segments: string[]): string {
-  let sep = '';
-  const result: string[] = [];
-  for (const segment of segments) {
-    if (segment) {
-      // If the segment begins with a char that *could* be in a command
-      // name... insert a separator (if one was needed for the previous segment)
-      if (/[a-zA-Z\*]/.test(segment[0]!)) result.push(sep);
-
-      result.push(segment);
-
-      if (/\\[a-zA-Z]+\*?[\"\'][^\ ]+$/.test(segment)) result.push(' ');
-
-      // If the segment ends in a command...
-      sep = /\\[a-zA-Z]+\*?$/.test(segment) ? ' ' : '';
-    }
-  }
-
-  return result.join('');
-}
-
-export function tokensToString(tokens: Token[]): string {
-  return joinLatex(
-    tokens.map(token => {
-      return (
-        {
-          '<space>': ' ',
-          '<$$>': '$$',
-          '<$>': '$',
-          '<{>': '{',
-          '<}>': '}',
-        }[token] ?? token
-      );
-    })
-  );
 }

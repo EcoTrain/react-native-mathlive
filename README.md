@@ -1,9 +1,9 @@
-![Main screen](./coverage/badge-branches.svg)
-![Main screen](./coverage/badge-functions.svg)
-![Main screen](./coverage/badge-lines.svg)
-![Main screen](./coverage/badge-statements.svg)
+[Main screen](./coverage/badge-branches.svg)
+[Main screen](./coverage/badge-functions.svg)
+[Main screen](./coverage/badge-lines.svg)
+[Main screen](./coverage/badge-statements.svg)
 
-![Main screen](./docs/images/main_screen.png)
+[Main screen](./docs/images/main_screen.png)
 
 ## Installation
 
