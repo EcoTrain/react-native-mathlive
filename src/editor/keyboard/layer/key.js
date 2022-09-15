@@ -46,9 +46,7 @@ const KeyboardKeyWithFeedback = ({type, label, latex, insert, command}) => {
       // TODO: define LaTex labels & callbacks dict
       keyLabel = label || latex;
       keyCallback = () => {
-        console.log({latex});
         const newMfValue = mathfieldValue + latex;
-        console.log({newMfValue});
         setMathfieldValue(newMfValue);
       };
     } else {
@@ -57,7 +55,6 @@ const KeyboardKeyWithFeedback = ({type, label, latex, insert, command}) => {
       keyLabel = label;
       keyCallback = () => {
         const newMfValue = mathfieldValue + label;
-        console.log({newMfValue});
         setMathfieldValue(newMfValue);
       };
     }

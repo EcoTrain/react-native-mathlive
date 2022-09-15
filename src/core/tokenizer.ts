@@ -147,30 +147,6 @@ class Tokenizer {
       }
 
       return next;
-    } else if (next === '#') {
-      // This could be either a param token, or a literal # (used for
-      // colorspecs, for example). A param token is a '#' followed by
-      // - a digit 0-9 followed by a non-alpha, non-digit
-      // - or '?' (to indicate a placeholder)
-      // - or '@' (to indicate an implicit, optional, argument)
-      // Otherwise, it's a literal '#'.
-      if (!this.end()) {
-        let isParameter = false;
-        if (/[\d?@]/.test(this.peek())) {
-          // Could be a param
-          isParameter = true;
-          // Need to look ahead to the following char
-          // (to exclude, e.g. '#1c1b2d': it's not a '#' token, it's a color)
-          if (this.pos + 1 < this.s.length) {
-            const after = this.s[this.pos + 1];
-            isParameter = /[^\dA-Za-z]/.test(after!);
-          }
-        }
-
-        if (isParameter) return '#' + this.get();
-
-        return '#';
-      }
     } else if (next === '$') {
       // Mode switch
       if (this.peek() === '$') {

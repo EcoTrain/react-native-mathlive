@@ -6,7 +6,6 @@ import {Mathfield, getMathfieldValue} from 'react-native-mathlive';
 export default function App() {
   const onPressGet = () => {
     const mfVal = getMathfieldValue();
-    console.log({mfVal});
   };
 
   return (
@@ -19,8 +18,6 @@ export default function App() {
         justifyContent: 'center',
       }}>
       <View style={{height: '80%', width: '80%', backgroundColor: 'lightblue'}}>
-        <Text style={{height: 60, width: '100%', backgroundColor: '#acb8bc'}}>test text filler</Text>
-        <Mathfield />
         <Text style={{height: 60, width: '100%', backgroundColor: '#acb8bc'}}>test text filler</Text>
         <Mathfield />
         <Button onPress={onPressGet} title={'Get result'} />

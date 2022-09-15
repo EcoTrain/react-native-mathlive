@@ -8,10 +8,8 @@ import {MathfieldElement} from './editor/mathfield';
 let MathfieldValue = '';
 const changeMathfieldValue = value => {
   MathfieldValue = value;
-  console.log('changeMathfieldValue', {MathfieldValue});
 };
 export const getMathfieldValue = () => {
-  console.log('getMathfieldValue', {MathfieldValue});
   return MathfieldValue;
 };
 
