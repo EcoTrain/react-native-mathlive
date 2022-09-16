@@ -37,26 +37,32 @@ const SurdAtomRender = ({context, body}) => {
   // TODO: make struts for sqrt
 
   return (
-    <View
-      style={styles.container}
-      onLayout={e => {
-        const {width, height} = e.nativeEvent.layout;
-        setSize({width: width, height: height});
-      }}>
-      <View style={{display: 'flex'}}>
-        {!context.placeOnKeyboard && <Text style={{flex: 1, borderRightWidth: 1}}> </Text>}
-        <Text
-          style={{
-            fontFamily: 'KaTeX_Size3',
-            fontSize: Math.max(24, 0.5 * size.height),
+    <View style={{alignItems: 'center', justifyContent: 'center'}}>
+      <View style={styles.container}>
+        <View style={{display: 'flex'}}>
+          {!context.placeOnKeyboard && size.height > 40 && <Text style={{borderRightWidth: 1}}> </Text>}
+          <Text
+            numberOfLines={1}
+            adjustsFontSizeToFit
+            style={
+              !context.placeOnKeyboard && {
+                fontFamily: 'KaTeX_Size3',
+                fontSize: Math.min(50, 0.9 * size.height),
+              }
+            }>
+            √
+          </Text>
+        </View>
+        <View
+          style={styles.body}
+          onLayout={e => {
+            const {width, height} = e.nativeEvent.layout;
+            setSize({width: width, height: height});
           }}>
-          √
-        </Text>
-      </View>
-      <View style={styles.body}>
-        {body.map((x, i) => (
-          <View key={i}>{x.render(context)}</View>
-        ))}
+          {body.map((x, i) => (
+            <View key={i}>{x.render(context)}</View>
+          ))}
+        </View>
       </View>
     </View>
   );
