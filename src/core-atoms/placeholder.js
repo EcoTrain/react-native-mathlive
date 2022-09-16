@@ -1,5 +1,7 @@
+import {useContext} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {Text} from '../components/styled/Text';
+import {KeyboardContext} from '../contexts/keyboard/KeyboardContext';
 import {Atom} from './atom';
 
 export class PlaceholderAtom extends Atom {
@@ -19,8 +21,9 @@ export class PlaceholderAtom extends Atom {
 }
 
 const PlaceholderAtomRender = ({value, context}) => {
+  const {showKeyboard} = useContext(KeyboardContext);
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => showKeyboard()}>
       <Text style={context.placeOnKeyboard && {fontSize: 'inherit'}}>{value}</Text>
     </TouchableOpacity>
   );

@@ -1,4 +1,4 @@
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 import {Text} from '../components/styled/Text';
 import {Atom} from './atom';
 
@@ -18,8 +18,10 @@ export class TextAtom extends Atom {
 
 const TextAtomRender = ({context, value}) => {
   return (
-    <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', backgroundColor: 'lightgrey'}}>
-      <Text style={context.placeOnKeyboard && {fontSize: 'inherit'}}>{value}</Text>
-    </TouchableOpacity>
+    <View style={{justifyContent: 'center'}}>
+      <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', backgroundColor: 'lightgrey'}}>
+        <Text style={context.placeOnKeyboard && {fontSize: 'inherit'}}>{value}</Text>
+      </TouchableOpacity>
+    </View>
   );
 };

@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Text} from '../components/styled/Text';
 import {Atom} from './atom';
@@ -30,21 +31,20 @@ export class SqrtAtom extends Atom {
 }
 
 const SurdAtomRender = ({context, body}) => {
-  console.log('SurdAtomRender', {context, body});
-
-  const getStruts = () => {
-    return Array(body.length - 1)
-      .fill(1)
-      .map(() => <Text style={{borderRightWidth: 1}}> </Text>);
-  };
+  const [size, setSize] = useState({width: 0, height: 0});
 
   // TODO: make struts for sqrt
 
   return (
-    <View style={styles.container}>
-      <View>
-        {/* {body.length > 1 && getStruts()} */}
-        <Text style={styles.root}>√</Text>
+    <View
+      style={styles.container}
+      onLayout={e => {
+        const {width, height} = e.nativeEvent.layout;
+        setSize({width: width, height: height});
+      }}>
+      <View style={{display: 'flex'}}>
+        <Text style={{flex: 1, borderRightWidth: 1}}> </Text>
+        <Text style={{fontFamily: 'KaTeX_Size3', fontSize: Math.max(24, 0.5 * size.height)}}>√</Text>
       </View>
       <View style={styles.body}>
         {body.map((x, i) => (
@@ -58,5 +58,5 @@ const SurdAtomRender = ({context, body}) => {
 const styles = StyleSheet.create({
   container: {display: 'flex', flexDirection: 'row'},
   body: {flexDirection: 'row', alignItems: 'center', borderTopWidth: 1},
-  root: {fontFamily: 'KaTeX_Size3'},
+  root: {},
 });

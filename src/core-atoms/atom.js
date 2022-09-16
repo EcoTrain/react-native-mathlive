@@ -36,6 +36,7 @@ export class Atom {
       console.assert(typeof options.command === 'string');
       Atom.customSerializer[options.command] = options.serialize;
     }
+    console.log(' == ATOM ', {...this});
   }
 
   // get treeDepth() {
