@@ -1,22 +1,13 @@
 /**
- * ## Reference
- * TeX source code:
- * {@link  http://tug.org/texlive/devsrc/Build/source/texk/web2c/tex.web | Tex.web}
- *
- */
-
-import {splitGraphemes} from './grapheme-splitter';
-
-/**
  * Given a LaTeX expression represented as a character string,
  * the Lexer class will scan and return Tokens for the lexical
  * units in the string.
  *
- * @param s A string of LaTeX
+ * @param latexString A string of LaTeX
  */
 class Tokenizer {
   constructor(s) {
-    this.s = splitGraphemes(s);
+    this.latexString = s;
     this.pos = 0;
     this.obeyspaces = false;
   }
@@ -25,31 +16,33 @@ class Tokenizer {
    * @return True if we reached the end of the stream
    */
   end() {
-    return this.pos >= this.s.length;
+    return this.pos >= this.latexString.length;
   }
 
   /**
    * Return the next char and advance
    */
   get() {
-    return this.pos < this.s.length ? this.s[this.pos++] : '';
+    return this.pos < this.latexString.length ? this.latexString[this.pos++] : '';
   }
 
   /**
    * Return the next char, but do not advance
    */
   peek() {
-    return this.s[this.pos];
+    return this.latexString[this.pos];
   }
 
   /**
    * Return the next substring matching regEx and advance.
    */
   match(regEx) {
-    // This.s can either be a string, if it's made up only of ASCII chars
+    // this.latexString can either be a string, if it's made up only of ASCII chars
     // or an array of graphemes, if it's more complicated.
     const execResult =
-      typeof this.s === 'string' ? regEx.exec(this.s.slice(this.pos)) : regEx.exec(this.s.slice(this.pos).join(''));
+      typeof this.latexString === 'string'
+        ? regEx.exec(this.latexString.slice(this.pos))
+        : regEx.exec(this.latexString.slice(this.pos).join(''));
     if (execResult?.[0]) {
       this.pos += execResult[0].length;
       return execResult[0];
@@ -64,6 +57,7 @@ class Tokenizer {
   next() {
     // If we've reached the end, exit
     if (this.end()) return null;
+
     // Handle white space
     // In text mode, spaces are significant,
     // however they are coalesced unless \obeyspaces
@@ -127,8 +121,31 @@ class Tokenizer {
           return String.fromCodePoint(Number.parseInt(hex.slice(hex.lastIndexOf('^') + 1), 16));
         }
       }
-
       return next;
+    } else if (next === '#') {
+      // This could be either a param token, or a literal # (used for
+      // colorspecs, for example). A param token is a '#' followed by
+      // - a digit 0-9 followed by a non-alpha, non-digit
+      // - or '?' (to indicate a placeholder)
+      // - or '@' (to indicate an implicit, optional, argument)
+      // Otherwise, it's a literal '#'.
+      if (!this.end()) {
+        let isParameter = false;
+        if (/[\d?@]/.test(this.peek())) {
+          // Could be a param
+          isParameter = true;
+          // Need to look ahead to the following char
+          // (to exclude, e.g. '#1c1b2d': it's not a '#' token, it's a color)
+          if (this.pos + 1 < this.latexString.length) {
+            const after = this.latexString[this.pos + 1];
+            isParameter = /[^\dA-Za-z]/.test(after);
+          }
+        }
+
+        if (isParameter) return '#' + this.get();
+
+        return '#';
+      }
     } else if (next === '$') {
       // Mode switch
       if (this.peek() === '$') {
@@ -151,9 +168,7 @@ function expand(lex, args) {
   const result = [];
   let token = lex.next();
   if (token) {
-    if (token === '\\relax') {
-      // Do nothing
-    } else if (token === '\\noexpand') {
+    if (token === '\\noexpand') {
       // Do not expand the next token
       token = lex.next();
       if (token) result.push(token);
@@ -178,50 +193,6 @@ function expand(lex, args) {
         else if (token === '<space>') result.push('~');
         else if (token === '<}>') result.push('\\}');
       }
-    } else if (token === '\\csname') {
-      // Turn the next tokens, until `\endcsname`, into a command
-      while (lex.peek() === '<space>') lex.next();
-
-      let command = '';
-      let done = false;
-      let tokens = [];
-      do {
-        if (tokens.length === 0) {
-          // We're out of tokens to look at, get some more
-          if (/^#[\d?@]$/.test(lex.peek())) {
-            // Expand parameters (but not commands)
-            const parameter = lex.get().slice(1);
-            tokens = tokenize(args?.(parameter) ?? args?.('?') ?? '\\placeholder{}', args);
-            token = tokens[0];
-          } else {
-            token = lex.next();
-            tokens = token ? [token] : [];
-          }
-        }
-
-        done = tokens.length === 0;
-        if (!done && token === '\\endcsname') {
-          done = true;
-          tokens.shift();
-        }
-
-        if (!done) {
-          done =
-            token === '<$>' ||
-            token === '<$$>' ||
-            token === '<{>' ||
-            token === '<}>' ||
-            (typeof token === 'string' && token.length > 1 && token.startsWith('\\'));
-        }
-
-        if (!done) command += tokens.shift();
-      } while (!done);
-
-      if (command) result.push('\\' + command);
-
-      result.push(...tokens);
-    } else if (token === '\\endcsname') {
-      // Unexpected \endcsname are ignored
     } else if (token.length > 1 && token.startsWith('#')) {
       // It's a parameter to expand
       const parameter = token.slice(1);

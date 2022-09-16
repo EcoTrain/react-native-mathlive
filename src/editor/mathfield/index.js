@@ -26,6 +26,7 @@ export const MathfieldElement = props => {
         <View style={stylesThemed.mfFormula}>
           <Parser />
         </View>
+
         <TouchableOpacity
           style={stylesThemed.mfKbBtn}
           onPress={() => {
@@ -49,6 +50,6 @@ const styles = UiColors =>
     },
     mathfield: {flex: 1, flexDirection: 'row', justifyContent: 'space-between'},
     mfFormula: {flex: 1, flexDirection: 'row', flexWrap: 'wrap'},
-    mfKbBtn: {height: '100%', maxHeight: 40, aspectRatio: '1/1', marginLeft: 'auto'},
+    mfKbBtn: {height: '100%', maxHeight: 40, aspectRatio: '1/1', marginLeft: 'auto', alignSelf: 'center'},
     mfKbIcon: {height: '100%', width: '100%', flex: 1},
   });

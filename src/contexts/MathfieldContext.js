@@ -1,8 +1,8 @@
 import React, {createContext, useState} from 'react';
-import {useDefinitions} from '../definitions/commands';
 
 // const defaultValue = '\\frac{4+#0}{16 + \\sqrt{24 + \\frac{3}{4}}} + 3';
-const defaultValue = '\\frac{4+\\placeholder{}}{16 + \\sqrt{24 + \\frac{3}{4}} + 3';
+// const defaultValue = '\\frac{4+#?}{16 + \\sqrt{24 + \\frac{3}{4}} + 3';
+const defaultValue = '\\frac{4+#?}{16 - 8} + 3 + \\sqrt{24 + \\frac{3}{#?}}';
 
 export const MathfieldContext = createContext({
   mathfieldValue: defaultValue,
@@ -15,14 +15,13 @@ export const MathfieldContext = createContext({
 export const MathfieldContextProvider = ({children, onChangeValue}) => {
   const [mfValue, setMfValue] = useState(defaultValue);
   const [caretPos, setCaretPos] = useState(0);
-  const {COMMANDS} = useDefinitions();
 
   const defaultContextValues = {
     mathfieldValue: mfValue,
     setMathfieldValue: value => {
-      const placedValues = value.replaceAll('#0', '\\placeholder{}');
-      setMfValue(placedValues);
-      onChangeValue(placedValues);
+      // const placedValues = value.replaceAll('#0', '\\placeholder{}');
+      setMfValue(value);
+      onChangeValue(value);
     },
     caretPositions: caretPos,
     setCaretPosition: pos => {

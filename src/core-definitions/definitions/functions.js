@@ -1,21 +1,19 @@
-import {GenfracAtom} from '../core-atoms/genfrac';
-import {SurdAtom} from '../core-atoms/surd';
-import {defineFunction} from './definitions-utils';
+import {GenfracAtom} from '../../core-atoms/genfrac';
+import {SqrtAtom} from '../../core-atoms/sqrt';
+import {defineFunction} from '../utils';
 
 // Root
-defineFunction('sqrt', '[index:auto]{radicand:auto}', {
-  createAtom: (command, args, style, context) =>
-    new SurdAtom(command, context, {
-      body: args[1],
-      index: args[0],
-      style,
+defineFunction('sqrt', '{radicand:auto}', {
+  createAtom: (command, args, context) =>
+    new SqrtAtom(command, context, {
+      body: args[0],
     }),
 });
 
 // Fractions
 defineFunction(['frac', 'dfrac', 'tfrac', 'cfrac', 'binom', 'dbinom', 'tbinom'], '{numerator}{denominator}', {
-  createAtom: (command, args, style, context) => {
-    const options = {style};
+  createAtom: (command, args, context) => {
+    const options = {};
     switch (command) {
       case '\\dfrac':
       case '\\frac':

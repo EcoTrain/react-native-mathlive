@@ -1,15 +1,21 @@
-import {Atom} from '../core/atom';
+import {View} from 'react-native';
+import {Text} from '../components/styled/Text';
+import {Atom} from './atom';
 
-/*
- * An atom representing a syntactic error, such as an unknown command
- */
 export class ErrorAtom extends Atom {
-  constructor(value, context) {
-    super('error', context, {value, command: value, mode: 'math'});
+  constructor(command, value, style, context) {
+    super('error', context, {
+      command,
+    });
+    this.value = value;
     this.verbatimLatex = value;
   }
 
-  render(context) {
-    return 'error';
+  render() {
+    return (
+      <View>
+        <Text>{'Undefined ' + this.command}</Text>
+      </View>
+    );
   }
 }

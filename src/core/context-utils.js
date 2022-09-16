@@ -1,4 +1,4 @@
-import {LATEX_COMMANDS, MATH_SYMBOLS, TEXT_SYMBOLS} from '../core-definitions/definitions';
+import {LATEX_COMMANDS, MATH_SYMBOLS} from '../core-definitions';
 
 /** @internal */
 export function defaultGlobalContext() {
@@ -10,10 +10,10 @@ export function defaultGlobalContext() {
   return {...result};
 }
 
-export function defaultGetDefinition(token, parseMode = 'math') {
+export function defaultGetDefinition(token) {
   if (!token || token.length === 0) return null;
 
-  console.log({MATH_SYMBOLS, TEXT_SYMBOLS, LATEX_COMMANDS});
+  console.log({MATH_SYMBOLS, LATEX_COMMANDS});
   let info = null;
 
   if (token.startsWith('\\')) {
@@ -21,37 +21,14 @@ export function defaultGetDefinition(token, parseMode = 'math') {
     info = LATEX_COMMANDS[token];
     if (info) return info;
 
-    // It wasn't a function, maybe it's a token?
-    if (parseMode === 'math') info = MATH_SYMBOLS[token];
-    else if (TEXT_SYMBOLS[token]) {
-      info = {
-        definitionType: 'symbol',
-        type: 'mord',
-        codepoint: TEXT_SYMBOLS[token],
-      };
-    }
-  } else if (TEXT_SYMBOLS[token]) {
+    info = MATH_SYMBOLS[token];
+  } else {
     info = {
       definitionType: 'symbol',
       type: 'mord',
-      codepoint: TEXT_SYMBOLS[token],
-    };
-  } else if (parseMode === 'text') {
-    info = {
-      definitionType: 'symbol',
-      type: 'mord',
-      codepoint: token.codePointAt(0),
+      symbol: token,
     };
   }
-
-  // Special case `f`, `g` and `h` are recognized as functions.
-  if (
-    info &&
-    info.definitionType === 'symbol' &&
-    info.type === 'mord' &&
-    (info.codepoint === 0x66 || info.codepoint === 0x67 || info.codepoint === 0x68)
-  )
-    info.isFunction = true;
 
   return info ?? null;
 }

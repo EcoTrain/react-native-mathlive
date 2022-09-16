@@ -1,37 +1,27 @@
-import {View, Text, TouchableOpacity} from 'react-native';
-import {Atom} from '../core/atom';
+import {TouchableOpacity} from 'react-native';
+import {Text} from '../components/styled/Text';
+import {Atom} from './atom';
 
 export class PlaceholderAtom extends Atom {
   constructor(context, options) {
-    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     const value = options?.value || context.placeholderSymbol;
     super('placeholder', context, {
-      mode: options?.mode ?? 'math',
       value,
       command: '\\placeholder',
     });
-    this.captureSelection = true;
-    this.placeholderId = options?.placeholderId;
-    this.defaultValue = options?.default;
+    this.context = context;
+    this.options = options;
   }
 
-  render(context) {
-    return <PlaceholderAtomRender />;
-  }
-
-  serialize(options) {
-    let value = this.value ?? '';
-    if (value === this.context.placeholderSymbol) value = '';
-    const id = this.placeholderId ? `[${this.placeholderId}]` : '';
-    const defaultValue = this.defaultValue ? `[${Atom.serialize(this.defaultValue, options)}]` : '';
-    return `\\placeholder${id}${defaultValue}{${value}}`;
+  render() {
+    return <PlaceholderAtomRender value={this.value} context={this.context} />;
   }
 }
 
-const PlaceholderAtomRender = () => {
+const PlaceholderAtomRender = ({value, context}) => {
   return (
     <TouchableOpacity>
-      <Text>▢</Text>
+      <Text style={context.placeOnKeyboard && {fontSize: 'inherit'}}>{value}</Text>
     </TouchableOpacity>
   );
 };

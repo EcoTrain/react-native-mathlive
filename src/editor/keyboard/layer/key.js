@@ -2,6 +2,8 @@ import React, {useContext, useState} from 'react';
 import {StyleSheet, TouchableOpacity, Text, View} from 'react-native';
 import {MathfieldContext} from '../../../contexts/MathfieldContext';
 import {ThemeContext} from '../../../contexts/ThemeContext';
+import {defaultGlobalContext} from '../../../core/context-utils';
+import {parseLatex} from '../../../core/parser';
 import {makeShadow} from '../../../styles/shadow';
 
 export const KeyboardKey = keyConfig => {
@@ -31,20 +33,29 @@ const KeyboardKeyWithFeedback = ({type, label, latex, insert, command}) => {
   const shadow = makeShadow(20, 0.02);
   const [pressed, setPressed] = useState(false);
 
+  const getTextPanel = text => {
+    return <Text style={{fontFamily: 'KaTeX_Size4-Regular'}}>{text}</Text>;
+  };
   const defineKeyCallbackAndLabel = () => {
     let keyCallback = () => {};
-    let keyLabel = label || '';
+    let keyFrontPanel = label || '';
 
     if (type == 'action') {
       // TODO: define command labels & callbacks dict
       // TODO: define executeCommand in context
-      keyLabel = label || command;
-      keyCallback = () => {
-        executeCommand(command);
-      };
+      keyFrontPanel = getTextPanel(label || command);
+      keyCallback = () => executeCommand(command);
     } else if (latex) {
-      // TODO: define LaTex labels & callbacks dict
-      keyLabel = label || latex;
+      const atoms = parseLatex(
+        latex,
+        {...defaultGlobalContext(), placeOnKeyboard: true},
+        {
+          parseMode: 'math',
+          mathstyle: 'displaystyle',
+          args: () => '\\placeholder{}',
+        }
+      );
+      keyFrontPanel = atoms.map(x => x.render());
       keyCallback = () => {
         const newMfValue = mathfieldValue + latex;
         setMathfieldValue(newMfValue);
@@ -52,15 +63,15 @@ const KeyboardKeyWithFeedback = ({type, label, latex, insert, command}) => {
     } else {
       // TODO: define command labels & callbacks dict
       // TODO: define executeCommand in context
-      keyLabel = label;
+      keyFrontPanel = getTextPanel(label);
       keyCallback = () => {
         const newMfValue = mathfieldValue + label;
         setMathfieldValue(newMfValue);
       };
     }
-    return {keyCallback, keyLabel};
+    return {keyCallback, keyFrontPanel};
   };
-  const {keyCallback, keyLabel} = defineKeyCallbackAndLabel();
+  const {keyCallback, keyFrontPanel} = defineKeyCallbackAndLabel();
 
   return (
     <TouchableOpacity
@@ -76,12 +87,7 @@ const KeyboardKeyWithFeedback = ({type, label, latex, insert, command}) => {
       onPressIn={() => setPressed(true)}
       onPressOut={() => setPressed(false)}
       onPress={keyCallback}>
-      <Text
-        style={{
-          fontFamily: 'KaTeX_Size4-Regular',
-        }}>
-        {keyLabel}
-      </Text>
+      <View style={{cursorPointer: 'none'}}>{keyFrontPanel}</View>
     </TouchableOpacity>
   );
 };

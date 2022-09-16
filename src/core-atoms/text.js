@@ -1,27 +1,25 @@
-import {Atom} from '../core/atom';
+import {TouchableOpacity} from 'react-native';
+import {Text} from '../components/styled/Text';
+import {Atom} from './atom';
 
 export class TextAtom extends Atom {
-  constructor(command, value, style, context) {
+  constructor(command, value, context) {
     super('text', context, {
       command,
-      mode: 'text',
-      displayContainsHighlight: true,
     });
     this.value = value;
     this.verbatimLatex = value;
   }
 
-  render(context) {
-    return context;
+  render() {
+    return <TextAtomRender context={this.context} value={this.value} />;
   }
 }
 
-// const TextAtomRender = ({context}) => {
-//   return (
-//     <TouchableOpacity onPress={onFocus} onBlur={onBlur} style={{flexDirection: 'row'}}>
-//       <Text>{token}</Text>
-//       {/* {token == '1' && <TextAtom token={'test'} />} */}
-//       {isFocused && <Text>|</Text>}
-//     </TouchableOpacity>
-//   );
-// };
+const TextAtomRender = ({context, value}) => {
+  return (
+    <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', backgroundColor: 'lightgrey'}}>
+      <Text style={context.placeOnKeyboard && {fontSize: 'inherit'}}>{value}</Text>
+    </TouchableOpacity>
+  );
+};
