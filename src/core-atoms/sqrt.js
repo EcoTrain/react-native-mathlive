@@ -21,12 +21,13 @@ export class SqrtAtom extends Atom {
     super('surd', context, {
       command,
     });
+    this.context = context;
     this.body = options.body ?? [];
   }
 
-  render(context) {
+  render() {
     console.log({...this});
-    return <SurdAtomRender context={context} body={this.body} />;
+    return <SurdAtomRender context={this.context} body={this.body} />;
   }
 }
 
@@ -43,8 +44,14 @@ const SurdAtomRender = ({context, body}) => {
         setSize({width: width, height: height});
       }}>
       <View style={{display: 'flex'}}>
-        <Text style={{flex: 1, borderRightWidth: 1}}> </Text>
-        <Text style={{fontFamily: 'KaTeX_Size3', fontSize: Math.max(24, 0.5 * size.height)}}>√</Text>
+        {!context.placeOnKeyboard && <Text style={{flex: 1, borderRightWidth: 1}}> </Text>}
+        <Text
+          style={{
+            fontFamily: 'KaTeX_Size3',
+            fontSize: Math.max(24, 0.5 * size.height),
+          }}>
+          √
+        </Text>
       </View>
       <View style={styles.body}>
         {body.map((x, i) => (
