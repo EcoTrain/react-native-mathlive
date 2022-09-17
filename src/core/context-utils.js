@@ -4,6 +4,7 @@ import {LATEX_COMMANDS, MATH_SYMBOLS} from '../core-definitions';
 export function defaultGlobalContext() {
   const result = {
     placeholderSymbol: '▢',
+    placeOnKeyboard: false,
     getDefinition: defaultGetDefinition,
   };
 

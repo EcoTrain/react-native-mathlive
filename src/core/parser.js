@@ -106,7 +106,7 @@ class Parser {
     return this.index < this.tokens.length ? this.tokens[this.index++] : '';
   }
 
-  getCurrentToken() {
+  currentToken() {
     return this.tokens[this.index];
   }
 
@@ -208,8 +208,7 @@ class Parser {
     while (!this.isEnd()) {
       if (this.match('<space>')) result += ' ';
       else {
-        const token = this.getCurrentToken();
-        console.log('scanString', {token});
+        const token = this.currentToken();
 
         if (token === ']') break;
 
@@ -243,11 +242,11 @@ class Parser {
    */
   scanNumber(isInteger = true) {
     let negative = false;
-    let token = this.getCurrentToken();
+    let token = this.currentToken();
     while (token === '<space>' || token === '+' || token === '-') {
       this.getNextToken();
       if (token === '-') negative = !negative;
-      token = this.getCurrentToken();
+      token = this.currentToken();
     }
 
     isInteger = Boolean(isInteger);
@@ -314,7 +313,7 @@ class Parser {
 
     const saveAtoms = this.mathlist;
     this.mathlist = [];
-    while (!this.isEnd() && !done(this.getCurrentToken())) {
+    while (!this.isEnd() && !done(this.currentToken())) {
       this.parseToken();
     }
     let result = this.mathlist;
@@ -392,7 +391,6 @@ class Parser {
   }
 
   parseCommand(command) {
-    console.log('parseCommand', command);
     if (command === '\\placeholder') {
       return [
         new PlaceholderAtom(this.context, {
@@ -414,7 +412,7 @@ class Parser {
     if (info.definitionType === 'symbol') {
       result = new Atom(info.type ?? 'mop', this.context, {
         command,
-        value: String.fromCodePoint(info.codepoint),
+        value: String.fromCodePoint(info.symbol),
       });
     } else {
       const [deferredArg, args] = this.parseArguments(info);
@@ -460,7 +458,6 @@ class Parser {
       } else if (parameter.isOptional) args.push(this.parseOptionalArgument(parameter.type));
       else {
         const arg = this.parseArgument(parameter.type);
-        console.log({arg, parameter});
         if (arg !== null) args.push(arg);
         else {
           // Report an error
@@ -499,7 +496,7 @@ class Parser {
     // could be a single character or symbol, as in `\frac12`
     // Note that ``\frac\sqrt{-1}\alpha\beta`` is equivalent to
     // ``\frac{\sqrt}{-1}{\beta}``
-    const hasBrace = this.getCurrentToken() === '<{>';
+    const hasBrace = this.currentToken() === '<{>';
     if (!hasBrace) {
       if (argType === 'text' || argType === 'math') {
         // Parse a single token.
@@ -550,7 +547,6 @@ class Parser {
   }
 
   parseLiteral(literal) {
-    console.log('parseLiteral', {literal});
     const atom = new TextAtom(literal, literal, this.context);
     return atom;
   }
@@ -562,6 +558,9 @@ class Parser {
  * `#0`, `#1`, etc... they will be replaced by the value provided by `args`.
  */
 export function parseLatex(s, context, options) {
+  const validateErrors = validateLatex(s, context);
+  console.log({validateErrors});
+
   const args = options?.args ?? null;
   const tokens = tokenize(s, args);
   const parser = new Parser(tokens, context, {
@@ -570,7 +569,7 @@ export function parseLatex(s, context, options) {
 
   const atoms = [];
   while (!parser.isEnd()) atoms.push(...parser.parse());
-  // console.log({tokens, atoms, context});
+  console.log('Parse latex result', {tokens, atoms, context});
   return atoms;
 }
 

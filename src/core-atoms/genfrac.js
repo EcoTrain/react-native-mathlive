@@ -13,8 +13,6 @@ import {Atom} from './atom';
  * to indicate it should use the current mathstyle
  */
 export class GenfracAtom extends Atom {
-  mathstyleName;
-
   constructor(command, above, below, context, options) {
     super('genfrac', context, {
       command,
@@ -23,17 +21,14 @@ export class GenfracAtom extends Atom {
     this.above = above;
     this.below = below;
     this.hasBarLine = options?.hasBarLine ?? true;
-    this.mathstyleName = options?.mathstyleName;
   }
 
-  render(context) {
-    console.log({...this});
-    return <GenfracAtomRender context={context} above={this.above} below={this.below} />;
+  render() {
+    return <GenfracAtomRender context={this.context} above={this.above} below={this.below} />;
   }
 }
 
 const GenfracAtomRender = ({context, above, below}) => {
-  console.log('GenfracAtomRender', {context, above, below});
   return (
     <View style={styles.container}>
       <View style={styles.operand}>
@@ -41,7 +36,7 @@ const GenfracAtomRender = ({context, above, below}) => {
           <View key={i}>{x.render(context)}</View>
         ))}
       </View>
-      <View style={styles.delimeter}></View>
+      {this.hasBarLine && <View style={styles.delimeter}></View>}
       <View style={styles.operand}>
         {below.map((x, i) => (
           <View key={i}>{x.render(context)}</View>

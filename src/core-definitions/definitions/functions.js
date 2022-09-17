@@ -11,7 +11,7 @@ defineFunction('sqrt', '{radicand:auto}', {
 });
 
 // Fractions
-defineFunction(['frac', 'dfrac', 'tfrac', 'cfrac', 'binom', 'dbinom', 'tbinom'], '{numerator}{denominator}', {
+defineFunction(['frac', 'dfrac', 'tfrac', 'binom', 'dbinom', 'tbinom'], '{numerator}{denominator}', {
   createAtom: (command, args, context) => {
     const options = {};
     switch (command) {
@@ -20,31 +20,12 @@ defineFunction(['frac', 'dfrac', 'tfrac', 'cfrac', 'binom', 'dbinom', 'tbinom'],
       case '\\tfrac':
         options.hasBarLine = true;
         break;
-      case '\\atopfrac':
-        options.hasBarLine = false;
-        break;
       case '\\dbinom':
       case '\\binom':
       case '\\tbinom':
         options.hasBarLine = false;
         options.leftDelim = '(';
         options.rightDelim = ')';
-        break;
-      default:
-    }
-
-    switch (command) {
-      case '\\dfrac':
-      case '\\dbinom':
-        options.mathstyleName = 'displaystyle';
-        break;
-      case '\\tfrac':
-      case '\\tbinom':
-        options.mathstyleName = 'textstyle';
-        break;
-      case '\\cfrac':
-        options.hasBarLine = true;
-        options.continuousFraction = true;
         break;
       default:
     }

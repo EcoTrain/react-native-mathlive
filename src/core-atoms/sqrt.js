@@ -15,8 +15,6 @@ import {Atom} from './atom';
  * to indicate it should use the current mathstyle
  */
 export class SqrtAtom extends Atom {
-  mathstyleName;
-
   constructor(command, context, options) {
     super('surd', context, {
       command,
@@ -27,49 +25,36 @@ export class SqrtAtom extends Atom {
 
   render() {
     console.log({...this});
-    return <SurdAtomRender context={this.context} body={this.body} />;
+    return <SqrtAtomRender context={this.context} body={this.body} />;
   }
 }
 
-const SurdAtomRender = ({context, body}) => {
+const SqrtAtomRender = ({context, body}) => {
   const [size, setSize] = useState({width: 0, height: 0});
 
-  // TODO: make struts for sqrt
+  const onKb = context.placeOnKeyboard;
+  const onChangeBodySize = e => {
+    const {width, height} = e.nativeEvent.layout;
+    setSize({width: width, height: height});
+  };
 
   return (
-    <View style={{alignItems: 'center', justifyContent: 'center'}}>
-      <View style={styles.container}>
-        <View style={{display: 'flex'}}>
-          {!context.placeOnKeyboard && size.height > 40 && <Text style={{borderRightWidth: 1}}> </Text>}
-          <Text
-            numberOfLines={1}
-            adjustsFontSizeToFit
-            style={
-              !context.placeOnKeyboard && {
-                fontFamily: 'KaTeX_Size3',
-                fontSize: Math.min(50, 0.9 * size.height),
-              }
-            }>
-            √
-          </Text>
-        </View>
-        <View
-          style={styles.body}
-          onLayout={e => {
-            const {width, height} = e.nativeEvent.layout;
-            setSize({width: width, height: height});
-          }}>
-          {body.map((x, i) => (
-            <View key={i}>{x.render(context)}</View>
-          ))}
-        </View>
+    <View style={styles.container}>
+      <View style={{display: 'flex', height: '100%', justifyContent: 'center'}}>
+        {!onKb && size.height > 40 && <Text style={{borderRightWidth: 1, flex: 1}}> </Text>}
+        <Text style={{fontSize: onKb ? 'inherit' : Math.max(24, 0.6 * size.height)}}>√</Text>
+      </View>
+      <View style={styles.body} onLayout={onChangeBodySize}>
+        {body.map((x, i) => (
+          <View key={i}>{x.render(context)}</View>
+        ))}
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {display: 'flex', flexDirection: 'row'},
+  container: {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'},
   body: {flexDirection: 'row', alignItems: 'center', borderTopWidth: 1},
   root: {},
 });
