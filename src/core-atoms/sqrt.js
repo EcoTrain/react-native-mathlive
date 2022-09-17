@@ -19,7 +19,6 @@ export class SqrtAtom extends Atom {
     super('sqrt', context, {
       command,
     });
-    this.context = context;
     this.body = options.body ?? [];
   }
 

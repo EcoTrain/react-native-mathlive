@@ -8,7 +8,6 @@ export class TextAtom extends Atom {
       command,
     });
     this.value = value;
-    this.verbatimLatex = value;
   }
 
   render() {

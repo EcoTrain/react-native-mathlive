@@ -1,11 +1,12 @@
 import React, {useContext, useState} from 'react';
-import {TouchableOpacity, Text, StyleSheet, View, Image} from 'react-native';
+import {TouchableOpacity, StyleSheet, View, Image} from 'react-native';
 import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
+import {MathfieldContext} from '../../contexts/MathfieldContext';
 import {ThemeContext} from '../../contexts/ThemeContext';
-import {Parser} from '../../parser';
 
 export const MathfieldElement = props => {
   const {showKeyboard, hideKeyboard} = useContext(KeyboardContext);
+  const {atoms, mathfieldValue} = useContext(MathfieldContext);
 
   const [focused, setFocus] = useState(false);
 
@@ -13,30 +14,31 @@ export const MathfieldElement = props => {
   const stylesThemed = styles(UiColors);
 
   return (
-    <TouchableOpacity
-      activeOpacity={1}
-      style={[
-        stylesThemed.container,
-        {
-          borderColor: focused ? 'lightgray' : 'gray',
-          borderWidth: focused ? 2 : 1,
-        },
-      ]}>
-      <View style={stylesThemed.mathfield}>
-        <View style={stylesThemed.mfFormula}>
-          <Parser />
-        </View>
+    <View style={{flex: 1}}>
+      <TouchableOpacity
+        activeOpacity={1}
+        style={[
+          stylesThemed.container,
+          {
+            borderColor: focused ? 'lightgray' : 'gray',
+            borderWidth: focused ? 2 : 1,
+          },
+        ]}>
+        <View style={stylesThemed.mathfield}>
+          <View style={stylesThemed.mfFormula}>{atoms.map(x => x.render())}</View>
 
-        <TouchableOpacity
-          style={stylesThemed.mfKbBtn}
-          onPress={() => {
-            setFocus(!focused);
-            focused ? hideKeyboard() : showKeyboard();
-          }}>
-          <Image style={stylesThemed.mfKbIcon} source={require('../../assets/icons/keyboard.png')} />
-        </TouchableOpacity>
-      </View>
-    </TouchableOpacity>
+          <TouchableOpacity
+            style={stylesThemed.mfKbBtn}
+            onPress={() => {
+              setFocus(!focused);
+              focused ? hideKeyboard() : showKeyboard();
+            }}>
+            <Image style={stylesThemed.mfKbIcon} source={require('../../assets/icons/keyboard.png')} />
+          </TouchableOpacity>
+        </View>
+      </TouchableOpacity>
+      <View>{mathfieldValue}</View>
+    </View>
   );
 };
 

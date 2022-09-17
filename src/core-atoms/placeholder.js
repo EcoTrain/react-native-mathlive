@@ -11,7 +11,6 @@ export class PlaceholderAtom extends Atom {
       value,
       command: '\\placeholder',
     });
-    this.context = context;
     this.options = options;
   }
 

@@ -8,7 +8,6 @@ export class ErrorAtom extends Atom {
       command,
     });
     this.value = value;
-    this.verbatimLatex = value;
   }
 
   render() {

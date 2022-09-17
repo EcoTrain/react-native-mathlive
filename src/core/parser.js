@@ -101,7 +101,7 @@ class Parser {
     return this.index >= this.tokens.length || this.endCount > 1000;
   }
 
-  getNextToken() {
+  nextToken() {
     this.endCount = 0;
     return this.index < this.tokens.length ? this.tokens[this.index++] : '';
   }
@@ -176,7 +176,7 @@ class Parser {
     let done = this.isEnd();
     let value = '';
     while (!done) {
-      const token = this.getNextToken();
+      const token = this.nextToken();
       if (isLiteral(token)) {
         value += token;
         done = this.isEnd() || value.length >= keyword.length;
@@ -205,13 +205,13 @@ class Parser {
 
         if (token === ']') break;
 
-        if (isLiteral(token)) result += this.getNextToken();
+        if (isLiteral(token)) result += this.nextToken();
         else if (token.startsWith('\\')) {
           // TeX will give a 'Missing \endcsname inserted' error
           // if it encounters any command when expecting a string.
           // We're a bit more lax.
           this.onError({code: 'unbalanced-braces'});
-          result += this.getNextToken();
+          result += this.nextToken();
         } else {
           // It's '<{>', '<}>', '<$>' or '<$$>
           break;
@@ -295,7 +295,7 @@ class Parser {
   }
 
   parseSimpleToken() {
-    const token = this.getNextToken();
+    const token = this.nextToken();
     if (!token) return null;
     if (token === '<space>') {
       return [new TextAtom(' ', ' ', this.context)];
@@ -418,7 +418,7 @@ class Parser {
       }
     }
 
-    if (hasBrace) this.getNextToken();
+    if (hasBrace) this.nextToken();
 
     if (argType === 'text' || argType === 'math') {
       this.beginContext({mode: argType});
@@ -466,8 +466,8 @@ class Parser {
  * `#0`, `#1`, etc... they will be replaced by the value provided by `args`.
  */
 export function parseLatex(s, context, options) {
-  const validateErrors = validateLatex(s, context);
-  console.log({validateErrors});
+  // const validateErrors = validateLatex(s, context);
+  // console.log({validateErrors});
 
   const args = options?.args ?? null;
   const tokens = tokenize(s, args);

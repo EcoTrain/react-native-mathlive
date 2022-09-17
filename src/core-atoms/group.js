@@ -8,11 +8,10 @@ export class GroupAtom extends Atom {
       command,
     });
     this.value = value;
-    this.verbatimLatex = value;
   }
 
-  render(context) {
-    console.log('Render GroupAtom', {context, val: this.value, lat: this.verbatimLatex});
+  render(parentContext) {
+    console.log('Render GroupAtom', {parentContext, val: this.value, lat: this.verbatimLatex});
     return (
       <View>
         <Text>{'GroupAtom'}</Text>

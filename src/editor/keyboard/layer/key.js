@@ -65,7 +65,7 @@ const KeyboardKeyWithFeedback = ({type, label, latex, insert, command}) => {
       // TODO: define executeCommand in context
       keyFrontPanel = getTextPanel(label);
       keyCallback = () => {
-        const newMfValue = mathfieldValue + label;
+        const newMfValue = mathfieldValue + insert ?? label;
         setMathfieldValue(newMfValue);
       };
     }
