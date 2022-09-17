@@ -216,6 +216,84 @@ export class Atom {
     child.treeBranch = undefined;
   }
 
+  get siblings() {
+    if (this.type === 'root') return [];
+    return this.parent.branch(this.treeBranch);
+  }
+
+  get firstSibling() {
+    return this.siblings[0];
+  }
+
+  get lastSibling() {
+    const {siblings} = this;
+    return siblings[siblings.length - 1];
+  }
+
+  get isFirstSibling() {
+    return this === this.firstSibling;
+  }
+
+  get isLastSibling() {
+    return this === this.lastSibling;
+  }
+
+  get hasNoSiblings() {
+    // There is always at least one sibling, the 'first'
+    // atom, but we don't count it.
+    return this.siblings.length === 1;
+  }
+
+  get leftSibling() {
+    console.assert(this.parent !== undefined);
+    const siblings = this.parent.branch(this.treeBranch);
+    return siblings[siblings.indexOf(this) - 1];
+  }
+
+  get rightSibling() {
+    console.assert(this.parent !== undefined);
+    const siblings = this.parent.branch(this.treeBranch);
+    return siblings[siblings.indexOf(this) + 1];
+  }
+
+  get hasChildren() {
+    return this._branches && this.children.length > 0;
+  }
+
+  get firstChild() {
+    console.assert(this.hasChildren);
+    return this.children[0];
+  }
+
+  get lastChild() {
+    console.assert(this.hasChildren);
+    const {children} = this;
+    return children[children.length - 1];
+  }
+
+  /**
+   * All the children of this atom.
+   *
+   * The order of the atoms is the order in which they
+   * are navigated using the keyboard.
+   */
+  get children() {
+    if (this._children) return this._children;
+    if (!this._branches) return [];
+    const result = [];
+    for (const branchName of NAMED_BRANCHES) {
+      if (this._branches[branchName]) {
+        for (const x of this._branches[branchName]) {
+          result.push(...x.children);
+          result.push(x);
+        }
+      }
+    }
+
+    this._children = result;
+    return result;
+  }
+
   /**
    * Render this atom as an array of boxes.
    *

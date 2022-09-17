@@ -33,13 +33,26 @@ export const MathfieldContextProvider = ({children, onChangeValue}) => {
       }
     );
     setMfAtoms(atoms);
-    console.log('MathfieldContext', {atoms});
+    setSelectedAtom(atoms.slice(-1)[0]);
+    console.log('MathfieldContext changeValue', {atoms});
   }, [mfValue]);
 
   const COMMANDS = {};
   COMMANDS.deleteBackward = () => {
-    console.log('deleteBackward');
-    setMfAtoms(mfAtoms.slice(0, -1));
+    console.log('deleteBackward', selectedAtom);
+    if (selectedAtom.parent) {
+      console.log('Remove atom child', {selectedAtom, parent: selectedAtom.parent});
+      const prevAtom = selectedAtom.leftSibling;
+      selectedAtom.parent.removeChild(selectedAtom);
+      setSelectedAtom(prevAtom);
+    } else {
+      let _atoms = [...mfAtoms];
+      console.log('Remove atom root', {mfAtoms, selectedAtom, ind: _atoms.indexOf(selectedAtom)});
+      const ind = _atoms.indexOf(selectedAtom);
+      ind > -1 && _atoms.splice(ind, 1);
+      console.log({_atoms});
+      setMfAtoms(_atoms);
+    }
   };
 
   const defaultContextValues = {

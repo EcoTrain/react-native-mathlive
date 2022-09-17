@@ -20,7 +20,7 @@ export default function App() {
       <View style={{height: '80%', width: '80%', backgroundColor: 'lightblue'}}>
         <Text style={{height: 60, width: '100%', backgroundColor: '#acb8bc'}}>test text filler</Text>
         <Mathfield />
-        <Button onPress={onPressGet} title={'Get result'} />
+        {/* <Button onPress={onPressGet} title={'Get result'} /> */}
       </View>
     </View>
   );

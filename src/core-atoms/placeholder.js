@@ -2,6 +2,7 @@ import {useContext} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {Text} from '../components/styled/Text';
 import {KeyboardContext} from '../contexts/keyboard/KeyboardContext';
+import {MathfieldContext} from '../contexts/MathfieldContext';
 import {Atom} from './atom';
 
 export class PlaceholderAtom extends Atom {
@@ -15,15 +16,20 @@ export class PlaceholderAtom extends Atom {
   }
 
   render() {
-    return <PlaceholderAtomRender value={this.value} context={this.context} />;
+    return <PlaceholderAtomRender atom={this} />;
   }
 }
 
-const PlaceholderAtomRender = ({value, context}) => {
+const PlaceholderAtomRender = ({atom}) => {
   const {showKeyboard} = useContext(KeyboardContext);
+  const {setSelectedAtom} = useContext(MathfieldContext);
   return (
-    <TouchableOpacity onPress={() => showKeyboard()}>
-      <Text style={context.placeOnKeyboard && {fontSize: 'inherit'}}>{value}</Text>
+    <TouchableOpacity
+      onPress={() => {
+        showKeyboard();
+        setSelectedAtom(atom);
+      }}>
+      <Text style={atom.context.placeOnKeyboard && {fontSize: 'inherit'}}>{atom.value}</Text>
     </TouchableOpacity>
   );
 };
