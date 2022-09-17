@@ -122,13 +122,6 @@ class Parser {
   }
 
   /**
-   * @return True if the next token matches the specified regular expression pattern.
-   */
-  hasPattern(pattern) {
-    return pattern.test(this.tokens[this.index]);
-  }
-
-  /**
    * Return the appropriate value for a placeholder, either a default
    * one, or if a value was provided for #? via args, that value.
    */
@@ -230,71 +223,6 @@ class Parser {
   }
 
   /**
-   * Return as a number a group of characters representing a
-   * numerical quantity.
-   *
-   * From TeX:8695 (scan_int):
-   * > An integer number can be preceded by any number of spaces and `+' or
-   * > `-' signs. Then comes either a decimal constant (i.e., radix 10), an
-   * > octal constant (i.e., radix 8, preceded by '), a hexadecimal constant
-   * > (radix 16, preceded by "), an alphabetic constant (preceded by `), or
-   * > an internal variable.
-   */
-  scanNumber(isInteger = true) {
-    let negative = false;
-    let token = this.currentToken();
-    while (token === '<space>' || token === '+' || token === '-') {
-      this.getNextToken();
-      if (token === '-') negative = !negative;
-      token = this.currentToken();
-    }
-
-    isInteger = Boolean(isInteger);
-
-    let radix = 10;
-    let digits = /\d/;
-
-    if (this.match("'")) {
-      // Apostrophe indicates an octal value
-      radix = 8;
-      digits = /[0-7]/;
-      isInteger = true;
-    } else if (this.match('"') || this.match('x')) {
-      // Double-quote indicates a hex value
-      // The 'x' prefix notation for the hexadecimal numbers is a MathJax extension.
-      // For example: 'x3a'
-      radix = 16;
-      // Hex digits have to be upper-case
-      digits = /[\dA-F]/;
-      isInteger = true;
-    } else if (this.match('`')) {
-      // A backtick indicates an alphabetic constant: a letter, or a single-letter command
-      token = this.getNextToken();
-      if (token) {
-        if (token.startsWith('\\') && token.length === 2) return (negative ? -1 : 1) * (token.codePointAt(1) ?? 0);
-
-        return (negative ? -1 : 1) * (token.codePointAt(0) ?? 0);
-      }
-
-      return null;
-    }
-
-    let value = '';
-    while (this.hasPattern(digits)) value += this.getNextToken();
-
-    // Parse the fractional part, if applicable
-    // Note: TeX does accept `,` as a decimal separator see TeX: `continental_point_token`
-    if (!isInteger && (this.match('.') || this.match(','))) {
-      value += '.';
-      while (this.hasPattern(digits)) value += this.getNextToken();
-    }
-
-    const result = isInteger ? Number.parseInt(value, radix) : Number.parseFloat(value);
-    if (Number.isNaN(result)) return null;
-    return negative ? -result : result;
-  }
-
-  /**
    * Parse a sequence until a group end marker, such as
    * `}`, `\end`, `&`, etc...
    *
@@ -322,8 +250,6 @@ class Parser {
     // Return away prev context after parse token child
     this.endContext();
 
-    console.log('Parse end', {result});
-
     return result;
   }
 
@@ -336,7 +262,6 @@ class Parser {
     if (result === null) {
       result = this.parseSimpleToken();
     }
-    console.log('parseToken', {result});
 
     // If we have an atom to add, push it at the end of the current math list
     if (Array.isArray(result)) this.mathlist.push(...result);
@@ -412,23 +337,12 @@ class Parser {
     if (info.definitionType === 'symbol') {
       result = new Atom(info.type ?? 'mop', this.context, {
         command,
-        value: String.fromCodePoint(info.symbol),
+        value: info.symbol,
       });
     } else {
       const [deferredArg, args] = this.parseArguments(info);
 
       if (!args) return null; // Some required arguments were missing...
-
-      if (info.infix) {
-        // Infix commands should be handled in scanImplicitGroup
-        // If we find an infix command here, it's a syntax error
-        // (second infix command in a group) and should be ignored.
-        this.onError({
-          code: 'too-many-infix-commands',
-          arg: command,
-        });
-        return null;
-      }
 
       //  Invoke the createAtom() function if present
       if (typeof info.createAtom === 'function') {
@@ -449,13 +363,12 @@ class Parser {
     if (!info || !info.params) return [undefined, []];
     let explicitGroup = undefined;
     const args = [];
-    let i = info.infix ? 2 : 0;
+    let i = 0;
+
     while (i < info.params.length) {
       const parameter = info.params[i];
       // Parse an argument
-      if (parameter?.type === 'rest') {
-        args.push(this.parse(token => token === '<}>' || token === '\\\\'));
-      } else if (parameter.isOptional) args.push(this.parseOptionalArgument(parameter.type));
+      if (parameter.isOptional) args.push(this.parseOptionalArgument(parameter.type));
       else {
         const arg = this.parseArgument(parameter.type);
         if (arg !== null) args.push(arg);
@@ -463,11 +376,9 @@ class Parser {
           // Report an error
           this.onError({code: 'missing-argument'});
           switch (parameter.type) {
-            case 'number':
-              args.push(0);
-              break;
             case 'string':
-
+              args.push('');
+              break;
             case 'auto':
             default:
               args.push(this.placeholder());
@@ -516,7 +427,6 @@ class Parser {
     } else {
       this.beginContext();
       if (argType === 'string') result = this.scanString();
-      else if (argType === 'number') result = this.scanNumber();
 
       if (hasBrace) this.skipUntilToken('<}>');
 
@@ -535,7 +445,6 @@ class Parser {
     let result = null;
     while (!this.isEnd() && !this.match(']')) {
       if (argType === 'string') result = this.scanString();
-      else if (argType === 'number') result = this.scanNumber();
       else if (argType === 'math') {
         this.beginContext({mode: 'math'});
         result = this.mathlist.concat(this.parse(token => token === ']'));
@@ -545,7 +454,6 @@ class Parser {
 
     return result;
   }
-
   parseLiteral(literal) {
     const atom = new TextAtom(literal, literal, this.context);
     return atom;

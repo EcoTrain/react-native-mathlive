@@ -5,7 +5,7 @@ import {Text} from '../components/styled/Text';
  * The order of these branches specify the default keyboard navigation order.
  * It can be overriden in `get children()`
  */
-export const NAMED_BRANCHES = ['above', 'body', 'below', 'superscript', 'subscript'];
+export const NAMED_BRANCHES = ['body', 'above', 'below', 'superscript', 'subscript'];
 
 /**
  * A _branch_ is a set of children of an atom.
@@ -32,11 +32,8 @@ export class Atom {
     if (typeof options?.value === 'string') this.value = options.value;
     this.command = options?.command ?? this.value ?? '';
     this.isFunction = options?.isFunction ?? false;
-    if (options?.serialize) {
-      console.assert(typeof options.command === 'string');
-      Atom.customSerializer[options.command] = options.serialize;
-    }
-    console.log(' == ATOM ', {...this});
+
+    // console.log(' == ATOM ', {...this});
   }
 
   // get treeDepth() {
@@ -92,22 +89,6 @@ export class Atom {
 
   set body(atoms) {
     this.setChildrenBranch(atoms, 'body');
-  }
-
-  get superscript() {
-    return this._branches?.superscript;
-  }
-
-  set superscript(atoms) {
-    this.setChildrenBranch(atoms, 'superscript');
-  }
-
-  get subscript() {
-    return this._branches?.subscript;
-  }
-
-  set subscript(atoms) {
-    this.setChildrenBranch(atoms, 'subscript');
   }
 
   get above() {

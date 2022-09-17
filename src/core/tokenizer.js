@@ -115,11 +115,11 @@ class Tokenizer {
       if (this.peek() === '^') {
         // It might be a ^^ command (inline hex character)
         this.get();
-        // There can be zero to six carets with the same number of hex digits
-        const hex = this.match(/^(\^(\^(\^(\^[\da-f])?[\da-f])?[\da-f])?[\da-f])?[\da-f]{2}/);
-        if (hex) {
-          return String.fromCodePoint(Number.parseInt(hex.slice(hex.lastIndexOf('^') + 1), 16));
-        }
+        // // There can be zero to six carets with the same number of hex digits
+        // const hex = this.match(/^(\^(\^(\^(\^[\da-f])?[\da-f])?[\da-f])?[\da-f])?[\da-f]{2}/);
+        // if (hex) {
+        //   return String.fromCodePoint(Number.parseInt(hex.slice(hex.lastIndexOf('^') + 1), 16));
+        // }
       }
       return next;
     } else if (next === '#') {

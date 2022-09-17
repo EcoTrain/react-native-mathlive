@@ -16,7 +16,7 @@ import {Atom} from './atom';
  */
 export class SqrtAtom extends Atom {
   constructor(command, context, options) {
-    super('surd', context, {
+    super('sqrt', context, {
       command,
     });
     this.context = context;

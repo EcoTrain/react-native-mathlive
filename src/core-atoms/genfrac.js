@@ -16,19 +16,19 @@ export class GenfracAtom extends Atom {
   constructor(command, above, below, context, options) {
     super('genfrac', context, {
       command,
-      serialize: options.serialize,
     });
     this.above = above;
     this.below = below;
-    this.hasBarLine = options?.hasBarLine ?? true;
+    this.options = options;
   }
 
   render() {
-    return <GenfracAtomRender context={this.context} above={this.above} below={this.below} />;
+    return <GenfracAtomRender context={this.context} above={this.above} below={this.below} options={this.options} />;
   }
 }
 
-const GenfracAtomRender = ({context, above, below}) => {
+const GenfracAtomRender = ({context, above, below, options}) => {
+  const hasBarLine = options?.hasBarLine ?? true;
   return (
     <View style={styles.container}>
       <View style={styles.operand}>
@@ -36,7 +36,7 @@ const GenfracAtomRender = ({context, above, below}) => {
           <View key={i}>{x.render(context)}</View>
         ))}
       </View>
-      {this.hasBarLine && <View style={styles.delimeter}></View>}
+      {hasBarLine && <View style={styles.delimeter}></View>}
       <View style={styles.operand}>
         {below.map((x, i) => (
           <View key={i}>{x.render(context)}</View>
