@@ -8,7 +8,9 @@ export const COMMAND_MODE_CHARACTERS = /[\w!@*()-=+{}[\]\\';:?/.,~<>`|$%#&^" ]/;
  * example `\alpha` or `+`
  */
 function newSymbol(symbol, value, type = 'mord') {
-  if (value === undefined) return;
+  if (value === undefined) {
+    return;
+  }
   MATH_SYMBOLS[symbol] = {
     definitionType: 'symbol',
     type,
@@ -27,5 +29,7 @@ export function newSymbols(value, inType) {
     }
     return;
   }
-  for (const [symbol, val, type] of value) newSymbol(symbol, val, type ?? inType);
+  for (const [symbol, val, type] of value) {
+    newSymbol(symbol, val, type ?? inType);
+  }
 }

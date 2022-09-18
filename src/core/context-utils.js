@@ -12,7 +12,9 @@ export function defaultGlobalContext() {
 }
 
 export function defaultGetDefinition(token) {
-  if (!token || token.length === 0) return null;
+  if (!token || token.length === 0) {
+    return null;
+  }
 
   // console.log({MATH_SYMBOLS, LATEX_COMMANDS});
   let info = null;
@@ -20,7 +22,9 @@ export function defaultGetDefinition(token) {
   if (token.startsWith('\\')) {
     // This could be a function or a token
     info = LATEX_COMMANDS[token];
-    if (info) return info;
+    if (info) {
+      return info;
+    }
 
     info = MATH_SYMBOLS[token];
   } else {

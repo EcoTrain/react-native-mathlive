@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /**
  * Given a LaTeX expression represented as a character string,
  * the Lexer class will scan and return Tokens for the lexical
@@ -56,7 +57,9 @@ class Tokenizer {
    */
   next() {
     // If we've reached the end, exit
-    if (this.end()) return null;
+    if (this.end()) {
+      return null;
+    }
 
     // Handle white space
     // In text mode, spaces are significant,
@@ -142,7 +145,9 @@ class Tokenizer {
           }
         }
 
-        if (isParameter) return '#' + this.get();
+        if (isParameter) {
+          return '#' + this.get();
+        }
 
         return '#';
       }
@@ -171,9 +176,12 @@ function expand(lex, args) {
     if (token === '\\noexpand') {
       // Do not expand the next token
       token = lex.next();
-      if (token) result.push(token);
-    } else if (token === '\\obeyspaces') lex.obeyspaces = true;
-    else if (token === '\\space' || token === '~') {
+      if (token) {
+        result.push(token);
+      }
+    } else if (token === '\\obeyspaces') {
+      lex.obeyspaces = true;
+    } else if (token === '\\space' || token === '~') {
       // The `\space` command is equivalent to a single space
       // The ~ is an 'active character' (a single character macro)
       // that maps to <space>
@@ -188,16 +196,25 @@ function expand(lex, args) {
       // Turn the next token into a string
       token = lex.next();
       if (token) {
-        if (token.startsWith('\\')) for (const x of token) result.push(x === '\\' ? '\\backslash' : x);
-        else if (token === '<{>') result.push('\\{');
-        else if (token === '<space>') result.push('~');
-        else if (token === '<}>') result.push('\\}');
+        if (token.startsWith('\\')) {
+          for (const x of token) {
+            result.push(x === '\\' ? '\\backslash' : x);
+          }
+        } else if (token === '<{>') {
+          result.push('\\{');
+        } else if (token === '<space>') {
+          result.push('~');
+        } else if (token === '<}>') {
+          result.push('\\}');
+        }
       }
     } else if (token.length > 1 && token.startsWith('#')) {
       // It's a parameter to expand
       const parameter = token.slice(1);
       result.push(...tokenize(args?.(parameter) ?? args?.('?') ?? '\\placeholder{}', args));
-    } else result.push(token);
+    } else {
+      result.push(token);
+    }
   }
 
   return result;
@@ -214,18 +231,23 @@ export function tokenize(s, args) {
   const stream = [];
   let sep = '';
   for (const line of s.toString().split(/\r?\n/)) {
-    if (sep) stream.push(sep);
+    if (sep) {
+      stream.push(sep);
+    }
     sep = ' ';
     // Remove everything after a % (comment marker)
     // (but \% should be preserved...)
     const m = line.match(/((?:\\%)|[^%])*/);
-    if (m !== null) stream.push(m[0]);
+    if (m !== null) {
+      stream.push(m[0]);
+    }
   }
 
   const tokenizer = new Tokenizer(stream.join(''));
   const result = [];
-  do result.push(...expand(tokenizer, args));
-  while (!tokenizer.end());
+  do {
+    result.push(...expand(tokenizer, args));
+  } while (!tokenizer.end());
 
   return result;
 }

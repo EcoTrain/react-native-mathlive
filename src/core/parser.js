@@ -55,7 +55,9 @@ class Parser {
   }
   get rootContext() {
     let context = this._currentParsingContext;
-    while (context.parent) context = context.parent;
+    while (context.parent) {
+      context = context.parent;
+    }
     return context;
   }
 
@@ -137,15 +139,21 @@ class Parser {
 
   matchWhitespace() {
     let found = false;
-    while (this.match('<space>')) found = true;
+    while (this.match('<space>')) {
+      found = true;
+    }
     return found;
   }
 
   skipUntilToken(input) {
     let token = this.tokens[this.index];
-    while (token && token !== input) token = this.tokens[++this.index];
+    while (token && token !== input) {
+      token = this.tokens[++this.index];
+    }
 
-    if (token === input) this.index++;
+    if (token === input) {
+      this.index++;
+    }
   }
 
   skipFiller() {
@@ -179,11 +187,15 @@ class Parser {
       if (isLiteral(token)) {
         value += token;
         done = this.isEnd() || value.length >= keyword.length;
-      } else done = true;
+      } else {
+        done = true;
+      }
     }
 
     const hasKeyword = keyword.toUpperCase() === value.toUpperCase();
-    if (!hasKeyword) this.index = savedIndex;
+    if (!hasKeyword) {
+      this.index = savedIndex;
+    }
 
     return hasKeyword;
   }
@@ -198,14 +210,18 @@ class Parser {
   scanString() {
     let result = '';
     while (!this.isEnd()) {
-      if (this.match('<space>')) result += ' ';
-      else {
+      if (this.match('<space>')) {
+        result += ' ';
+      } else {
         const token = this.currentToken();
 
-        if (token === ']') break;
+        if (token === ']') {
+          break;
+        }
 
-        if (isLiteral(token)) result += this.nextToken();
-        else if (token.startsWith('\\')) {
+        if (isLiteral(token)) {
+          result += this.nextToken();
+        } else if (token.startsWith('\\')) {
           // TeX will give a 'Missing \endcsname inserted' error
           // if it encounters any command when expecting a string.
           // We're a bit more lax.
@@ -236,7 +252,9 @@ class Parser {
     this.beginContext();
 
     // Default group end marker
-    if (!done) done = token => token === '<}>';
+    if (!done) {
+      done = token => token === '<}>';
+    }
 
     const saveAtoms = this.mathlist;
     this.mathlist = [];
@@ -263,8 +281,11 @@ class Parser {
     }
 
     // If we have an atom to add, push it at the end of the current math list
-    if (Array.isArray(result)) this.mathlist.push(...result);
-    else if (result) this.mathlist.push(result);
+    if (Array.isArray(result)) {
+      this.mathlist.push(...result);
+    } else if (result) {
+      this.mathlist.push(result);
+    }
 
     return result !== null;
   }
@@ -278,7 +299,9 @@ class Parser {
    * group (i.e. `{}`).
    */
   parseGroup() {
-    if (!this.match('<{>')) return null;
+    if (!this.match('<{>')) {
+      return null;
+    }
     const result = new GroupAtom(
       this.parse(token => token === '<}>'),
       this.context,
@@ -288,22 +311,31 @@ class Parser {
       }
     );
 
-    if (!this.match('<}>')) this.onError({code: 'unbalanced-braces'});
+    if (!this.match('<}>')) {
+      this.onError({code: 'unbalanced-braces'});
+    }
 
     return result;
   }
 
   parseSimpleToken() {
     const token = this.nextToken();
-    if (!token) return null;
+    if (!token) {
+      return null;
+    }
     if (token === '<space>') {
       return [new TextAtom(' ', ' ', this.context)];
     }
 
-    if (token.startsWith('\\')) return this.parseCommand(token);
-    if (isLiteral(token)) return this.parseLiteral(token);
-    if (token === '<}>') this.onError({latex: '', code: 'unbalanced-braces'});
-    else {
+    if (token.startsWith('\\')) {
+      return this.parseCommand(token);
+    }
+    if (isLiteral(token)) {
+      return this.parseLiteral(token);
+    }
+    if (token === '<}>') {
+      this.onError({latex: '', code: 'unbalanced-braces'});
+    } else {
       this.onError({
         latex: '',
         code: 'unexpected-token',
@@ -341,12 +373,16 @@ class Parser {
     } else {
       const [deferredArg, args] = this.parseArguments(info);
 
-      if (!args) return null; // Some required arguments were missing...
+      if (!args) {
+        return null;
+      } // Some required arguments were missing...
 
       //  Invoke the createAtom() function if present
       if (typeof info.createAtom === 'function') {
         result = info.createAtom(command, args, this.context);
-        if (deferredArg) result.body = this.parseArgument(deferredArg) ?? undefined;
+        if (deferredArg) {
+          result.body = this.parseArgument(deferredArg) ?? undefined;
+        }
       } else {
         result = new Atom('mop', this.context, {
           command: info.command ?? command,
@@ -359,19 +395,23 @@ class Parser {
   }
 
   parseArguments(info) {
-    if (!info || !info.params) return [undefined, []];
-    let explicitGroup = undefined;
+    if (!info || !info.params) {
+      return [undefined, []];
+    }
+    let explicitGroup;
     const args = [];
     let i = 0;
 
     while (i < info.params.length) {
       const parameter = info.params[i];
       // Parse an argument
-      if (parameter.isOptional) args.push(this.parseOptionalArgument(parameter.type));
-      else {
+      if (parameter.isOptional) {
+        args.push(this.parseOptionalArgument(parameter.type));
+      } else {
         const arg = this.parseArgument(parameter.type);
-        if (arg !== null) args.push(arg);
-        else {
+        if (arg !== null) {
+          args.push(arg);
+        } else {
           // Report an error
           this.onError({code: 'missing-argument'});
           switch (parameter.type) {
@@ -399,7 +439,9 @@ class Parser {
    */
   parseArgument(argType) {
     this.skipFiller();
-    if (argType === 'auto') argType = 'math';
+    if (argType === 'auto') {
+      argType = 'math';
+    }
     let result = null;
 
     // An argument (which is called a 'math field' in TeX)
@@ -417,17 +459,24 @@ class Parser {
       }
     }
 
-    if (hasBrace) this.nextToken();
+    if (hasBrace) {
+      this.nextToken();
+    }
 
     if (argType === 'text' || argType === 'math') {
       this.beginContext({mode: argType});
-      do this.mathlist.push(...this.parse());
-      while (!this.match('<}>') && !this.isEnd());
+      do {
+        this.mathlist.push(...this.parse());
+      } while (!this.match('<}>') && !this.isEnd());
     } else {
       this.beginContext();
-      if (argType === 'string') result = this.scanString();
+      if (argType === 'string') {
+        result = this.scanString();
+      }
 
-      if (hasBrace) this.skipUntilToken('<}>');
+      if (hasBrace) {
+        this.skipUntilToken('<}>');
+      }
 
       if (result === null) {
         this.endContext();
@@ -440,11 +489,14 @@ class Parser {
   }
   parseOptionalArgument(argType) {
     this.matchWhitespace();
-    if (!this.match('[')) return null;
+    if (!this.match('[')) {
+      return null;
+    }
     let result = null;
     while (!this.isEnd() && !this.match(']')) {
-      if (argType === 'string') result = this.scanString();
-      else if (argType === 'math') {
+      if (argType === 'string') {
+        result = this.scanString();
+      } else if (argType === 'math') {
         this.beginContext({mode: 'math'});
         result = this.mathlist.concat(this.parse(token => token === ']'));
         this.endContext();
@@ -475,7 +527,9 @@ export function parseLatex(s, context, options) {
   });
 
   const atoms = [];
-  while (!parser.isEnd()) atoms.push(...parser.parse());
+  while (!parser.isEnd()) {
+    atoms.push(...parser.parse());
+  }
   // console.log('Parse latex result', {tokens, atoms, context});
   return atoms;
 }
@@ -485,6 +539,8 @@ export function validateLatex(s, context) {
     args: null,
   });
 
-  while (!parser.isEnd()) parser.parse();
+  while (!parser.isEnd()) {
+    parser.parse();
+  }
   return parser.errors;
 }

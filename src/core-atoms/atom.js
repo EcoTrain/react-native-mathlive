@@ -30,7 +30,9 @@ export class Atom {
   constructor(type, context, options) {
     this.type = type;
     this.context = context;
-    if (typeof options?.value === 'string') this.value = options.value;
+    if (typeof options?.value === 'string') {
+      this.value = options.value;
+    }
     this.command = options?.command ?? this.value ?? '';
     this.isFunction = options?.isFunction ?? false;
 
@@ -52,8 +54,12 @@ export class Atom {
    * Return the atoms in the branch, if it exists, otherwise null
    */
   branch(name) {
-    if (!isNamedBranch(name)) return undefined;
-    if (!this._branches) return undefined;
+    if (!isNamedBranch(name)) {
+      return undefined;
+    }
+    if (!this._branches) {
+      return undefined;
+    }
     return this._branches[name];
   }
 
@@ -62,9 +68,15 @@ export class Atom {
    * Some of them may be empty.
    */
   get branches() {
-    if (!this._branches) return [];
+    if (!this._branches) {
+      return [];
+    }
     const result = [];
-    for (const branch of NAMED_BRANCHES) if (this._branches[branch]) result.push(branch);
+    for (const branch of NAMED_BRANCHES) {
+      if (this._branches[branch]) {
+        result.push(branch);
+      }
+    }
 
     return result;
   }
@@ -74,12 +86,16 @@ export class Atom {
    */
   createBranch(name) {
     console.assert(isNamedBranch(name));
-    if (!isNamedBranch(name)) return [];
+    if (!isNamedBranch(name)) {
+      return [];
+    }
     if (!this._branches) {
       this._branches = {
         [name]: [],
       };
-    } else if (!this._branches[name]) this._branches[name] = [];
+    } else if (!this._branches[name]) {
+      this._branches[name] = [];
+    }
 
     return this._branches[name];
   }
@@ -109,7 +125,7 @@ export class Atom {
   }
 
   getInitialBaseElement() {
-    let result = undefined;
+    let result;
     if (!this.hasEmptyBranch('body')) {
       result = this.body[1].getInitialBaseElement();
     }
@@ -124,7 +140,9 @@ export class Atom {
 
   hasEmptyBranch(branch) {
     const atoms = this.branch(branch);
-    if (!atoms) return true;
+    if (!atoms) {
+      return true;
+    }
     return atoms.length === 1;
   }
 
@@ -133,13 +151,20 @@ export class Atom {
    * Setting `[]` adds an empty list (the branch is created)
    */
   setChildrenBranch(children, branch) {
-    if (!children) return;
-    if (!isNamedBranch(branch)) return;
+    if (!children) {
+      return;
+    }
+    if (!isNamedBranch(branch)) {
+      return;
+    }
 
     // Update the parent
     const newBranch = [...children];
-    if (this._branches) this._branches[branch] = newBranch;
-    else this._branches = {[branch]: newBranch};
+    if (this._branches) {
+      this._branches[branch] = newBranch;
+    } else {
+      this._branches = {[branch]: newBranch};
+    }
 
     // Update the children
     for (const child of children) {
@@ -175,7 +200,9 @@ export class Atom {
   }
 
   addChildren({children, branch = 'body'}) {
-    for (const child of children) this.addChild(child, branch);
+    for (const child of children) {
+      this.addChild(child, branch);
+    }
   }
 
   /**
@@ -195,8 +222,12 @@ export class Atom {
 
   removeBranch(name) {
     const children = this.branch(name);
-    if (isNamedBranch(name)) this._branches[name] = undefined;
-    if (!children) return [];
+    if (isNamedBranch(name)) {
+      this._branches[name] = undefined;
+    }
+    if (!children) {
+      return [];
+    }
     for (const child of children) {
       child.parent = undefined;
       child.treeBranch = undefined;
@@ -218,7 +249,9 @@ export class Atom {
   }
 
   get siblings() {
-    if (this.type === 'root') return [];
+    if (this.type === 'root') {
+      return [];
+    }
     return this.parent.branch(this.treeBranch);
   }
 
@@ -279,8 +312,12 @@ export class Atom {
    * are navigated using the keyboard.
    */
   get children() {
-    if (this._children) return this._children;
-    if (!this._branches) return [];
+    if (this._children) {
+      return this._children;
+    }
+    if (!this._branches) {
+      return [];
+    }
     const result = [];
     for (const branchName of NAMED_BRANCHES) {
       if (this._branches[branchName]) {

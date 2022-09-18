@@ -16,13 +16,17 @@ function parseParameterTemplateArgument(argTemplate) {
 
   // Parse the type (:type)
   const r = argTemplate.match(/:([^=]+)/);
-  if (r) type = r[1].trim();
+  if (r) {
+    type = r[1].trim();
+  }
 
   return type;
 }
 
 function parseParameterTemplate(parameterTemplate) {
-  if (!parameterTemplate) return [];
+  if (!parameterTemplate) {
+    return [];
+  }
 
   const result = [];
   let parameters = parameterTemplate.split(']');
@@ -33,7 +37,9 @@ function parseParameterTemplate(parameterTemplate) {
       type: parseParameterTemplateArgument(parameters[0].slice(1)),
     });
     // Parse the rest
-    for (let i = 1; i <= parameters.length; i++) result.push(...parseParameterTemplate(parameters[i]));
+    for (let i = 1; i <= parameters.length; i++) {
+      result.push(...parseParameterTemplate(parameters[i]));
+    }
   } else {
     parameters = parameterTemplate.split('}');
     if (parameters[0].startsWith('{')) {
@@ -43,7 +49,9 @@ function parseParameterTemplate(parameterTemplate) {
         type: parseParameterTemplateArgument(parameters[0].slice(1)),
       });
       // Parse the rest
-      for (let i = 1; i <= parameters.length; i++) result.push(...parseParameterTemplate(parameters[i]));
+      for (let i = 1; i <= parameters.length; i++) {
+        result.push(...parseParameterTemplate(parameters[i]));
+      }
     }
   }
 
@@ -59,7 +67,9 @@ function parseParameterTemplate(parameterTemplate) {
  * '[string]{auto}' defines two params, one optional, one required
  */
 export function defineFunction(names, parameters, options) {
-  if (!options) options = {};
+  if (!options) {
+    options = {};
+  }
 
   // Set default values of functions
   const data = {
@@ -70,6 +80,11 @@ export function defineFunction(names, parameters, options) {
     applyMode: options.applyMode,
     createAtom: options.createAtom,
   };
-  if (typeof names === 'string') LATEX_COMMANDS['\\' + names] = data;
-  else for (const name of names) LATEX_COMMANDS['\\' + name] = data;
+  if (typeof names === 'string') {
+    LATEX_COMMANDS['\\' + names] = data;
+  } else {
+    for (const name of names) {
+      LATEX_COMMANDS['\\' + name] = data;
+    }
+  }
 }

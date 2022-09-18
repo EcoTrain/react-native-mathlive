@@ -37,7 +37,7 @@ const GenfracAtomRender = ({context, above, below, options}) => {
           <View key={i}>{x.render(context)}</View>
         ))}
       </View>
-      {hasBarLine && <View style={styles.delimeter}></View>}
+      {hasBarLine && <View style={styles.delimeter} />}
       <View style={styles.operand}>
         {below.map((x, i) => (
           <View key={i}>{x.render(context)}</View>

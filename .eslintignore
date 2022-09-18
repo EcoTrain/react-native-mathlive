@@ -1,5 +1,7 @@
 !.eslintrc.js
 !.prettierrs.js
 !package.json
+/coverage/
+/src/__tests__/
 /node_modules/**
 /lib/**

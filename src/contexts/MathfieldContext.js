@@ -79,7 +79,9 @@ export const MathfieldContextProvider = ({children, onChangeValue}) => {
     executeCommand: ({command, options}) => {
       console.log('executeCommand', command, COMMANDS);
       const _command = COMMANDS[command];
-      if (_command) _command({options});
+      if (_command) {
+        _command({options});
+      }
     },
   };
 
