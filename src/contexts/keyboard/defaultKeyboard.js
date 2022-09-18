@@ -59,13 +59,11 @@ export const DEFAULT_KEYBOARD_LAYERS = {
         {label: '1', insert: '1'},
         {label: '2', insert: '2'},
         {label: '3', insert: '3'},
-        // {latex: '\\cdot'},
         {label: '*', insert: '*'},
         {type: 'separator w5'},
         {type: 'separator w10'},
         {
           type: 'action',
-          // label: '&#x232b;',
           label: 'x',
           command: 'deleteBackward',
         },
@@ -74,7 +72,7 @@ export const DEFAULT_KEYBOARD_LAYERS = {
         {type: 'separator w10'},
         {label: '0', insert: '0'},
         {label: ',', insert: ','},
-        // {latex: ':'},
+        // TODO: Fix parse \ and as latex :
         {type: 'small', latex: '\\frac{#?}{#?}'},
         {type: 'separator w5'},
         {

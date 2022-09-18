@@ -13,11 +13,18 @@ export const KeyboardContext = createContext({
   setActiveKeyboardName: () => {},
 });
 
-export const KeyboardContextProvider = ({children}) => {
+export const KeyboardContextProvider = ({children, customKeyboardLayers, customKeyboards, mergeKeyboards}) => {
   const [isVisible, setIsVisible] = useState(false);
-  const actualKeyboards = ['basic', 'geometry'];
+
+  const virtualKeyboardLayers = mergeKeyboards
+    ? Object.assign({}, DEFAULT_KEYBOARD_LAYERS, customKeyboardLayers)
+    : DEFAULT_KEYBOARD_LAYERS;
+  const virtualKeyboards = mergeKeyboards ? Object.assign({}, DEFAULT_KEYBOARDS, customKeyboards) : DEFAULT_KEYBOARDS;
+  const actualKeyboards = Object.keys(virtualKeyboards);
   const [activeKbName, setActiveKbName] = useState(actualKeyboards[0]);
 
+  console.log({customKeyboardLayers, customKeyboards, mergeKeyboards});
+  console.log({virtualKeyboardLayers, virtualKeyboards});
   const defaultContextValues = {
     isVisible,
     showKeyboard: () => {
@@ -29,8 +36,8 @@ export const KeyboardContextProvider = ({children}) => {
     toggleKeyboardVisibility: () => {
       setIsVisible(!isVisible);
     },
-    virtualKeyboardLayers: DEFAULT_KEYBOARD_LAYERS,
-    virtualKeyboards: DEFAULT_KEYBOARDS,
+    virtualKeyboardLayers,
+    virtualKeyboards,
     actualKeyboards: actualKeyboards,
     activeKeyboardName: activeKbName,
     setActiveKeyboardName: setActiveKbName,

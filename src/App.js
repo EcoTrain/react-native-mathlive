@@ -13,14 +13,17 @@ export const getMathfieldValue = () => {
   return MathfieldValue;
 };
 
-export const Mathfield = () => {
+export const Mathfield = ({customKeyboardLayers, customKeyboards, mergeKeyboards}) => {
   return (
     <ThemeContextProvider>
       <MathfieldContextProvider
         onChangeValue={value => {
           changeMathfieldValue(value);
         }}>
-        <KeyboardContextProvider>
+        <KeyboardContextProvider
+          customKeyboardLayers={customKeyboardLayers}
+          customKeyboards={customKeyboards}
+          mergeKeyboards={mergeKeyboards}>
           <MathfieldElement />
           <VirtualKeyboard />
         </KeyboardContextProvider>
