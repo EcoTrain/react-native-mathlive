@@ -1,16 +1,19 @@
-import {StyleSheet, Text as CText} from 'react-native';
+import React from 'react';
+import {Text as CText} from 'react-native';
+import {DEFAULT_FONT_SIZE} from '../../styles/defaults';
 
 export const Text = ({children, ...props}) => {
   return (
-    <CText {...props} style={[styles.base, props.style]}>
+    <CText
+      {...props}
+      style={[
+        {
+          fontSize: DEFAULT_FONT_SIZE,
+          fontFamily: 'KaTeX_Size4-Regular',
+        },
+        props.style,
+      ]}>
       {children}
     </CText>
   );
 };
-
-const styles = StyleSheet.create({
-  base: {
-    fontSize: 24,
-    fontFamily: 'KaTeX_Size4-Regular',
-  },
-});

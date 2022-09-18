@@ -1,10 +1,18 @@
 import React from 'react';
-import {render, screen, fireEvent} from '@testing-library/react-native';
-import {App} from '../App';
+import {render} from '@testing-library/react-native';
+import {Mathfield} from '../App';
 
-describe('Main page', () => {
+beforeAll(done => {
+  done();
+});
+
+afterAll(done => {
+  done();
+});
+
+describe('Mathfield', () => {
   it('Render code correctly', () => {
-    const component = render(<App />);
+    const component = render(<Mathfield />);
     expect(component).toMatchSnapshot();
   });
 });

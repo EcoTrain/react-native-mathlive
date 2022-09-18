@@ -1,8 +1,9 @@
-import {useContext} from 'react';
+import React, {useContext} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {Text} from '../components/styled/Text';
 import {KeyboardContext} from '../contexts/keyboard/KeyboardContext';
 import {MathfieldContext} from '../contexts/MathfieldContext';
+import {KB_DEFAULT_FONT_SIZE} from '../styles/defaults';
 import {Atom} from './atom';
 
 export class PlaceholderAtom extends Atom {
@@ -25,11 +26,13 @@ const PlaceholderAtomRender = ({atom}) => {
   const {setSelectedAtom} = useContext(MathfieldContext);
   return (
     <TouchableOpacity
+      activeOpacity={1}
+      style={{justifyContent: 'center', alignContent: 'center'}}
       onPress={() => {
         showKeyboard();
         setSelectedAtom(atom);
       }}>
-      <Text style={atom.context.placeOnKeyboard && {fontSize: 'inherit'}}>{atom.value}</Text>
+      <Text style={atom.context.placeOnKeyboard && {fontSize: KB_DEFAULT_FONT_SIZE}}>{atom.value}</Text>
     </TouchableOpacity>
   );
 };

@@ -1,6 +1,7 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Text} from '../components/styled/Text';
+import {KB_DEFAULT_FONT_SIZE} from '../styles/defaults';
 import {Atom} from './atom';
 
 /**
@@ -41,7 +42,7 @@ const SqrtAtomRender = ({context, body}) => {
     <View style={styles.container}>
       <View style={{display: 'flex', height: '100%', justifyContent: 'center'}}>
         {!onKb && size.height > 40 && <Text style={{borderRightWidth: 1, flex: 1}}> </Text>}
-        <Text style={{fontSize: onKb ? 'inherit' : Math.max(24, 0.6 * size.height)}}>√</Text>
+        <Text style={{fontSize: onKb ? KB_DEFAULT_FONT_SIZE : Math.max(24, 0.6 * size.height)}}>√</Text>
       </View>
       <View style={styles.body} onLayout={onChangeBodySize}>
         {body.map((x, i) => (

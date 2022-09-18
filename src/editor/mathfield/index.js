@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {TouchableOpacity, StyleSheet, View, Image} from 'react-native';
+import {Text} from '../../components/styled/Text';
 import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
 import {MathfieldContext} from '../../contexts/MathfieldContext';
 import {ThemeContext} from '../../contexts/ThemeContext';
@@ -25,8 +26,11 @@ export const MathfieldElement = props => {
           },
         ]}>
         <View style={stylesThemed.mathfield}>
-          <View style={stylesThemed.mfFormula}>{atoms.map(x => x.render())}</View>
-
+          <View style={stylesThemed.mfFormula}>
+            {atoms.map((x, i) => (
+              <View key={i}>{x.render()}</View>
+            ))}
+          </View>
           <TouchableOpacity
             style={stylesThemed.mfKbBtn}
             onPress={() => {
@@ -37,7 +41,7 @@ export const MathfieldElement = props => {
           </TouchableOpacity>
         </View>
       </TouchableOpacity>
-      <View>{mathfieldValue}</View>
+      <Text>{mathfieldValue}</Text>
     </View>
   );
 };

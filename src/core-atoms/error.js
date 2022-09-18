@@ -1,9 +1,10 @@
+import React from 'react';
 import {View} from 'react-native';
 import {Text} from '../components/styled/Text';
 import {Atom} from './atom';
 
 export class ErrorAtom extends Atom {
-  constructor(command, value, style, context) {
+  constructor(command, value, context) {
     super('error', context, {
       command,
     });

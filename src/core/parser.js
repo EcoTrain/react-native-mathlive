@@ -5,7 +5,6 @@ import {TextAtom} from '../core-atoms/text';
 
 import {Atom} from '../core-atoms/atom';
 import {tokenize} from './tokenizer';
-import {defaultGlobalContext} from './context-utils';
 
 function isLiteral(token) {
   return !/^<({|}|\$|\$\$|space)>$/.test(token);
@@ -477,7 +476,7 @@ export function parseLatex(s, context, options) {
 
   const atoms = [];
   while (!parser.isEnd()) atoms.push(...parser.parse());
-  console.log('Parse latex result', {tokens, atoms, context});
+  // console.log('Parse latex result', {tokens, atoms, context});
   return atoms;
 }
 

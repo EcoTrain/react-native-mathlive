@@ -27,7 +27,7 @@ const KeyboardKeySeparator = ({type}) => {
 };
 
 const KeyboardKeyWithFeedback = ({type, label, latex, insert, command}) => {
-  const {mathfieldValue, setMathfieldValue, executeCommand} = useContext(MathfieldContext);
+  const {executeCommand} = useContext(MathfieldContext);
   const {UiColors} = useContext(ThemeContext);
   const stylesThemed = styles(UiColors);
   const shadow = makeShadow(20, 0.02);
@@ -36,42 +36,55 @@ const KeyboardKeyWithFeedback = ({type, label, latex, insert, command}) => {
   const getTextPanel = text => {
     return <Text style={{fontFamily: 'KaTeX_Size4-Regular'}}>{text}</Text>;
   };
-  const defineKeyCallbackAndLabel = () => {
-    let keyCallback = () => {};
-    let keyFrontPanel = label || '';
 
+  const parseKeyValue = ({value, placeOnKeyboard}) => {
+    const atoms = parseLatex(
+      value,
+      {...defaultGlobalContext(), placeOnKeyboard},
+      {
+        parseMode: 'math',
+        mathstyle: 'displaystyle',
+        // args: () => '\\placeholder{}',
+      }
+    );
+    return atoms;
+  };
+
+  const defineKeyFrontPanel = () => {
+    let keyFrontPanel = label || '';
     if (type == 'action') {
-      // TODO: define command labels & callbacks dict
-      // TODO: define executeCommand in context
       keyFrontPanel = getTextPanel(label || command);
-      keyCallback = () => executeCommand(command);
     } else if (latex) {
-      const atoms = parseLatex(
-        latex,
-        {...defaultGlobalContext(), placeOnKeyboard: true},
-        {
-          parseMode: 'math',
-          mathstyle: 'displaystyle',
-          args: () => '\\placeholder{}',
-        }
-      );
-      keyFrontPanel = atoms.map(x => x.render());
+      const atoms = parseKeyValue({value: latex, placeOnKeyboard: true});
+      keyFrontPanel = atoms.map((x, i) => <View key={i}>{x.render()}</View>);
+    } else {
+      keyFrontPanel = getTextPanel(label);
+    }
+    return keyFrontPanel;
+  };
+
+  const defineKeyCallback = () => {
+    let keyCallback = () => {};
+    if (type == 'action') {
       keyCallback = () => {
-        const newMfValue = mathfieldValue + latex;
-        setMathfieldValue(newMfValue);
+        executeCommand({command});
+      };
+    } else if (latex) {
+      const atoms = parseKeyValue({value: latex});
+      keyCallback = () => {
+        executeCommand({command: 'addAtoms', options: {atoms}});
       };
     } else {
-      // TODO: define command labels & callbacks dict
-      // TODO: define executeCommand in context
-      keyFrontPanel = getTextPanel(label);
+      const atoms = parseKeyValue({value: insert ?? label, placeOnKeyboard: false});
       keyCallback = () => {
-        const newMfValue = mathfieldValue + insert ?? label;
-        setMathfieldValue(newMfValue);
+        executeCommand({command: 'addAtoms', options: {atoms}});
       };
     }
-    return {keyCallback, keyFrontPanel};
+    return keyCallback;
   };
-  const {keyCallback, keyFrontPanel} = defineKeyCallbackAndLabel();
+
+  const keyFrontPanel = defineKeyFrontPanel();
+  const keyCallback = defineKeyCallback();
 
   return (
     <TouchableOpacity

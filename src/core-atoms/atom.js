@@ -1,3 +1,4 @@
+import React from 'react';
 import {View} from 'react-native';
 import {Text} from '../components/styled/Text';
 
@@ -173,7 +174,7 @@ export class Atom {
     child.treeBranch = after.treeBranch;
   }
 
-  addChildrenToBranch(children, branch) {
+  addChildren({children, branch = 'body'}) {
     for (const child of children) this.addChild(child, branch);
   }
 
@@ -302,7 +303,7 @@ export class Atom {
    *
    */
   render() {
-    console.log('Atom', {...this});
+    console.log('=== BASE Atom render', {...this});
     return (
       <View>
         <Text>atomBase</Text>

@@ -33,31 +33,42 @@ export const MathfieldContextProvider = ({children, onChangeValue}) => {
       }
     );
     setMfAtoms(atoms);
-    setSelectedAtom(atoms.slice(-1)[0]);
+    setSelectedAtom(atoms[atoms.length - 1]);
     console.log('MathfieldContext changeValue', {atoms});
   }, [mfValue]);
 
   const COMMANDS = {};
   COMMANDS.deleteBackward = () => {
-    console.log('deleteBackward', selectedAtom);
-    if (selectedAtom.parent) {
-      console.log('Remove atom child', {selectedAtom, parent: selectedAtom.parent});
+    // TODO: change latex value on remove atom
+    // TODO: add serialize to atoms
+    console.log('COMMANDS deleteBackward');
+    if (selectedAtom?.parent) {
+      console.log('deleteBackward atom child', {selectedAtom, parent: selectedAtom.parent});
       const prevAtom = selectedAtom.leftSibling;
       selectedAtom.parent.removeChild(selectedAtom);
       setSelectedAtom(prevAtom);
     } else {
-      let _atoms = [...mfAtoms];
-      console.log('Remove atom root', {mfAtoms, selectedAtom, ind: _atoms.indexOf(selectedAtom)});
-      const ind = _atoms.indexOf(selectedAtom);
-      ind > -1 && _atoms.splice(ind, 1);
-      console.log({_atoms});
-      setMfAtoms(_atoms);
+      console.log('deleteBackward atom root', {atoms: mfAtoms, selectedAtom, ind: mfAtoms.indexOf(selectedAtom)});
+      const ind = mfAtoms.indexOf(selectedAtom);
+      ind > -1 && mfAtoms.splice(ind, 1);
     }
+  };
+  COMMANDS.addAtoms = ({options}) => {
+    const _atoms = options.atoms || [];
+    console.log('COMMANDS addAtoms', {atoms: mfAtoms, _atoms, selectedAtom});
+
+    if (selectedAtom?.parent) {
+      selectedAtom.parent.addChildrenAfter(_atoms, selectedAtom);
+    } else {
+      const ind = mfAtoms.indexOf(selectedAtom);
+      mfAtoms.splice(ind + 1, 0, ..._atoms);
+      console.log({mfAtoms, ind});
+    }
+    setSelectedAtom(_atoms[_atoms.length - 1]);
   };
 
   const defaultContextValues = {
     atoms: mfAtoms,
-    setAtoms: setMfAtoms,
     selectedAtom,
     setSelectedAtom,
     mathfieldValue: mfValue,
@@ -65,10 +76,10 @@ export const MathfieldContextProvider = ({children, onChangeValue}) => {
       setMfValue(value);
       onChangeValue(value);
     },
-    executeCommand: command => {
+    executeCommand: ({command, options}) => {
       console.log('executeCommand', command, COMMANDS);
       const _command = COMMANDS[command];
-      if (_command) _command();
+      if (_command) _command({options});
     },
   };
 

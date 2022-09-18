@@ -5,6 +5,9 @@ const config = {
   preset: 'react-native',
   moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx'],
   modulePathIgnorePatterns: ['<rootDir>/example/node_modules', '<rootDir>/lib/'],
+  moduleNameMapper: {
+    '\\.(svg|png|jpg|jpeg|webp|ttf|woff|woff2|mp4|webm)$': 'jest-transform-stub',
+  },
   coverageReporters: ['json-summary', 'lcov', 'text'],
   coverageDirectory: 'coverage/',
   coverageThreshold: {

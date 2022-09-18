@@ -62,7 +62,7 @@ export const DEFAULT_KEYBOARD_LAYERS = {
         // {latex: '\\cdot'},
         {label: '*', insert: '*'},
         {type: 'separator w5'},
-        {type: 'small', latex: '\\frac{#?}{#?}'},
+        {type: 'separator w10'},
         {
           type: 'action',
           // label: '&#x232b;',
@@ -75,7 +75,7 @@ export const DEFAULT_KEYBOARD_LAYERS = {
         {label: '0', insert: '0'},
         {label: ',', insert: ','},
         // {latex: ':'},
-        {label: ':', insert: '\\'},
+        {type: 'small', latex: '\\frac{#?}{#?}'},
         {type: 'separator w5'},
         {
           type: 'action',
