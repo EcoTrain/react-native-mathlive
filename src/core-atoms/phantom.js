@@ -1,6 +1,7 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {Atom} from '../core/atom';
+import {MF_DEFAULT_FONT_SIZE} from '../styles/defaults';
 
 /**
  * \phantom command draws space.
@@ -24,10 +25,12 @@ export class PhantomAtom extends Atom {
 
 const PhantomAtomRender = ({atom}) => {
   console.log('PhantomAtomRender', atom);
+
+  // width of space was calc experimental: fontSize/4  (see fontSize: 24 as example)
   const propStyle = {
     visibility: atom.isInvisible ? 'hidden' : 'visible',
-    height: atom.smashHeight ? 0 : '100%',
-    width: atom.smashWidth ? 0 : '100%',
+    height: atom.smashHeight ? MF_DEFAULT_FONT_SIZE : '100%',
+    width: atom.smashWidth ? MF_DEFAULT_FONT_SIZE / 4 : '100%',
   };
 
   return (
