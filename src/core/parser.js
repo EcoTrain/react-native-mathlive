@@ -102,11 +102,13 @@ class Parser {
     return this.index >= this.tokens.length || this.endCount > 1000;
   }
 
+  // Get current token
   nextToken() {
     this.endCount = 0;
     return this.index < this.tokens.length ? this.tokens[this.index++] : '';
   }
 
+  // Peek current token
   currentToken() {
     return this.tokens[this.index];
   }
@@ -371,6 +373,19 @@ class Parser {
         value: info.symbol,
       });
     } else {
+      // Parse the arguments.
+      //
+      // If `deferredArg` is not empty, the content after the command
+      // will be parsed *after* the command has been initially processed
+      // (atom creation or style application) and passed to
+      //
+      // This is used for commands such as \textcolor{color}{content}
+      // that need to apply the color to the content *after* the
+      // style has been changed.
+      //
+      // In definitions, this is indicated with a parameter type
+      // thats ends with a '*' ('math*', 'auto*').
+
       const [deferredArg, args] = this.parseArguments(info);
 
       if (!args) {
@@ -407,6 +422,11 @@ class Parser {
       // Parse an argument
       if (parameter.isOptional) {
         args.push(this.parseOptionalArgument(parameter.type));
+      } else if (parameter.type.endsWith('*')) {
+        // For example 'math*'.
+        // In this case, indicate that a 'yet-to-be-parsed'
+        // argument (and 'explicit group') is present
+        explicitGroup = parameter.type.slice(0, -1);
       } else {
         const arg = this.parseArgument(parameter.type);
         if (arg !== null) {

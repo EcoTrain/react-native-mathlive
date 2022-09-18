@@ -2,11 +2,13 @@ import React, {createContext, useEffect, useState} from 'react';
 import {defaultGlobalContext} from '../core/context-utils';
 import {parseLatex} from '../core/parser';
 
-const defaultValue = '\\frac{4+#?}{16 - 8} + #? + 3 + \\sqrt{24 + 333333333}';
-// const defaultValue = '\\frac{4+#?}{16 - 8} + 3 + \\sqrt{24 + \\frac{3}{#?} + 333333333}';
-// const defaultValue = '\\frac{4+#?}{16 - 8} + 3 + \\sqrt{24 + \\frac{\\frac{3}{#?}}{#?} + 333333333}';
-// const defaultValue =
-//   '\\frac{4+#?}{16 - 8} + 3 + \\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?} + 333333333}';
+const defaultValue = [
+  '3 + \\frac{4+#?}{16 - 8}',
+  '+ #? + 3',
+  '+ \\smash[testMeta]{testSmash}',
+  '+ \\vphantom{2} + \\sqrt{24 + 333333333}',
+  // '+ \\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?}',
+].join(' ');
 
 export const MathfieldContext = createContext({
   atoms: [],

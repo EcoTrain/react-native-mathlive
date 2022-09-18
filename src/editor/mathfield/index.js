@@ -1,6 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {TouchableOpacity, StyleSheet, View, Image} from 'react-native';
-import {Text} from '../../components/styled/Text';
+import {TouchableOpacity, StyleSheet, Text, View, Image} from 'react-native';
 import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
 import {MathfieldContext} from '../../contexts/MathfieldContext';
 import {ThemeContext} from '../../contexts/ThemeContext';
