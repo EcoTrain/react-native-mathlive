@@ -1,7 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Text} from '../components/styled/Text';
-import {Atom} from './atom';
+import {Atom} from '../core/atom';
 
 export class GroupAtom extends Atom {
   constructor(command, value, context) {

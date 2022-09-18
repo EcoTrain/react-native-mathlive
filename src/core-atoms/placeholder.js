@@ -4,7 +4,7 @@ import {Text} from '../components/styled/Text';
 import {KeyboardContext} from '../contexts/keyboard/KeyboardContext';
 import {MathfieldContext} from '../contexts/MathfieldContext';
 import {KB_DEFAULT_FONT_SIZE} from '../styles/defaults';
-import {Atom} from './atom';
+import {Atom} from '../core/atom';
 
 export class PlaceholderAtom extends Atom {
   constructor(context, options) {
@@ -27,7 +27,7 @@ const PlaceholderAtomRender = ({atom}) => {
   return (
     <TouchableOpacity
       activeOpacity={1}
-      style={{justifyContent: 'center', alignContent: 'center'}}
+      style={{height: '100%', justifyContent: 'center', alignContent: 'center'}}
       onPress={() => {
         showKeyboard();
         setSelectedAtom(atom);

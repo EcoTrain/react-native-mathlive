@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Atom} from './atom';
+import {Atom} from '../core/atom';
 
 /**
  * Genfrac -- Generalized Fraction

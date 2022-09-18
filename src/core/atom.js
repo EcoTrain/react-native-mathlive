@@ -332,13 +332,6 @@ export class Atom {
     return result;
   }
 
-  /**
-   * Render this atom as an array of boxes.
-   *
-   * The parent context (color, size...) will be applied
-   * to the result.
-   *
-   */
   render() {
     console.log('=== BASE Atom render', {...this});
     return (

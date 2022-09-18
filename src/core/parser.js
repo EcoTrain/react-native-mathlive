@@ -3,7 +3,7 @@ import {PlaceholderAtom} from '../core-atoms/placeholder';
 import {ErrorAtom} from '../core-atoms/error';
 import {TextAtom} from '../core-atoms/text';
 
-import {Atom} from '../core-atoms/atom';
+import {Atom} from './atom';
 import {tokenize} from './tokenizer';
 
 function isLiteral(token) {

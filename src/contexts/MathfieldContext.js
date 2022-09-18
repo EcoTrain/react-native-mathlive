@@ -2,7 +2,7 @@ import React, {createContext, useEffect, useState} from 'react';
 import {defaultGlobalContext} from '../core/context-utils';
 import {parseLatex} from '../core/parser';
 
-const defaultValue = '\\frac{4+#?}{16 - 8} + 3 + \\sqrt{24 + 333333333}';
+const defaultValue = '\\frac{4+#?}{16 - 8} + #? + 3 + \\sqrt{24 + 333333333}';
 // const defaultValue = '\\frac{4+#?}{16 - 8} + 3 + \\sqrt{24 + \\frac{3}{#?} + 333333333}';
 // const defaultValue = '\\frac{4+#?}{16 - 8} + 3 + \\sqrt{24 + \\frac{\\frac{3}{#?}}{#?} + 333333333}';
 // const defaultValue =
@@ -51,6 +51,7 @@ export const MathfieldContextProvider = ({children, onChangeValue}) => {
       console.log('deleteBackward atom root', {atoms: mfAtoms, selectedAtom, ind: mfAtoms.indexOf(selectedAtom)});
       const ind = mfAtoms.indexOf(selectedAtom);
       ind > -1 && mfAtoms.splice(ind, 1);
+      setSelectedAtom(mfAtoms[ind > 0 ? ind - 1 : ind]);
     }
   };
   COMMANDS.addAtoms = ({options}) => {
@@ -59,8 +60,15 @@ export const MathfieldContextProvider = ({children, onChangeValue}) => {
 
     if (selectedAtom?.parent) {
       selectedAtom.parent.addChildrenAfter(_atoms, selectedAtom);
+      if (selectedAtom.type == 'placeholder') {
+        selectedAtom.parent.removeChild(selectedAtom);
+      }
     } else {
-      const ind = mfAtoms.indexOf(selectedAtom);
+      let ind = mfAtoms.indexOf(selectedAtom);
+      if (selectedAtom.type == 'placeholder') {
+        mfAtoms.splice(ind, 1);
+        --ind;
+      }
       mfAtoms.splice(ind + 1, 0, ..._atoms);
       console.log({mfAtoms, ind});
     }

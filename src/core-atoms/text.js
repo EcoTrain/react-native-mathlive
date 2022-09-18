@@ -3,7 +3,7 @@ import {TouchableOpacity, View} from 'react-native';
 import {Text} from '../components/styled/Text';
 import {KeyboardContext} from '../contexts/keyboard/KeyboardContext';
 import {MathfieldContext} from '../contexts/MathfieldContext';
-import {Atom} from './atom';
+import {Atom} from '../core/atom';
 
 export class TextAtom extends Atom {
   constructor(command, value, context) {
@@ -24,7 +24,7 @@ const TextAtomRender = ({atom}) => {
   return (
     <TouchableOpacity
       activeOpacity={1}
-      style={{justifyContent: 'center', alignContent: 'center'}}
+      style={{height: '100%', justifyContent: 'center', alignContent: 'center'}}
       onPress={() => {
         showKeyboard();
         setSelectedAtom(atom);

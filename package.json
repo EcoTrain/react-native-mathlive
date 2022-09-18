@@ -32,7 +32,8 @@
     "test:coverage": "yarn test --coverage",
     "test:badges": "yarn test:coverage  && jest-coverage-badges",
     "np": "np --no-publish",
-    "postversion": "react-native-version"
+    "postversion": "react-native-version",
+    "precommit": "yarn lint && yarn test"
   },
   "keywords": [
     "react-native",

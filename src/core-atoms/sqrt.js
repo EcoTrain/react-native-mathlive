@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Text} from '../components/styled/Text';
 import {KB_DEFAULT_FONT_SIZE} from '../styles/defaults';
-import {Atom} from './atom';
+import {Atom} from '../core/atom';
 
 /**
  * Genfrac -- Generalized Fraction
@@ -24,15 +24,14 @@ export class SqrtAtom extends Atom {
   }
 
   render() {
-    console.log({...this});
-    return <SqrtAtomRender context={this.context} body={this.body} />;
+    return <SqrtAtomRender atom={this} />;
   }
 }
 
-const SqrtAtomRender = ({context, body}) => {
+const SqrtAtomRender = ({atom}) => {
   const [size, setSize] = useState({width: 0, height: 0});
 
-  const onKb = context.placeOnKeyboard;
+  const onKb = atom.context.placeOnKeyboard;
   const onChangeBodySize = e => {
     const {width, height} = e.nativeEvent.layout;
     setSize({width: width, height: height});
@@ -45,8 +44,8 @@ const SqrtAtomRender = ({context, body}) => {
         <Text style={{fontSize: onKb ? KB_DEFAULT_FONT_SIZE : Math.max(24, 0.6 * size.height)}}>√</Text>
       </View>
       <View style={styles.body} onLayout={onChangeBodySize}>
-        {body.map((x, i) => (
-          <View key={i}>{x.render(context)}</View>
+        {atom.body.map((x, i) => (
+          <View key={i}>{x.render()}</View>
         ))}
       </View>
     </View>
@@ -54,7 +53,7 @@ const SqrtAtomRender = ({context, body}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'},
+  container: {display: 'flex', height: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'},
   body: {flexDirection: 'row', alignItems: 'center', borderTopWidth: 1},
   root: {},
 });
