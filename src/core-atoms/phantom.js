@@ -9,24 +9,10 @@ import {Atom} from '../core/atom';
  * equal to that of its argument, even though the argument isn't visible.
  */
 export class PhantomAtom extends Atom {
-  constructor(
-    command,
-    body,
-    context,
-    /**
-     * options: {
-     *  smashHeight?: boolean;
-     *  smashDepth?: boolean;
-     *  smashWidth?: boolean;
-     *  isInvisible?: boolean;
-     * }
-     */
-    options
-  ) {
+  constructor(command, body, context, options) {
     super('phantom', context, {command});
     this.body = body;
     this.isInvisible = options.isInvisible ?? false;
-    this.smashDepth = options.smashDepth ?? false;
     this.smashHeight = options.smashHeight ?? false;
     this.smashWidth = options.smashWidth ?? false;
   }
@@ -38,18 +24,20 @@ export class PhantomAtom extends Atom {
 
 const PhantomAtomRender = ({atom}) => {
   console.log('PhantomAtomRender', atom);
+  const propStyle = {
+    visibility: atom.isInvisible ? 'hidden' : 'visible',
+    height: atom.smashHeight ? 0 : '100%',
+    width: atom.smashWidth ? 0 : '100%',
+  };
+
   return (
-    <View style={[styles.container, {visibility: atom.isInvisible ? 'hidden' : 'visible'}]}>
-      <View style={styles.body}>
-        {atom.body.map((x, i) => (
-          <View key={i}>{x.render()}</View>
-        ))}
-      </View>
+    <View style={[styles.container, propStyle]}>
+      <View style={styles.body}>{atom.body && atom.body.map((x, i) => <View key={i}>{x.render()}</View>)}</View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {display: 'flex', height: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'},
+  container: {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'},
   body: {flexDirection: 'row', alignItems: 'center'},
 });

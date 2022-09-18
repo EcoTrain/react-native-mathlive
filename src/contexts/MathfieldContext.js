@@ -6,7 +6,11 @@ const defaultValue = [
   '3 + \\frac{4+#?}{16 - 8}',
   '+ #? + 3',
   '+ \\smash[testMeta]{testSmash}',
-  '+ \\vphantom{2} + \\sqrt{24 + 333333333}',
+  '+ \\smash{testSmash2}',
+  '+ \\smash[testMeta]{\\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}',
+  '+ \\hphantom{\\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}}',
+  '+ \\sqrt{24}',
+  // '+ \\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}',
   // '+ \\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?}',
 ].join(' ');
 

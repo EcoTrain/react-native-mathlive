@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text as CText} from 'react-native';
-import {DEFAULT_FONT_SIZE} from '../../styles/defaults';
+import {MF_DEFAULT_FONT_SIZE} from '../../styles/defaults';
 
 export const Text = ({children, ...props}) => {
   return (
@@ -8,8 +8,8 @@ export const Text = ({children, ...props}) => {
       {...props}
       style={[
         {
-          fontSize: DEFAULT_FONT_SIZE,
-          fontFamily: 'KaTeX_Size4-Regular',
+          fontSize: MF_DEFAULT_FONT_SIZE,
+          fontFamily: 'KaTeX_Size1',
         },
         props.style,
       ]}>
