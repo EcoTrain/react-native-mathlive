@@ -19,6 +19,27 @@ export class PhantomAtom extends Atom {
     this.smashWidth = options.smashWidth ?? false;
   }
 
+  static fromJson(json, context) {
+    return new PhantomAtom(json.command, json.body, context, json);
+  }
+
+  toJson() {
+    const options = {};
+    if (this.isInvisible) {
+      options.isInvisible = true;
+    }
+    if (this.smashDepth) {
+      options.smashDepth = true;
+    }
+    if (this.smashHeight) {
+      options.smashHeight = true;
+    }
+    if (this.smashWidth) {
+      options.smashWidth = true;
+    }
+    return {...super.toJson(), ...options};
+  }
+
   render() {
     return <PhantomAtomRender atom={this} />;
   }

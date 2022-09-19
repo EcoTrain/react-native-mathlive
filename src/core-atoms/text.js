@@ -14,6 +14,14 @@ export class TextAtom extends Atom {
     this.value = value;
   }
 
+  static fromJson(json, context) {
+    return new TextAtom(json.command, json.value, context);
+  }
+
+  toJson() {
+    return super.toJson();
+  }
+
   serialize(_options) {
     return this.value;
   }

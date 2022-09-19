@@ -46,22 +46,99 @@ export class Atom {
    * Given an atom or an array of atoms, return a LaTeX string representation
    */
   static serialize(value) {
-    if (Array.isArray(value)) return serializeAtoms(value);
+    if (Array.isArray(value)) {
+      return serializeAtoms(value);
+    }
 
-    if (typeof value === 'number' || typeof value === 'boolean') return value.toString();
+    if (typeof value === 'number' || typeof value === 'boolean') {
+      return value.toString();
+    }
 
-    if (typeof value === 'string') return value.replace(/\s/g, '~');
+    if (typeof value === 'string') {
+      return value.replace(/\s/g, '~');
+    }
 
-    if (value === undefined) return '';
+    if (value === undefined) {
+      return '';
+    }
 
     // If we have some verbatim latex for this atom, use it.
     // This allow non-significant punctuation to be preserved when possible.
-    if (typeof value.verbatimLatex === 'string') return value.verbatimLatex;
+    if (typeof value.verbatimLatex === 'string') {
+      return value.verbatimLatex;
+    }
 
-    if (value.command && Atom.customSerializer[value.command])
-      return Atom.customSerializer[value.command](value, options);
+    if (value.command && Atom.customSerializer[value.command]) {
+      return Atom.customSerializer[value.command](value);
+    }
 
-    return value.serialize(options);
+    return value.serialize();
+  }
+
+  static fromJson(json, context) {
+    const result = new Atom(json.type, context, json);
+    // Restore the branches
+    for (const branch of NAMED_BRANCHES) {
+      if (json[branch]) {
+        result.setChildren(json[branch], branch);
+      }
+    }
+
+    return result;
+  }
+
+  toJson() {
+    const result = {type: this.type};
+
+    if (this.mode !== 'math') {
+      result.mode = this.mode;
+    }
+    if (this.command && this.command !== this.value) {
+      result.command = this.command;
+    }
+    if (this.value !== undefined) {
+      result.value = this.value;
+    }
+    if (this.style && Object.keys(this.style).length > 0) {
+      result.style = {...this.style};
+    }
+
+    if (this.verbatimLatex !== undefined) {
+      result.verbatimLatex = this.verbatimLatex;
+    }
+
+    if (this.subsupPlacement) {
+      result.subsupPlacement = this.subsupPlacement;
+    }
+    if (this.explicitSubsupPlacement) {
+      result.explicitSubsupPlacement = true;
+    }
+
+    if (this.isFunction) {
+      result.isFunction = true;
+    }
+    if (this.displayContainsHighlight) {
+      result.displayContainsHighlight = true;
+    }
+    if (this.isExtensibleSymbol) {
+      result.isExtensibleSymbol = true;
+    }
+    if (this.skipBoundary) {
+      result.skipBoundary = true;
+    }
+    if (this.captureSelection) {
+      result.captureSelection = true;
+    }
+
+    if (this._branches) {
+      for (const branch of Object.keys(this._branches)) {
+        if (this._branches[branch]) {
+          result[branch] = this._branches[branch].filter(x => x.type !== 'first').map(x => x.toJson());
+        }
+      }
+    }
+
+    return result;
   }
 
   /**
@@ -396,6 +473,8 @@ export class Atom {
  * @result a LaTeX string
  */
 function serializeAtoms(atoms) {
-  if (!atoms || atoms.length === 0) return '';
+  if (!atoms || atoms.length === 0) {
+    return '';
+  }
   return joinLatex(atoms.map(x => x.serialize()));
 }

@@ -14,6 +14,14 @@ export class ErrorAtom extends Atom {
     this.value = value;
   }
 
+  static fromJson(json, context) {
+    return new ErrorAtom(json.command, context);
+  }
+
+  toJson() {
+    return super.toJson();
+  }
+
   render() {
     return (
       <View>

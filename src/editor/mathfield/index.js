@@ -14,10 +14,16 @@ export const MathfieldElement = props => {
   const {UiColors} = useContext(ThemeContext);
   const stylesThemed = styles(UiColors);
 
-  const serializeLatex = () => {
+  const getSerializedLatex = () => {
     const serializedAtoms = atoms.map(x => x.serialize());
     const joinedLatex = joinLatex(serializedAtoms);
     return joinedLatex;
+  };
+
+  const getJson = () => {
+    const jsonAtoms = atoms.map(x => x.toJson());
+    console.log({jsonAtoms});
+    return jsonAtoms;
   };
 
   return (
@@ -47,8 +53,9 @@ export const MathfieldElement = props => {
           </TouchableOpacity>
         </View>
       </TouchableOpacity>
-      <Text>{mathfieldValue}</Text>
-      <Text>{serializeLatex()}</Text>
+      <Text>1. mathfieldValue: {mathfieldValue}</Text>
+      <Text>2. serialized: {getSerializedLatex()}</Text>
+      <Text>3. JSON: {JSON.stringify(getJson())}</Text>
     </View>
   );
 };

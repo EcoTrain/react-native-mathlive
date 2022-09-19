@@ -24,6 +24,17 @@ export class SqrtAtom extends Atom {
     this.body = options.body ?? [];
   }
 
+  static fromJson(json, context) {
+    return new SqrtAtom(json.command, context, {
+      ...json,
+      index: json.above,
+    });
+  }
+
+  toJson() {
+    return super.toJson();
+  }
+
   serialize(options) {
     let args = '';
     args += `{${this.bodyToLatex(options)}}`;

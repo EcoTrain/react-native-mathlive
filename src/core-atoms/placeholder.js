@@ -16,9 +16,30 @@ export class PlaceholderAtom extends Atom {
     this.options = options;
   }
 
+  static fromJson(json, context) {
+    return new PlaceholderAtom(context, json);
+  }
+
+  toJson() {
+    const result = super.toJson();
+    if (this.placeholderId) {
+      result.placeholderId = this.placeholderId;
+    }
+    if (this.value === this.context.placeholderSymbol) {
+      delete result.value;
+    }
+    if (this.defaultValue) {
+      result.defaultValue = this.defaultValue.map(x => x.toJson());
+    }
+
+    return result;
+  }
+
   serialize(_options) {
     let value = this.value ?? '';
-    if (value === this.context.placeholderSymbol) value = '';
+    if (value === this.context.placeholderSymbol) {
+      value = '';
+    }
     return `\\placeholder{${value}}`;
   }
 

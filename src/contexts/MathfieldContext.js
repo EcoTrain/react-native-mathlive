@@ -4,15 +4,15 @@ import {parseLatex} from '../core/parser';
 
 const defaultValue = [
   '3',
-  '+ (98-\\sqrt{6})',
+  // '+ (98-\\sqrt{6})',
   '+ \\frac{4+#?}{16 - 8}',
   '+ #?',
-  // '+ \\smash[testMeta]{testSmash}',
+  '+ \\smash[testMeta]{testSmash}',
   // '+ \\smash{testSmash2}',
   // '+ \\smash[testMeta]{\\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}',
   // '+ \\hphantom{\\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?}}}',
   // '+ \\vphantom{\\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?}}}',
-  '+ \\sqrt{24}',
+  // '+ \\sqrt{24}',
   // '+ \\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}',
   // '+ \\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?}}',
 ].join(' ');
@@ -56,7 +56,9 @@ export const MathfieldContextProvider = ({children, onChangeValue}) => {
       const leftSibling = selectedAtom.leftSibling;
       if (leftSibling) {
         prevAtom = leftSibling;
-      } else prevAtom = selectedAtom.parent;
+      } else {
+        prevAtom = selectedAtom.parent;
+      }
     } else {
       const ind = mfAtoms.indexOf(selectedAtom);
       if (ind > 0) {
@@ -71,7 +73,9 @@ export const MathfieldContextProvider = ({children, onChangeValue}) => {
       const rightSibling = selectedAtom.rightSibling;
       if (rightSibling) {
         nextAtom = rightSibling;
-      } else nextAtom = selectedAtom.parent;
+      } else {
+        nextAtom = selectedAtom.parent;
+      }
     } else {
       const ind = mfAtoms.indexOf(selectedAtom);
       if (ind > -1 && ind < mfAtoms.length - 1) {
@@ -90,8 +94,11 @@ export const MathfieldContextProvider = ({children, onChangeValue}) => {
       const leftSibling = selectedAtom.leftSibling;
 
       // Set previous atom as selected
-      if (leftSibling) setSelectedAtom(leftSibling);
-      else setSelectedAtom(selectedAtom.parent);
+      if (leftSibling) {
+        setSelectedAtom(leftSibling);
+      } else {
+        setSelectedAtom(selectedAtom.parent);
+      }
 
       // Remove selected atom
       selectedAtom.parent.removeChild(selectedAtom);

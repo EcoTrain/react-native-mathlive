@@ -18,11 +18,19 @@ export class GenfracAtom extends Atom {
   constructor(command, above, below, context, options) {
     super('genfrac', context, {
       command,
-      serialize: options.serialize,
     });
     this.above = above;
     this.below = below;
     this.options = options;
+  }
+
+  static fromJson(json, context) {
+    return new GenfracAtom(json.command, json.above, json.below, context, json);
+  }
+
+  toJson() {
+    const options = {};
+    return {...super.toJson(), ...options};
   }
 
   serialize() {
