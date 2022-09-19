@@ -4,17 +4,17 @@ import {parseLatex} from '../core/parser';
 
 const defaultValue = [
   '3',
-  // '+ (98-\\sqrt{6})',
+  '+ (98-\\sqrt{6})',
   '+ \\frac{4+#?}{16 - 8}',
   '+ #?',
   // '+ \\smash[testMeta]{testSmash}',
   // '+ \\smash{testSmash2}',
   // '+ \\smash[testMeta]{\\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}',
-  // '+ \\hphantom{\\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}}',
-  '+ \\vphantom{\\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}}',
+  // '+ \\hphantom{\\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?}}}',
+  // '+ \\vphantom{\\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?}}}',
   '+ \\sqrt{24}',
   // '+ \\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}',
-  // '+ \\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?}',
+  // '+ \\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?}}',
 ].join(' ');
 
 export const MathfieldContext = createContext({

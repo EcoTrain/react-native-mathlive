@@ -31,7 +31,6 @@ defineFunction('smash', '[:string]{:auto}', {
  */
 defineFunction(['vphantom'], '{:auto*}', {
   createAtom: (name, args, context) => {
-    console.log('vphantom', {args});
     return new PhantomAtom(name, args[1], context, {
       isInvisible: true,
       smashWidth: true,
@@ -47,7 +46,6 @@ defineFunction(['vphantom'], '{:auto*}', {
  */
 defineFunction(['hphantom'], '{:auto*}', {
   createAtom: (name, args, context) => {
-    console.log('hphantom', {args});
     return new PhantomAtom(name, args[1], context, {
       isInvisible: true,
       smashHeight: true,
@@ -64,7 +62,6 @@ defineFunction(['hphantom'], '{:auto*}', {
  */
 defineFunction(['phantom'], '{:auto*}', {
   createAtom: (name, args, context) => {
-    console.log('phantom', {args});
     return new PhantomAtom(name, args[1], context, {
       isInvisible: true,
     });
