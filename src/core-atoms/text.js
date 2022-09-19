@@ -4,6 +4,7 @@ import {Text} from '../components/styled/Text';
 import {KeyboardContext} from '../contexts/keyboard/KeyboardContext';
 import {MathfieldContext} from '../contexts/MathfieldContext';
 import {Atom} from '../core/atom';
+import {KB_DEFAULT_FONT_SIZE} from '../styles/defaults';
 
 export class TextAtom extends Atom {
   constructor(command, value, context) {
@@ -24,13 +25,18 @@ const TextAtomRender = ({atom}) => {
   return (
     <TouchableOpacity
       activeOpacity={1}
-      style={{height: '100%', justifyContent: 'center', alignContent: 'center'}}
+      style={{
+        height: '100%',
+        justifyContent: 'center',
+        alignContent: 'center',
+        backgroundColor: selectedAtom == atom && '#caeeee',
+      }}
       onPress={() => {
         showKeyboard();
         setSelectedAtom(atom);
       }}>
-      <View style={{flexDirection: 'row', backgroundColor: 'lightgrey'}}>
-        <Text style={atom.context.placeOnKeyboard && {fontSize: 'inherit'}}>{atom.value}</Text>
+      <View style={{flexDirection: 'row'}}>
+        <Text style={atom.context.placeOnKeyboard && {fontSize: KB_DEFAULT_FONT_SIZE}}>{atom.value}</Text>
         {selectedAtom == atom && <Text>|</Text>}
       </View>
     </TouchableOpacity>

@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Text} from '../components/styled/Text';
 import {KB_DEFAULT_FONT_SIZE} from '../styles/defaults';
 import {Atom} from '../core/atom';
+import {MathfieldContext} from '../contexts/MathfieldContext';
 
 /**
  * Genfrac -- Generalized Fraction
@@ -29,6 +30,7 @@ export class SqrtAtom extends Atom {
 }
 
 const SqrtAtomRender = ({atom}) => {
+  const {selectedAtom} = useContext(MathfieldContext);
   const [size, setSize] = useState({width: 0, height: 0});
 
   const onKb = atom.context.placeOnKeyboard;
@@ -51,7 +53,7 @@ const SqrtAtomRender = ({atom}) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, selectedAtom == atom && {backgroundColor: '#caeeee'}]}>
       {getRoot()}
       <View style={[styles.body]} onLayout={onChangeBodySize}>
         {atom.body.map((x, i) => (

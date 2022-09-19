@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {MathfieldContext} from '../contexts/MathfieldContext';
 import {Atom} from '../core/atom';
 import {MF_DEFAULT_FONT_SIZE} from '../styles/defaults';
 
@@ -24,13 +25,14 @@ export class PhantomAtom extends Atom {
 }
 
 const PhantomAtomRender = ({atom}) => {
-  console.log('PhantomAtomRender', atom);
+  const {selectedAtom} = useContext(MathfieldContext);
 
   // width of space was calc experimental: fontSize/4  (see fontSize: 24 as example)
   const propStyle = {
     visibility: atom.isInvisible ? 'hidden' : 'visible',
     height: atom.smashHeight ? MF_DEFAULT_FONT_SIZE : '100%',
     width: atom.smashWidth ? MF_DEFAULT_FONT_SIZE / 4 : '100%',
+    backgroundColor: selectedAtom == atom && '#caeeee',
   };
 
   return (

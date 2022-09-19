@@ -23,11 +23,16 @@ export class PlaceholderAtom extends Atom {
 
 const PlaceholderAtomRender = ({atom}) => {
   const {showKeyboard} = useContext(KeyboardContext);
-  const {setSelectedAtom} = useContext(MathfieldContext);
+  const {selectedAtom, setSelectedAtom} = useContext(MathfieldContext);
   return (
     <TouchableOpacity
       activeOpacity={1}
-      style={{height: '100%', justifyContent: 'center', alignContent: 'center'}}
+      style={{
+        height: '100%',
+        justifyContent: 'center',
+        alignContent: 'center',
+        backgroundColor: selectedAtom == atom && '#caeeee',
+      }}
       onPress={() => {
         showKeyboard();
         setSelectedAtom(atom);

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {MathfieldContext} from '../contexts/MathfieldContext';
 import {Atom} from '../core/atom';
 
 /**
@@ -24,23 +25,24 @@ export class GenfracAtom extends Atom {
   }
 
   render() {
-    return <GenfracAtomRender context={this.context} above={this.above} below={this.below} options={this.options} />;
+    return <GenfracAtomRender atom={this} />;
   }
 }
 
-const GenfracAtomRender = ({context, above, below, options}) => {
-  const hasBarLine = options?.hasBarLine ?? true;
+const GenfracAtomRender = ({atom}) => {
+  const {selectedAtom} = useContext(MathfieldContext);
+  const hasBarLine = atom.options?.hasBarLine ?? true;
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, selectedAtom == atom && {backgroundColor: '#caeeee'}]}>
       <View style={styles.operand}>
-        {above.map((x, i) => (
-          <View key={i}>{x.render(context)}</View>
+        {atom.above.map((x, i) => (
+          <View key={i}>{x.render()}</View>
         ))}
       </View>
       {hasBarLine && <View style={styles.delimeter} />}
       <View style={styles.operand}>
-        {below.map((x, i) => (
-          <View key={i}>{x.render(context)}</View>
+        {atom.below.map((x, i) => (
+          <View key={i}>{x.render()}</View>
         ))}
       </View>
     </View>

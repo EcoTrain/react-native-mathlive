@@ -2,6 +2,7 @@ export const CUSTOM_KEYBOARD_LAYERS = {
   'variables-layer': {
     rows: [
       [
+        // {label: 'var1', insert: '$$\\smash[\\{whateverMeta\\}]{var1}$$'},
         {label: 'var1', insert: '\\smash[metaVar1]{textVar1}'},
         {label: 'var2', insert: '\\smash[metaVar2]{textVar2}'},
         {label: 'var3', insert: '\\smash[metaVar3]{textVar3}'},

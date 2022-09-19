@@ -6,7 +6,7 @@ import {Text} from '../components/styled/Text';
  * The order of these branches specify the default keyboard navigation order.
  * It can be overriden in `get children()`
  */
-export const NAMED_BRANCHES = ['body', 'above', 'below', 'superscript', 'subscript'];
+export const NAMED_BRANCHES = ['above', 'body', 'below', 'superscript', 'subscript'];
 
 /**
  * A _branch_ is a set of children of an atom.
@@ -105,7 +105,7 @@ export class Atom {
   }
 
   set body(atoms) {
-    this.setChildrenBranch(atoms, 'body');
+    this.setChildren(atoms, 'body');
   }
 
   get above() {
@@ -113,7 +113,7 @@ export class Atom {
   }
 
   set above(atoms) {
-    this.setChildrenBranch(atoms, 'above');
+    this.setChildren(atoms, 'above');
   }
 
   get below() {
@@ -121,16 +121,23 @@ export class Atom {
   }
 
   set below(atoms) {
-    this.setChildrenBranch(atoms, 'below');
+    this.setChildren(atoms, 'below');
   }
 
   getInitialBaseElement() {
     let result;
     if (!this.hasEmptyBranch('body')) {
-      result = this.body[1].getInitialBaseElement();
+      result = this.body[0].getInitialBaseElement();
     }
 
     return result ?? this;
+  }
+
+  getFinalBaseElement() {
+    if (!this.hasEmptyBranch('body')) {
+      return this.body[this.body.length - 1].getFinalBaseElement();
+    }
+    return this;
   }
 
   isCharacterBox() {
@@ -143,14 +150,15 @@ export class Atom {
     if (!atoms) {
       return true;
     }
-    return atoms.length === 1;
+    console.assert(atoms.length > 0);
+    return atoms.length === 0;
   }
 
   /*
    * Setting `null` does nothing
    * Setting `[]` adds an empty list (the branch is created)
    */
-  setChildrenBranch(children, branch) {
+  setChildren(children, branch) {
     if (!children) {
       return;
     }
@@ -182,6 +190,7 @@ export class Atom {
   }
 
   addChildBefore(child, before) {
+    console.assert(before.treeBranch !== undefined);
     const branch = this.createBranch(before.treeBranch);
     branch.splice(branch.indexOf(before), 0, child);
 
@@ -209,6 +218,8 @@ export class Atom {
    * Return the last atom that was added
    */
   addChildrenAfter(children, after) {
+    console.assert(children.length === 0);
+    console.assert(after.treeBranch !== undefined);
     const branch = this.createBranch(after.treeBranch);
     branch.splice(branch.indexOf(after) + 1, 0, ...children);
 
@@ -232,11 +243,12 @@ export class Atom {
       child.parent = undefined;
       child.treeBranch = undefined;
     }
-    children.shift();
     return children;
   }
 
   removeChild(child) {
+    console.assert(child.parent === this);
+
     // Update the parent
     const branch = this.branch(child.treeBranch);
     const index = branch.indexOf(child);
@@ -273,9 +285,7 @@ export class Atom {
   }
 
   get hasNoSiblings() {
-    // There is always at least one sibling, the 'first'
-    // atom, but we don't count it.
-    return this.siblings.length === 1;
+    return this.siblings.length === 0;
   }
 
   get leftSibling() {
