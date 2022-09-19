@@ -53,18 +53,14 @@ export const MathfieldContextProvider = ({children, onChangeValue}) => {
       const leftSibling = selectedAtom.leftSibling;
       if (leftSibling) {
         prevAtom = leftSibling;
-      } else {
-        const ind = mfAtoms.indexOf(selectedAtom.parent);
-        if (ind > -1) {
-          prevAtom = mfAtoms[ind - 1];
-        }
-      }
+      } else prevAtom = selectedAtom.parent;
     } else {
       const ind = mfAtoms.indexOf(selectedAtom);
-      if (ind > -1) {
+      if (ind > 0) {
         prevAtom = mfAtoms[ind - 1];
       }
     }
+
     return prevAtom;
   };
   const getNextAtom = () => {
@@ -73,18 +69,14 @@ export const MathfieldContextProvider = ({children, onChangeValue}) => {
       const rightSibling = selectedAtom.rightSibling;
       if (rightSibling) {
         nextAtom = rightSibling;
-      } else {
-        const ind = mfAtoms.indexOf(selectedAtom.parent);
-        if (ind < mfAtoms.length - 1) {
-          nextAtom = mfAtoms[ind - 1];
-        }
-      }
+      } else nextAtom = selectedAtom.parent;
     } else {
       const ind = mfAtoms.indexOf(selectedAtom);
-      if (ind < mfAtoms.length - 1) {
+      if (ind > -1 && ind < mfAtoms.length - 1) {
         nextAtom = mfAtoms[ind + 1];
       }
     }
+
     return nextAtom;
   };
 
