@@ -1,6 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Text} from '../components/styled/Text';
+import {joinLatex} from './tokenizer';
 
 /**
  * The order of these branches specify the default keyboard navigation order.
@@ -35,20 +36,78 @@ export class Atom {
     }
     this.command = options?.command ?? this.value ?? '';
     this.isFunction = options?.isFunction ?? false;
-
-    // console.log(' == ATOM ', {...this});
+    if (options?.serialize) {
+      console.assert(typeof options.command === 'string');
+      Atom.customSerializer[options.command] = options.serialize;
+    }
   }
 
-  // get treeDepth() {
-  //   let result = 1;
-  //   let atom = this.parent;
-  //   while (atom) {
-  //     atom = atom.parent;
-  //     result += 1;
-  //   }
+  /**
+   * Given an atom or an array of atoms, return a LaTeX string representation
+   */
+  static serialize(value) {
+    if (Array.isArray(value)) return serializeAtoms(value);
 
-  //   return result;
-  // }
+    if (typeof value === 'number' || typeof value === 'boolean') return value.toString();
+
+    if (typeof value === 'string') return value.replace(/\s/g, '~');
+
+    if (value === undefined) return '';
+
+    // If we have some verbatim latex for this atom, use it.
+    // This allow non-significant punctuation to be preserved when possible.
+    if (typeof value.verbatimLatex === 'string') return value.verbatimLatex;
+
+    if (value.command && Atom.customSerializer[value.command])
+      return Atom.customSerializer[value.command](value, options);
+
+    return value.serialize(options);
+  }
+
+  /**
+   * Serialize the atom  to LaTeX
+   */
+  serialize() {
+    if (this.body && this.command) {
+      // There's a command and body
+      return joinLatex([this.command, '{', this.bodyToLatex(), '}']);
+    }
+
+    if (this.body) {
+      // There's a body with no command
+      return joinLatex([this.bodyToLatex()]);
+    }
+
+    if (this.value) {
+      return this.value;
+    }
+
+    return '';
+  }
+
+  bodyToLatex() {
+    return serializeAtoms(this.body);
+  }
+
+  aboveToLatex() {
+    return serializeAtoms(this.above);
+  }
+
+  belowToLatex() {
+    return serializeAtoms(this.below);
+  }
+
+  // Current depth level
+  get treeDepth() {
+    let result = 1;
+    let atom = this.parent;
+    while (atom) {
+      atom = atom.parent;
+      result += 1;
+    }
+
+    return result;
+  }
 
   /**
    * Return the atoms in the branch, if it exists, otherwise null
@@ -77,7 +136,6 @@ export class Atom {
         result.push(branch);
       }
     }
-
     return result;
   }
 
@@ -122,27 +180,6 @@ export class Atom {
 
   set below(atoms) {
     this.setChildren(atoms, 'below');
-  }
-
-  getInitialBaseElement() {
-    let result;
-    if (!this.hasEmptyBranch('body')) {
-      result = this.body[0].getInitialBaseElement();
-    }
-
-    return result ?? this;
-  }
-
-  getFinalBaseElement() {
-    if (!this.hasEmptyBranch('body')) {
-      return this.body[this.body.length - 1].getFinalBaseElement();
-    }
-    return this;
-  }
-
-  isCharacterBox() {
-    const base = this.getInitialBaseElement();
-    return /mord/.test(base.type);
   }
 
   hasEmptyBranch(branch) {
@@ -261,7 +298,7 @@ export class Atom {
   }
 
   get siblings() {
-    if (this.type === 'root') {
+    if (!this.parent) {
       return [];
     }
     return this.parent.branch(this.treeBranch);
@@ -350,4 +387,15 @@ export class Atom {
       </View>
     );
   }
+}
+
+/**
+ *
+ * @param atoms the list of atoms to emit as LaTeX
+ * @param options.expandMacro true if macros should be expanded
+ * @result a LaTeX string
+ */
+function serializeAtoms(atoms) {
+  if (!atoms || atoms.length === 0) return '';
+  return joinLatex(atoms.map(x => x.serialize()));
 }

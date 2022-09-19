@@ -18,10 +18,15 @@ export class GenfracAtom extends Atom {
   constructor(command, above, below, context, options) {
     super('genfrac', context, {
       command,
+      serialize: options.serialize,
     });
     this.above = above;
     this.below = below;
     this.options = options;
+  }
+
+  serialize() {
+    return this.command + `{${this.aboveToLatex()}}` + `{${this.belowToLatex()}}`;
   }
 
   render() {

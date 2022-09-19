@@ -3,6 +3,7 @@ import {TouchableOpacity, StyleSheet, Text, View, Image} from 'react-native';
 import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
 import {MathfieldContext} from '../../contexts/MathfieldContext';
 import {ThemeContext} from '../../contexts/ThemeContext';
+import {joinLatex} from '../../core/tokenizer';
 
 export const MathfieldElement = props => {
   const {showKeyboard, hideKeyboard} = useContext(KeyboardContext);
@@ -12,6 +13,12 @@ export const MathfieldElement = props => {
 
   const {UiColors} = useContext(ThemeContext);
   const stylesThemed = styles(UiColors);
+
+  const serializeLatex = () => {
+    const serializedAtoms = atoms.map(x => x.serialize());
+    const joinedLatex = joinLatex(serializedAtoms);
+    return joinedLatex;
+  };
 
   return (
     <View style={{flex: 1}}>
@@ -41,6 +48,7 @@ export const MathfieldElement = props => {
         </View>
       </TouchableOpacity>
       <Text>{mathfieldValue}</Text>
+      <Text>{serializeLatex()}</Text>
     </View>
   );
 };

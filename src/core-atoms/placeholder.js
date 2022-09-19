@@ -16,6 +16,12 @@ export class PlaceholderAtom extends Atom {
     this.options = options;
   }
 
+  serialize(_options) {
+    let value = this.value ?? '';
+    if (value === this.context.placeholderSymbol) value = '';
+    return `\\placeholder{${value}}`;
+  }
+
   render() {
     return <PlaceholderAtomRender atom={this} />;
   }

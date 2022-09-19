@@ -24,6 +24,12 @@ export class SqrtAtom extends Atom {
     this.body = options.body ?? [];
   }
 
+  serialize(options) {
+    let args = '';
+    args += `{${this.bodyToLatex(options)}}`;
+    return this.command + args;
+  }
+
   render() {
     return <SqrtAtomRender atom={this} />;
   }

@@ -3,12 +3,15 @@ import {defaultGlobalContext} from '../core/context-utils';
 import {parseLatex} from '../core/parser';
 
 const defaultValue = [
-  '3 + \\frac{4+#?}{16 - 8}',
-  '+ #? + 3',
-  '+ \\smash[testMeta]{testSmash}',
-  '+ \\smash{testSmash2}',
+  '3',
+  // '+ (98-\\sqrt{6})',
+  '+ \\frac{4+#?}{16 - 8}',
+  '+ #?',
+  // '+ \\smash[testMeta]{testSmash}',
+  // '+ \\smash{testSmash2}',
   // '+ \\smash[testMeta]{\\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}',
   // '+ \\hphantom{\\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}}',
+  '+ \\vphantom{\\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}}',
   '+ \\sqrt{24}',
   // '+ \\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}',
   // '+ \\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?}',
@@ -60,7 +63,6 @@ export const MathfieldContextProvider = ({children, onChangeValue}) => {
         prevAtom = mfAtoms[ind - 1];
       }
     }
-
     return prevAtom;
   };
   const getNextAtom = () => {
@@ -76,7 +78,6 @@ export const MathfieldContextProvider = ({children, onChangeValue}) => {
         nextAtom = mfAtoms[ind + 1];
       }
     }
-
     return nextAtom;
   };
 

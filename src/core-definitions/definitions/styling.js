@@ -29,7 +29,7 @@ defineFunction('smash', '[:string]{:auto}', {
  * In other words, \hphantom creates vertical space equal to that produced by its argument,
  * but doesn't create any horizontal space.
  */
-defineFunction(['vphantom'], '{:auto}', {
+defineFunction(['vphantom'], '{:auto*}', {
   createAtom: (name, args, context) => {
     console.log('vphantom', {args});
     return new PhantomAtom(name, args[1], context, {
@@ -46,12 +46,14 @@ defineFunction(['vphantom'], '{:auto}', {
  * but doesn't create any vertical space.
  */
 defineFunction(['hphantom'], '{:auto*}', {
-  createAtom: (name, args, context) =>
-    new PhantomAtom(name, args[1], context, {
+  createAtom: (name, args, context) => {
+    console.log('hphantom', {args});
+    return new PhantomAtom(name, args[1], context, {
       isInvisible: true,
       smashHeight: true,
       //   smashDepth: true,
-    }),
+    });
+  },
 });
 
 /**
@@ -61,8 +63,10 @@ defineFunction(['hphantom'], '{:auto*}', {
  * equal to that of its argument, even though the argument isn't visible.
  */
 defineFunction(['phantom'], '{:auto*}', {
-  createAtom: (name, args, context) =>
-    new PhantomAtom(name, args[1], context, {
+  createAtom: (name, args, context) => {
+    console.log('phantom', {args});
+    return new PhantomAtom(name, args[1], context, {
       isInvisible: true,
-    }),
+    });
+  },
 });

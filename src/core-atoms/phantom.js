@@ -20,6 +20,7 @@ export class PhantomAtom extends Atom {
   }
 
   render() {
+    console.log('PhantomAtom', this.body);
     return <PhantomAtomRender atom={this} />;
   }
 }

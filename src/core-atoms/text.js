@@ -14,6 +14,10 @@ export class TextAtom extends Atom {
     this.value = value;
   }
 
+  serialize(_options) {
+    return this.value;
+  }
+
   render() {
     return <TextAtomRender atom={this} />;
   }
