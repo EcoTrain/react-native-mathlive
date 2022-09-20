@@ -1,4 +1,5 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, useEffect, useState} from 'react';
+import {defineCommands} from './commands';
 import {DEFAULT_KEYBOARDS, DEFAULT_KEYBOARD_LAYERS} from './defaultKeyboard';
 
 export const KeyboardContext = createContext({
@@ -13,18 +14,24 @@ export const KeyboardContext = createContext({
   setActiveKeyboardName: () => {},
 });
 
-export const KeyboardContextProvider = ({children, customKeyboardLayers, customKeyboards, mergeKeyboards}) => {
+export const KeyboardContextProvider = ({children, kbConfig}) => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const virtualKeyboardLayers = mergeKeyboards
-    ? Object.assign({}, DEFAULT_KEYBOARD_LAYERS, customKeyboardLayers)
+  /**
+   * Define commands for executeCommand on key press
+   * (Redefine on every update context)
+   */
+  defineCommands();
+
+  const virtualKeyboardLayers = kbConfig.mergeKeyboards
+    ? Object.assign({}, DEFAULT_KEYBOARD_LAYERS, kbConfig.customKeyboardLayers)
     : DEFAULT_KEYBOARD_LAYERS;
-  const virtualKeyboards = mergeKeyboards ? Object.assign({}, DEFAULT_KEYBOARDS, customKeyboards) : DEFAULT_KEYBOARDS;
+  const virtualKeyboards = kbConfig.mergeKeyboards
+    ? Object.assign({}, DEFAULT_KEYBOARDS, kbConfig.customKeyboards)
+    : DEFAULT_KEYBOARDS;
   const actualKeyboards = Object.keys(virtualKeyboards);
   const [activeKbName, setActiveKbName] = useState(actualKeyboards[0]);
 
-  console.log({customKeyboardLayers, customKeyboards, mergeKeyboards});
-  console.log({virtualKeyboardLayers, virtualKeyboards});
   const defaultContextValues = {
     isVisible,
     showKeyboard: () => {

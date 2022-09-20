@@ -9,15 +9,11 @@ export const VirtualKeyboard = () => {
   const stylesThemed = styles(UiColors);
 
   return (
-    <View
-      style={[
-        stylesThemed.container,
-        {
-          visibility: isVisible ? 'visible' : 'hidden',
-        },
-      ]}>
-      <VirtualKeyboardElement />
-    </View>
+    isVisible && (
+      <View style={stylesThemed.container}>
+        <VirtualKeyboardElement />
+      </View>
+    )
   );
 };
 

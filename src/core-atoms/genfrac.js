@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {MathfieldContext} from '../contexts/MathfieldContext';
+import {MathfieldContext} from '../contexts/mathfield/MathfieldContext';
 import {UiColors} from '../contexts/uiColors';
 import {Atom} from '../core/atom';
 

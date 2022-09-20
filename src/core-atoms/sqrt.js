@@ -3,7 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import {Text} from '../components/styled/Text';
 import {KB_DEFAULT_FONT_SIZE} from '../styles/defaults';
 import {Atom} from '../core/atom';
-import {MathfieldContext} from '../contexts/MathfieldContext';
+import {MathfieldContext} from '../contexts/mathfield/MathfieldContext';
 import {UiColors} from '../contexts/uiColors';
 
 /**

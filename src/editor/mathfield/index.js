@@ -1,12 +1,12 @@
 import React, {useContext, useState} from 'react';
 import {TouchableOpacity, StyleSheet, Text, View, Image} from 'react-native';
 import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
-import {MathfieldContext} from '../../contexts/MathfieldContext';
+import {MathfieldContext} from '../../contexts/mathfield/MathfieldContext';
 import {UiColors} from '../../contexts/uiColors';
 import {joinLatex} from '../../core/tokenizer';
 
-export const MathfieldElement = props => {
-  const {showKeyboard, hideKeyboard} = useContext(KeyboardContext);
+export const MathfieldElement = () => {
+  const {toggleKeyboardVisibility} = useContext(KeyboardContext);
   const {atoms} = useContext(MathfieldContext);
   const [focused, setFocus] = useState(false);
   const stylesThemed = styles(UiColors);
@@ -19,7 +19,6 @@ export const MathfieldElement = props => {
 
   const getJson = () => {
     const jsonAtoms = atoms.map(x => x.toJson());
-    // console.log({jsonAtoms});
     return jsonAtoms;
   };
 
@@ -44,7 +43,7 @@ export const MathfieldElement = props => {
             style={stylesThemed.mfKbBtn}
             onPress={() => {
               setFocus(!focused);
-              focused ? hideKeyboard() : showKeyboard();
+              toggleKeyboardVisibility();
             }}>
             <Image style={stylesThemed.mfKbIcon} source={require('../../assets/icons/keyboard.png')} />
           </TouchableOpacity>

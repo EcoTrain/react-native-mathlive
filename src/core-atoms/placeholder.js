@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {Text} from '../components/styled/Text';
 import {KeyboardContext} from '../contexts/keyboard/KeyboardContext';
-import {MathfieldContext} from '../contexts/MathfieldContext';
+import {MathfieldContext} from '../contexts/mathfield/MathfieldContext';
 import {KB_DEFAULT_FONT_SIZE} from '../styles/defaults';
 import {Atom} from '../core/atom';
 import {UiColors} from '../contexts/uiColors';
