@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
-import {VirtualKeyboardElement} from './keyboard';
 import {UiColors} from '../../contexts/uiColors';
+import {VirtualKeyboardElement} from './keyboard';
 
 export const VirtualKeyboard = () => {
   const {isVisible} = useContext(KeyboardContext);
@@ -17,13 +17,12 @@ export const VirtualKeyboard = () => {
   );
 };
 
+// eslint-disable-next-line no-shadow
 const styles = UiColors =>
   StyleSheet.create({
     container: {
       position: 'absolute',
       bottom: 0,
-      left: 0,
-      right: 0,
       width: '100%',
       minHeight: 50,
       backgroundColor: UiColors.keyboardBg,

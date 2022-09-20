@@ -42,6 +42,7 @@ const KeyboardTopLabelItem = ({label, kbName}) => {
   );
 };
 
+// eslint-disable-next-line no-shadow
 const styles = UiColors =>
   StyleSheet.create({
     labelsPanel: {

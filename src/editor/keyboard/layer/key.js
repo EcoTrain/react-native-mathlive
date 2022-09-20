@@ -31,7 +31,8 @@ const KeyboardKeyWithFeedback = ({type, label, latex, insert, command}) => {
   const [pressed, setPressed] = useState(false);
 
   const getTextPanel = text => {
-    return <Text style={{fontFamily: 'KaTeX_Size4-Regular'}}>{text}</Text>;
+    // return <Text style={{fontFamily: 'KaTeX_Size4-Regular'}}>{text}</Text>;
+    return <Text>{text}</Text>;
   };
 
   const parseKeyValue = ({value, placeOnKeyboard}) => {
@@ -102,6 +103,7 @@ const KeyboardKeyWithFeedback = ({type, label, latex, insert, command}) => {
   );
 };
 
+// eslint-disable-next-line no-shadow
 const styles = UiColors =>
   StyleSheet.create({
     keyMargin: {

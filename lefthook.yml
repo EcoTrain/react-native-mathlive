@@ -8,7 +8,7 @@ pre-commit:
     tests:
       files: git diff --name-only @{push}
       glob: '*.{js,ts, jsx, tsx}'
-      run: yarn test --findRelatedTests {files}
+      run: yarn test --findRelatedTests --forceExit {staged_files}
     # spelling: # Spell checking code. (check orphography)
     #   glob: '*.{js,ts,jsx,tsx,md}'
     #   run: yarn cspell {staged_files}

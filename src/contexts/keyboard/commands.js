@@ -91,7 +91,7 @@ export const defineCommands = () => {
       }
     } else {
       let ind = mfc.atoms.indexOf(mfc.selectedAtom);
-      if (mfc.selectedAtom.type == 'placeholder') {
+      if (mfc.selectedAtom?.type == 'placeholder') {
         mfc.atoms.splice(ind, 1);
         --ind;
       }

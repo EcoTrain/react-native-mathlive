@@ -17,6 +17,7 @@ export const VirtualKeyboard = () => {
   );
 };
 
+// eslint-disable-next-line no-shadow
 const styles = UiColors =>
   StyleSheet.create({
     container: {

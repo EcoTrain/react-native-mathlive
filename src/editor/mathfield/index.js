@@ -4,12 +4,16 @@ import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
 import {MathfieldContext} from '../../contexts/mathfield/MathfieldContext';
 import {UiColors} from '../../contexts/uiColors';
 import {joinLatex} from '../../core/tokenizer';
+import {testDefaultMfValue} from './testDefaultValue';
 
 export const MathfieldElement = () => {
   const {toggleKeyboardVisibility} = useContext(KeyboardContext);
   const {atoms} = useContext(MathfieldContext);
   const [focused, setFocus] = useState(false);
   const stylesThemed = styles(UiColors);
+
+  // TODO: remove before release
+  testDefaultMfValue();
 
   const getSerializedLatex = () => {
     const serializedAtoms = atoms.map(x => x.serialize());
@@ -49,12 +53,13 @@ export const MathfieldElement = () => {
           </TouchableOpacity>
         </View>
       </TouchableOpacity>
-      <Text>1. serialized: {getSerializedLatex()}</Text>
-      <Text>2. JSON: {JSON.stringify(getJson())}</Text>
+      {/* <Text>1. serialized: {getSerializedLatex()}</Text> */}
+      {/* <Text>2. JSON: {JSON.stringify(getJson())}</Text> */}
     </View>
   );
 };
 
+// eslint-disable-next-line no-shadow
 const styles = UiColors =>
   StyleSheet.create({
     container: {

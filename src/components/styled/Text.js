@@ -8,8 +8,8 @@ export const Text = ({children, ...props}) => {
       {...props}
       style={[
         {
-          fontSize: MF_DEFAULT_FONT_SIZE,
-          fontFamily: 'KaTeX_Size1',
+          // fontSize: MF_DEFAULT_FONT_SIZE,
+          // fontFamily: 'KaTeX_Size1_Regular',
         },
         props.style,
       ]}>

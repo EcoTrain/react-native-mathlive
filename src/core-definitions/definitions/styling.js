@@ -6,8 +6,6 @@ import {defineFunction} from '../utils';
  */
 defineFunction('smash', '[:string]{:auto}', {
   createAtom: (name, args, context) => {
-    console.log('smash', {args});
-
     // Check meta exist
     if (!args[0]) {
       return new PhantomAtom(name, args[1], context, {

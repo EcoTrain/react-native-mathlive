@@ -52,6 +52,7 @@ export class PlaceholderAtom extends Atom {
 const PlaceholderAtomRender = ({atom}) => {
   const {showKeyboard} = useContext(KeyboardContext);
   const {selectedAtom, setSelectedAtom} = useContext(MathfieldContext);
+
   return (
     <TouchableOpacity
       activeOpacity={1}
