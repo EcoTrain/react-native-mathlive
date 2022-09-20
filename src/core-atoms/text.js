@@ -3,6 +3,7 @@ import {TouchableOpacity, View} from 'react-native';
 import {Text} from '../components/styled/Text';
 import {KeyboardContext} from '../contexts/keyboard/KeyboardContext';
 import {MathfieldContext} from '../contexts/MathfieldContext';
+import {UiColors} from '../contexts/uiColors';
 import {Atom} from '../core/atom';
 import {KB_DEFAULT_FONT_SIZE} from '../styles/defaults';
 
@@ -41,7 +42,7 @@ const TextAtomRender = ({atom}) => {
         height: '100%',
         justifyContent: 'center',
         alignContent: 'center',
-        backgroundColor: selectedAtom == atom && '#caeeee',
+        backgroundColor: selectedAtom == atom && UiColors.mathfieldSelected,
       }}
       onPress={() => {
         showKeyboard();

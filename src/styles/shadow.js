@@ -1,9 +1,8 @@
 import {useContext} from 'react';
 import {Platform} from 'react-native';
-import {ThemeContext} from '../contexts/ThemeContext';
+import {UiColors} from '../contexts/uiColors';
 
 function makeShadow(depth, opacity = 0) {
-  const {UiColors} = useContext(ThemeContext);
   function interpolate(i, a, b, a2, b2) {
     return ((i - a) * (b2 - a2)) / (b - a) + a2;
   }

@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {StyleSheet, TouchableOpacity, Text, View} from 'react-native';
 import {MathfieldContext} from '../../../contexts/MathfieldContext';
-import {ThemeContext} from '../../../contexts/ThemeContext';
+import {UiColors} from '../../../contexts/uiColors';
 import {defaultGlobalContext} from '../../../core/context-utils';
 import {parseLatex} from '../../../core/parser';
 import {makeShadow} from '../../../styles/shadow';
@@ -18,7 +18,6 @@ export const KeyboardKey = keyConfig => {
 };
 
 const KeyboardKeySeparator = ({type}) => {
-  const {UiColors} = useContext(ThemeContext);
   const stylesThemed = styles(UiColors);
 
   const widthType = type.split(' ')?.[1];
@@ -28,7 +27,6 @@ const KeyboardKeySeparator = ({type}) => {
 
 const KeyboardKeyWithFeedback = ({type, label, latex, insert, command}) => {
   const {executeCommand} = useContext(MathfieldContext);
-  const {UiColors} = useContext(ThemeContext);
   const stylesThemed = styles(UiColors);
   const shadow = makeShadow(20, 0.02);
   const [pressed, setPressed] = useState(false);

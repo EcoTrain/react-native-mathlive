@@ -1,12 +1,11 @@
 import React, {useContext} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
-import {ThemeContext} from '../../contexts/ThemeContext';
 import {VirtualKeyboardElement} from './keyboard';
+import {UiColors} from '../../contexts/uiColors';
 
 export const VirtualKeyboard = () => {
   const {isVisible} = useContext(KeyboardContext);
-  const {UiColors} = useContext(ThemeContext);
   const stylesThemed = styles(UiColors);
 
   return (

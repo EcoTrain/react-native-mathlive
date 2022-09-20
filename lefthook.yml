@@ -34,3 +34,5 @@ pre-push:
       run: yarn test
     packages-audit:
       run: yarn audit
+    coverage:
+      run: yarn test:badges

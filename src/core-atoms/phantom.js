@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {MathfieldContext} from '../contexts/MathfieldContext';
+import {UiColors} from '../contexts/uiColors';
 import {Atom} from '../core/atom';
 import {MF_DEFAULT_FONT_SIZE} from '../styles/defaults';
 
@@ -53,7 +54,7 @@ const PhantomAtomRender = ({atom}) => {
     visibility: atom.isInvisible ? 'hidden' : 'visible',
     height: atom.smashHeight ? MF_DEFAULT_FONT_SIZE : '100%',
     width: atom.smashWidth ? MF_DEFAULT_FONT_SIZE / 4 : '100%',
-    backgroundColor: selectedAtom == atom && '#caeeee',
+    backgroundColor: selectedAtom == atom && UiColors.mathfieldSelected,
   };
 
   return (

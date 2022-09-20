@@ -5,6 +5,7 @@ import {KeyboardContext} from '../contexts/keyboard/KeyboardContext';
 import {MathfieldContext} from '../contexts/MathfieldContext';
 import {KB_DEFAULT_FONT_SIZE} from '../styles/defaults';
 import {Atom} from '../core/atom';
+import {UiColors} from '../contexts/uiColors';
 
 export class PlaceholderAtom extends Atom {
   constructor(context, options) {
@@ -58,7 +59,7 @@ const PlaceholderAtomRender = ({atom}) => {
         height: '100%',
         justifyContent: 'center',
         alignContent: 'center',
-        backgroundColor: selectedAtom == atom && '#caeeee',
+        backgroundColor: selectedAtom == atom && UiColors.mathfieldSelected,
       }}
       onPress={() => {
         showKeyboard();

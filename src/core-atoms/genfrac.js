@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {MathfieldContext} from '../contexts/MathfieldContext';
+import {UiColors} from '../contexts/uiColors';
 import {Atom} from '../core/atom';
 
 /**
@@ -46,7 +47,7 @@ const GenfracAtomRender = ({atom}) => {
   const {selectedAtom} = useContext(MathfieldContext);
   const hasBarLine = atom.options?.hasBarLine ?? true;
   return (
-    <View style={[styles.container, selectedAtom == atom && {backgroundColor: '#caeeee'}]}>
+    <View style={[styles.container, selectedAtom == atom && {backgroundColor: UiColors.mathfieldSelected}]}>
       <View style={styles.operand}>
         {atom.above.map((x, i) => (
           <View key={i}>{x.render()}</View>

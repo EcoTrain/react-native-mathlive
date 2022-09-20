@@ -1,11 +1,10 @@
 import React, {useContext} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
-import {ThemeContext} from '../../contexts/ThemeContext';
+import {UiColors} from '../../contexts/uiColors';
 
 export const KeyboardTopLabelsPanel = () => {
-  const {virtualKeyboards, virtualKeyboardLayers, actualKeyboards, activeKeyboardName} = useContext(KeyboardContext);
-  const {UiColors} = useContext(ThemeContext);
+  const {virtualKeyboards, actualKeyboards} = useContext(KeyboardContext);
   const stylesThemed = styles(UiColors);
 
   const getKeyboardLabels = () => {
@@ -24,7 +23,6 @@ export const KeyboardTopLabelsPanel = () => {
 
 const KeyboardTopLabelItem = ({label, kbName}) => {
   const {activeKeyboardName, setActiveKeyboardName} = useContext(KeyboardContext);
-  const {UiColors} = useContext(ThemeContext);
   const stylesThemed = styles(UiColors);
 
   const isActive = activeKeyboardName == kbName;

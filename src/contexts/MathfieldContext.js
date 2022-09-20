@@ -21,19 +21,16 @@ export const MathfieldContext = createContext({
   atoms: [],
   setAtoms: () => {},
   selectedAtom: null,
-  mathfieldValue: defaultValue,
-  setMathfieldValue: () => {},
   executeCommand: () => {},
 });
 
 export const MathfieldContextProvider = ({children, onChangeValue}) => {
-  const [mfValue, setMfValue] = useState(defaultValue);
   const [mfAtoms, setMfAtoms] = useState([]);
   const [selectedAtom, setSelectedAtom] = useState();
 
   useEffect(() => {
     const atoms = parseLatex(
-      mfValue,
+      defaultValue,
       {...defaultGlobalContext()},
       {
         parseMode: 'math',
@@ -43,8 +40,8 @@ export const MathfieldContextProvider = ({children, onChangeValue}) => {
     );
     setMfAtoms(atoms);
     setSelectedAtom(atoms[atoms.length - 1]);
-    console.log('MathfieldContext changeValue', {atoms});
-  }, [mfValue]);
+    console.log('MathfieldContext defaultValue', {atoms});
+  }, []);
 
   useEffect(() => {
     console.log('selectedAtom', selectedAtom);
@@ -144,11 +141,6 @@ export const MathfieldContextProvider = ({children, onChangeValue}) => {
     atoms: mfAtoms,
     selectedAtom,
     setSelectedAtom,
-    mathfieldValue: mfValue,
-    setMathfieldValue: value => {
-      setMfValue(value);
-      onChangeValue(value);
-    },
     executeCommand: ({command, options}) => {
       const _command = COMMANDS[command];
       if (_command) {

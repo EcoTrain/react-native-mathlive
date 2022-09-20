@@ -4,6 +4,7 @@ import {Text} from '../components/styled/Text';
 import {KB_DEFAULT_FONT_SIZE} from '../styles/defaults';
 import {Atom} from '../core/atom';
 import {MathfieldContext} from '../contexts/MathfieldContext';
+import {UiColors} from '../contexts/uiColors';
 
 /**
  * Genfrac -- Generalized Fraction
@@ -70,7 +71,7 @@ const SqrtAtomRender = ({atom}) => {
   };
 
   return (
-    <View style={[styles.container, selectedAtom == atom && {backgroundColor: '#caeeee'}]}>
+    <View style={[styles.container, selectedAtom == atom && {backgroundColor: UiColors.mathfieldSelected}]}>
       {getRoot()}
       <View style={[styles.body]} onLayout={onChangeBodySize}>
         {atom.body.map((x, i) => (

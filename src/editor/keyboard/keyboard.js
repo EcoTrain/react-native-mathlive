@@ -1,13 +1,12 @@
 import React, {useContext} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
-import {ThemeContext} from '../../contexts/ThemeContext';
+import {UiColors} from '../../contexts/uiColors';
 import {KeyboardTopLabelsPanel} from './labelsPanel';
 import {KeyboardLayer} from './layer';
 
 export const VirtualKeyboardElement = () => {
   const {virtualKeyboards, virtualKeyboardLayers, activeKeyboardName} = useContext(KeyboardContext),
-    {UiColors} = useContext(ThemeContext),
     stylesThemed = styles(UiColors),
     getActiveKeyboard = () => {
       const activeLayerName = virtualKeyboards[activeKeyboardName]?.layer,

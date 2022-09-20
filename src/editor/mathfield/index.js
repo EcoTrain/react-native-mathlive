@@ -2,16 +2,13 @@ import React, {useContext, useState} from 'react';
 import {TouchableOpacity, StyleSheet, Text, View, Image} from 'react-native';
 import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
 import {MathfieldContext} from '../../contexts/MathfieldContext';
-import {ThemeContext} from '../../contexts/ThemeContext';
+import {UiColors} from '../../contexts/uiColors';
 import {joinLatex} from '../../core/tokenizer';
 
 export const MathfieldElement = props => {
   const {showKeyboard, hideKeyboard} = useContext(KeyboardContext);
-  const {atoms, mathfieldValue} = useContext(MathfieldContext);
-
+  const {atoms} = useContext(MathfieldContext);
   const [focused, setFocus] = useState(false);
-
-  const {UiColors} = useContext(ThemeContext);
   const stylesThemed = styles(UiColors);
 
   const getSerializedLatex = () => {
@@ -22,7 +19,7 @@ export const MathfieldElement = props => {
 
   const getJson = () => {
     const jsonAtoms = atoms.map(x => x.toJson());
-    console.log({jsonAtoms});
+    // console.log({jsonAtoms});
     return jsonAtoms;
   };
 
@@ -53,9 +50,8 @@ export const MathfieldElement = props => {
           </TouchableOpacity>
         </View>
       </TouchableOpacity>
-      <Text>1. mathfieldValue: {mathfieldValue}</Text>
-      <Text>2. serialized: {getSerializedLatex()}</Text>
-      <Text>3. JSON: {JSON.stringify(getJson())}</Text>
+      <Text>1. serialized: {getSerializedLatex()}</Text>
+      <Text>2. JSON: {JSON.stringify(getJson())}</Text>
     </View>
   );
 };

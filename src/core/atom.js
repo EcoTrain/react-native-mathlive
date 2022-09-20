@@ -332,7 +332,6 @@ export class Atom {
    * Return the last atom that was added
    */
   addChildrenAfter(children, after) {
-    console.assert(children.length === 0);
     console.assert(after.treeBranch !== undefined);
     const branch = this.createBranch(after.treeBranch);
     branch.splice(branch.indexOf(after) + 1, 0, ...children);
