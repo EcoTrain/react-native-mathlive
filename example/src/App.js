@@ -21,6 +21,11 @@ export default function App() {
           customKeyboards={CUSTOM_KEYBOARDS}
           mergeKeyboards={true}
         />
+        <Mathfield
+          customKeyboardLayers={CUSTOM_KEYBOARD_LAYERS}
+          customKeyboards={CUSTOM_KEYBOARDS}
+          mergeKeyboards={true}
+        />
         {/* <Button onPress={onPressGet} title={'Get result'} /> */}
       </View>
     </View>
