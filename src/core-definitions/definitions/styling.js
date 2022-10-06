@@ -4,22 +4,9 @@ import {defineFunction} from '../utils';
 /**
  * Draw contents (second arg) with meta info in Atom class (first arg)
  */
-defineFunction('smash', '[:string]{:auto}', {
+defineFunction('smash', '[:object]{:auto}', {
   createAtom: (name, args, context) => {
-    console.log('smash', {args});
-
-    // Check meta exist
-    if (!args[0]) {
-      return new PhantomAtom(name, args[1], context, {
-        // smashHeight: true,
-        // smashDepth: true,
-      });
-    }
-
-    return new PhantomAtom(name, args[1], context, {
-      //   smashHeight: args[0].includes('t'),
-      //   smashDepth: args[0].includes('b'),
-    });
+    return new PhantomAtom(name, args[0], args[1], context, {});
   },
 });
 
@@ -31,7 +18,7 @@ defineFunction('smash', '[:string]{:auto}', {
  */
 defineFunction(['vphantom'], '{:auto*}', {
   createAtom: (name, args, context) => {
-    return new PhantomAtom(name, args[1], context, {
+    return new PhantomAtom(name, args[0], args[1], context, {
       isInvisible: true,
       smashWidth: true,
     });
@@ -46,7 +33,7 @@ defineFunction(['vphantom'], '{:auto*}', {
  */
 defineFunction(['hphantom'], '{:auto*}', {
   createAtom: (name, args, context) => {
-    return new PhantomAtom(name, args[1], context, {
+    return new PhantomAtom(name, args[0], args[1], context, {
       isInvisible: true,
       smashHeight: true,
       //   smashDepth: true,

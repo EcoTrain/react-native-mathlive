@@ -6,10 +6,9 @@ const defaultValue = [
   '3',
   // '+ (98-\\sqrt{6})',
   '+ \\frac{4+#?}{16 - 8}',
-  '+ #?',
-  '+ \\smash[testMeta]{testSmash}',
-  // '+ \\smash{testSmash2}',
-  // '+ \\smash[testMeta]{\\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}',
+  // '+ #?',
+  // '+ \\smash[{"id":"metaVar2"}]{textVar2}',
+  '+ \\smash[{"id":"metaVar2"}]{\\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}',
   // '+ \\hphantom{\\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?}}}',
   // '+ \\vphantom{\\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?}}}',
   // '+ \\sqrt{24}',
@@ -23,7 +22,7 @@ export const MathfieldContext = createContext({
   selectedAtom: null,
 });
 
-export const MathfieldContextProvider = ({children, onChangeValue}) => {
+export const MathfieldContextProvider = ({children}) => {
   const [mfAtoms, setMfAtoms] = useState([]);
   const [selectedAtom, setSelectedAtom] = useState();
 
@@ -45,6 +44,10 @@ export const MathfieldContextProvider = ({children, onChangeValue}) => {
   useEffect(() => {
     console.log('selectedAtom', selectedAtom);
   }, [selectedAtom]);
+
+  useEffect(() => {
+    console.log('mfAtoms', mfAtoms);
+  }, [mfAtoms]);
 
   const defaultContextValues = {
     atoms: mfAtoms,

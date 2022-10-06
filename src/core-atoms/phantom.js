@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {MathfieldContext} from '../contexts/mathfield/MathfieldContext';
 import {UiColors} from '../contexts/uiColors';
 import {Atom} from '../core/atom';
@@ -12,8 +12,9 @@ import {MF_DEFAULT_FONT_SIZE} from '../styles/defaults';
  * equal to that of its argument, even though the argument isn't visible.
  */
 export class PhantomAtom extends Atom {
-  constructor(command, body, context, options) {
+  constructor(command, metaObject, body, context, options) {
     super('phantom', context, {command});
+    this.metaObject = metaObject;
     this.body = body;
     this.isInvisible = options.isInvisible ?? false;
     this.smashHeight = options.smashHeight ?? false;
@@ -21,7 +22,7 @@ export class PhantomAtom extends Atom {
   }
 
   static fromJson(json, context) {
-    return new PhantomAtom(json.command, json.body, context, json);
+    return new PhantomAtom(json.command, json.meta, json.body, context, json);
   }
 
   toJson() {

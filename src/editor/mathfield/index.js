@@ -4,6 +4,7 @@ import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
 import {MathfieldContext} from '../../contexts/mathfield/MathfieldContext';
 import {UiColors} from '../../contexts/uiColors';
 import {joinLatex} from '../../core/tokenizer';
+import {latexToAsciiMath} from '../atom-to-ascii-math';
 
 export const MathfieldElement = () => {
   const {toggleKeyboardVisibility} = useContext(KeyboardContext);
@@ -21,6 +22,8 @@ export const MathfieldElement = () => {
     const jsonAtoms = atoms.map(x => x.toJson());
     return jsonAtoms;
   };
+
+  const ascii = latexToAsciiMath(getSerializedLatex());
 
   return (
     <View style={{flex: 1}}>
@@ -51,6 +54,8 @@ export const MathfieldElement = () => {
       </TouchableOpacity>
       <Text>1. serialized: {getSerializedLatex()}</Text>
       <Text>2. JSON: {JSON.stringify(getJson())}</Text>
+      <Text>3. ASCII: {ascii.asciiString} </Text>
+      <Text>4. ASCII meta: {JSON.stringify(ascii.metaObject)} </Text>
     </View>
   );
 };

@@ -11,6 +11,7 @@ export class TextAtom extends Atom {
   constructor(command, value, context) {
     super('text', context, {
       command,
+      mode: 'text',
     });
     this.value = value;
   }

@@ -1,40 +1,4 @@
 export const DEFAULT_KEYBOARD_LAYERS = {
-  'geometry-layer': {
-    rows: [
-      [
-        {latex: '\\vert'},
-        {latex: '\\not{\\vert}'},
-        {latex: '\\parallel'},
-        {latex: '\\bot'},
-        {latex: '\\overrightarrow{#@}'},
-        {latex: '\\begin{pmatrix}#0\\\\#0\\end{pmatrix}'},
-      ],
-      [
-        {latex: '\\measuredangle'},
-        {latex: ';'},
-        {latex: '\\longmapsto'},
-        {latex: '\\left\\lvert #0 \\right\\rvert'},
-        {latex: '\\left\\lvert \\overline{#0} \\right\\rvert'},
-        {latex: '\\overline{#@}'},
-      ],
-      [
-        {type: 'separator w20'},
-        {type: 'separator w20'},
-        {type: 'separator w20'},
-        {type: 'separator w20'},
-        {
-          type: 'action',
-          label: 'ᐸ',
-          command: 'moveToPreviousChar',
-        },
-        {
-          type: 'action',
-          label: 'ᐳ',
-          command: 'moveToNextChar',
-        },
-      ],
-    ],
-  },
   'basic-layer': {
     rows: [
       [
@@ -94,9 +58,5 @@ export const DEFAULT_KEYBOARDS = {
   basic: {
     label: 'Basic',
     layer: 'basic-layer',
-  },
-  geometry: {
-    label: 'Geometry',
-    layer: 'geometry-layer',
   },
 };

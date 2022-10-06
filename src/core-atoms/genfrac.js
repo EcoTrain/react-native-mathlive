@@ -22,6 +22,7 @@ export class GenfracAtom extends Atom {
     });
     this.above = above;
     this.below = below;
+    this.hasBarLine = options?.hasBarLine ?? true;
     this.options = options;
   }
 
@@ -45,7 +46,6 @@ export class GenfracAtom extends Atom {
 
 const GenfracAtomRender = ({atom}) => {
   const {selectedAtom} = useContext(MathfieldContext);
-  const hasBarLine = atom.options?.hasBarLine ?? true;
   return (
     <View style={[styles.container, selectedAtom == atom && {backgroundColor: UiColors.mathfieldSelected}]}>
       <View style={styles.operand}>
@@ -53,7 +53,7 @@ const GenfracAtomRender = ({atom}) => {
           <View key={i}>{x.render()}</View>
         ))}
       </View>
-      {hasBarLine && <View style={styles.delimeter} />}
+      {atom.hasBarLine && <View style={styles.delimeter} />}
       <View style={styles.operand}>
         {atom.below.map((x, i) => (
           <View key={i}>{x.render()}</View>
