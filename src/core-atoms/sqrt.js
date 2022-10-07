@@ -21,6 +21,7 @@ export class SqrtAtom extends Atom {
   constructor(command, context, options) {
     super('sqrt', context, {
       command,
+      mode: options.mode ?? 'math',
     });
     this.body = options.body ?? [];
   }

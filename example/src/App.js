@@ -1,14 +1,10 @@
 import * as React from 'react';
 
-import {Button, StyleSheet, Text, View} from 'react-native';
-import {Mathfield, getMathfieldValue} from 'react-native-mathlive';
+import {Text, View} from 'react-native';
+import {Mathfield} from 'react-native-mathlive';
 import {CUSTOM_KEYBOARDS, CUSTOM_KEYBOARD_LAYERS} from './defaultKeyboard';
 
 export default function App() {
-  const onPressGet = () => {
-    const mfVal = getMathfieldValue();
-  };
-
   return (
     <View
       style={{
@@ -20,6 +16,11 @@ export default function App() {
       }}>
       <View style={{height: '80%', width: '80%', backgroundColor: 'lightblue'}}>
         <Text style={{height: 60, width: '100%', backgroundColor: '#acb8bc'}}>test text filler</Text>
+        <Mathfield
+          customKeyboardLayers={CUSTOM_KEYBOARD_LAYERS}
+          customKeyboards={CUSTOM_KEYBOARDS}
+          mergeKeyboards={true}
+        />
         <Mathfield
           customKeyboardLayers={CUSTOM_KEYBOARD_LAYERS}
           customKeyboards={CUSTOM_KEYBOARDS}

@@ -239,6 +239,42 @@ class Parser {
     return result;
   }
 
+  scanObject() {
+    let result = '';
+    while (!this.isEnd()) {
+      if (this.match('<space>')) {
+        result += ' ';
+      } else {
+        const token = this.currentToken();
+
+        if (token === ']') {
+          break;
+        }
+
+        if (isLiteral(token)) {
+          result += this.nextToken();
+        } else if (token.startsWith('\\')) {
+          // TeX will give a 'Missing \endcsname inserted' error
+          // if it encounters any command when expecting a string.
+          // We're a bit more lax.
+          this.onError({code: 'unbalanced-braces'});
+          result += this.nextToken();
+        } else {
+          // It's '<{>', '<}>', '<$>' or '<$$>
+          if (token == '<{>') {
+            result += '{';
+            this.nextToken();
+          } else if (token == '<}>') {
+            result += '}';
+            this.nextToken();
+            break;
+          }
+        }
+      }
+    }
+    return JSON.parse(result);
+  }
+
   /**
    * Parse a sequence until a group end marker, such as
    * `}`, `\end`, `&`, etc...
@@ -516,6 +552,8 @@ class Parser {
     while (!this.isEnd() && !this.match(']')) {
       if (argType === 'string') {
         result = this.scanString();
+      } else if (argType === 'object') {
+        result = this.scanObject();
       } else if (argType === 'math') {
         this.beginContext({mode: 'math'});
         result = this.mathlist.concat(this.parse(token => token === ']'));

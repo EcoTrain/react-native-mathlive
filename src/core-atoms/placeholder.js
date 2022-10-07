@@ -13,6 +13,7 @@ export class PlaceholderAtom extends Atom {
     super('placeholder', context, {
       value,
       command: '\\placeholder',
+      mode: options?.mode ?? 'math',
     });
     this.options = options;
   }

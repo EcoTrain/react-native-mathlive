@@ -35,6 +35,7 @@ export class Atom {
       this.value = options.value;
     }
     this.command = options?.command ?? this.value ?? '';
+    this.mode = options?.mode ?? 'math';
     this.isFunction = options?.isFunction ?? false;
     if (options?.serialize) {
       console.assert(typeof options.command === 'string');
@@ -99,6 +100,7 @@ export class Atom {
     if (this.value !== undefined) {
       result.value = this.value;
     }
+
     if (this.style && Object.keys(this.style).length > 0) {
       result.style = {...this.style};
     }
@@ -107,27 +109,11 @@ export class Atom {
       result.verbatimLatex = this.verbatimLatex;
     }
 
-    if (this.subsupPlacement) {
-      result.subsupPlacement = this.subsupPlacement;
-    }
-    if (this.explicitSubsupPlacement) {
-      result.explicitSubsupPlacement = true;
-    }
-
     if (this.isFunction) {
       result.isFunction = true;
     }
-    if (this.displayContainsHighlight) {
-      result.displayContainsHighlight = true;
-    }
-    if (this.isExtensibleSymbol) {
-      result.isExtensibleSymbol = true;
-    }
-    if (this.skipBoundary) {
-      result.skipBoundary = true;
-    }
-    if (this.captureSelection) {
-      result.captureSelection = true;
+    if (this.metaObject) {
+      result.metaObject = this.metaObject;
     }
 
     if (this._branches) {
@@ -147,7 +133,8 @@ export class Atom {
   serialize() {
     if (this.body && this.command) {
       // There's a command and body
-      return joinLatex([this.command, '{', this.bodyToLatex(), '}']);
+      let meta = this.metaObject ? ['[', JSON.stringify(this.metaObject), ']'] : [];
+      return joinLatex([this.command, ...meta, '{', this.bodyToLatex(), '}']);
     }
 
     if (this.body) {
