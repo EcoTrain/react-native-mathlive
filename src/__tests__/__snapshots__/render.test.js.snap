@@ -26,28 +26,29 @@ exports[`Mathfield Render code correctly 1`] = `
           "borderColor": "gray",
           "borderRadius": 8,
           "borderWidth": 1,
-          "minHeight": 40,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
           "opacity": 1,
-          "padding": 8,
+          "paddingHorizontal": 8,
+          "paddingVertical": 4,
         }
       }
     >
       <View
         style={
           {
-            "backgroundColor": "red",
+            "alignItems": "center",
             "flex": 1,
             "flexDirection": "row",
-            "justifyContent": "space-between",
+            "flexWrap": "wrap",
           }
         }
       >
         <View
           style={
             {
-              "backgroundColor": "blue",
+              "alignItems": "center",
               "flexDirection": "row",
-              "flexWrap": "wrap",
             }
           }
         >
@@ -65,34 +66,31 @@ exports[`Mathfield Render code correctly 1`] = `
               onStartShouldSetResponder={[Function]}
               style={
                 {
-                  "alignContent": "center",
-                  "display": "flex",
-                  "height": "100%",
-                  "justifyContent": "center",
                   "opacity": 1,
                 }
               }
             >
-              <View
+              <Text
                 style={
-                  {
-                    "flexDirection": "row",
-                  }
+                  [
+                    {},
+                    false,
+                  ]
                 }
               >
-                <Text
-                  style={
-                    [
-                      {},
-                      false,
-                    ]
-                  }
-                >
-                  3
-                </Text>
-              </View>
+                3
+              </Text>
             </View>
           </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
           <View>
             <View
               accessible={true}
@@ -107,34 +105,31 @@ exports[`Mathfield Render code correctly 1`] = `
               onStartShouldSetResponder={[Function]}
               style={
                 {
-                  "alignContent": "center",
-                  "display": "flex",
-                  "height": "100%",
-                  "justifyContent": "center",
                   "opacity": 1,
                 }
               }
             >
-              <View
+              <Text
                 style={
-                  {
-                    "flexDirection": "row",
-                  }
+                  [
+                    {},
+                    false,
+                  ]
                 }
               >
-                <Text
-                  style={
-                    [
-                      {},
-                      false,
-                    ]
-                  }
-                >
-                   
-                </Text>
-              </View>
+                 
+              </Text>
             </View>
           </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
           <View>
             <View
               accessible={true}
@@ -149,34 +144,31 @@ exports[`Mathfield Render code correctly 1`] = `
               onStartShouldSetResponder={[Function]}
               style={
                 {
-                  "alignContent": "center",
-                  "display": "flex",
-                  "height": "100%",
-                  "justifyContent": "center",
                   "opacity": 1,
                 }
               }
             >
-              <View
+              <Text
                 style={
-                  {
-                    "flexDirection": "row",
-                  }
+                  [
+                    {},
+                    false,
+                  ]
                 }
               >
-                <Text
-                  style={
-                    [
-                      {},
-                      false,
-                    ]
-                  }
-                >
-                  +
-                </Text>
-              </View>
+                +
+              </Text>
             </View>
           </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
           <View>
             <View
               accessible={true}
@@ -191,44 +183,36 @@ exports[`Mathfield Render code correctly 1`] = `
               onStartShouldSetResponder={[Function]}
               style={
                 {
-                  "alignContent": "center",
-                  "display": "flex",
-                  "height": "100%",
-                  "justifyContent": "center",
                   "opacity": 1,
                 }
               }
             >
-              <View
+              <Text
                 style={
-                  {
-                    "flexDirection": "row",
-                  }
+                  [
+                    {},
+                    false,
+                  ]
                 }
               >
-                <Text
-                  style={
-                    [
-                      {},
-                      false,
-                    ]
-                  }
-                >
-                   
-                </Text>
-              </View>
+                 
+              </Text>
             </View>
           </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
           <View>
             <View
               style={
                 [
-                  {
-                    "alignContent": "center",
-                    "display": "flex",
-                    "height": "100%",
-                    "justifyContent": "center",
-                  },
+                  {},
                   false,
                 ]
               }
@@ -236,6 +220,7 @@ exports[`Mathfield Render code correctly 1`] = `
               <View
                 style={
                   {
+                    "alignItems": "center",
                     "alignSelf": "center",
                     "flexDirection": "row",
                   }
@@ -255,32 +240,20 @@ exports[`Mathfield Render code correctly 1`] = `
                     onStartShouldSetResponder={[Function]}
                     style={
                       {
-                        "alignContent": "center",
-                        "display": "flex",
-                        "height": "100%",
-                        "justifyContent": "center",
                         "opacity": 1,
                       }
                     }
                   >
-                    <View
+                    <Text
                       style={
-                        {
-                          "flexDirection": "row",
-                        }
+                        [
+                          {},
+                          false,
+                        ]
                       }
                     >
-                      <Text
-                        style={
-                          [
-                            {},
-                            false,
-                          ]
-                        }
-                      >
-                        4
-                      </Text>
-                    </View>
+                      4
+                    </Text>
                   </View>
                 </View>
                 <View>
@@ -297,36 +270,29 @@ exports[`Mathfield Render code correctly 1`] = `
                     onStartShouldSetResponder={[Function]}
                     style={
                       {
-                        "alignContent": "center",
-                        "display": "flex",
-                        "height": "100%",
-                        "justifyContent": "center",
                         "opacity": 1,
                       }
                     }
                   >
-                    <View
+                    <Text
                       style={
-                        {
-                          "flexDirection": "row",
-                        }
+                        [
+                          {},
+                          false,
+                        ]
                       }
                     >
-                      <Text
-                        style={
-                          [
-                            {},
-                            false,
-                          ]
-                        }
-                      >
-                        +
-                      </Text>
-                    </View>
+                      +
+                    </Text>
                   </View>
                 </View>
                 <View>
                   <View
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                      }
+                    }
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -339,9 +305,6 @@ exports[`Mathfield Render code correctly 1`] = `
                     onStartShouldSetResponder={[Function]}
                     style={
                       {
-                        "alignContent": "center",
-                        "height": "100%",
-                        "justifyContent": "center",
                         "opacity": 1,
                       }
                     }
@@ -363,12 +326,14 @@ exports[`Mathfield Render code correctly 1`] = `
                 style={
                   {
                     "borderBottomWidth": 1,
+                    "width": "100%",
                   }
                 }
               />
               <View
                 style={
                   {
+                    "alignItems": "center",
                     "alignSelf": "center",
                     "flexDirection": "row",
                   }
@@ -388,32 +353,20 @@ exports[`Mathfield Render code correctly 1`] = `
                     onStartShouldSetResponder={[Function]}
                     style={
                       {
-                        "alignContent": "center",
-                        "display": "flex",
-                        "height": "100%",
-                        "justifyContent": "center",
                         "opacity": 1,
                       }
                     }
                   >
-                    <View
+                    <Text
                       style={
-                        {
-                          "flexDirection": "row",
-                        }
+                        [
+                          {},
+                          false,
+                        ]
                       }
                     >
-                      <Text
-                        style={
-                          [
-                            {},
-                            false,
-                          ]
-                        }
-                      >
-                        1
-                      </Text>
-                    </View>
+                      1
+                    </Text>
                   </View>
                 </View>
                 <View>
@@ -430,32 +383,20 @@ exports[`Mathfield Render code correctly 1`] = `
                     onStartShouldSetResponder={[Function]}
                     style={
                       {
-                        "alignContent": "center",
-                        "display": "flex",
-                        "height": "100%",
-                        "justifyContent": "center",
                         "opacity": 1,
                       }
                     }
                   >
-                    <View
+                    <Text
                       style={
-                        {
-                          "flexDirection": "row",
-                        }
+                        [
+                          {},
+                          false,
+                        ]
                       }
                     >
-                      <Text
-                        style={
-                          [
-                            {},
-                            false,
-                          ]
-                        }
-                      >
-                        6
-                      </Text>
-                    </View>
+                      6
+                    </Text>
                   </View>
                 </View>
                 <View>
@@ -472,32 +413,20 @@ exports[`Mathfield Render code correctly 1`] = `
                     onStartShouldSetResponder={[Function]}
                     style={
                       {
-                        "alignContent": "center",
-                        "display": "flex",
-                        "height": "100%",
-                        "justifyContent": "center",
                         "opacity": 1,
                       }
                     }
                   >
-                    <View
+                    <Text
                       style={
-                        {
-                          "flexDirection": "row",
-                        }
+                        [
+                          {},
+                          false,
+                        ]
                       }
                     >
-                      <Text
-                        style={
-                          [
-                            {},
-                            false,
-                          ]
-                        }
-                      >
-                         
-                      </Text>
-                    </View>
+                       
+                    </Text>
                   </View>
                 </View>
                 <View>
@@ -514,32 +443,20 @@ exports[`Mathfield Render code correctly 1`] = `
                     onStartShouldSetResponder={[Function]}
                     style={
                       {
-                        "alignContent": "center",
-                        "display": "flex",
-                        "height": "100%",
-                        "justifyContent": "center",
                         "opacity": 1,
                       }
                     }
                   >
-                    <View
+                    <Text
                       style={
-                        {
-                          "flexDirection": "row",
-                        }
+                        [
+                          {},
+                          false,
+                        ]
                       }
                     >
-                      <Text
-                        style={
-                          [
-                            {},
-                            false,
-                          ]
-                        }
-                      >
-                        -
-                      </Text>
-                    </View>
+                      -
+                    </Text>
                   </View>
                 </View>
                 <View>
@@ -556,32 +473,20 @@ exports[`Mathfield Render code correctly 1`] = `
                     onStartShouldSetResponder={[Function]}
                     style={
                       {
-                        "alignContent": "center",
-                        "display": "flex",
-                        "height": "100%",
-                        "justifyContent": "center",
                         "opacity": 1,
                       }
                     }
                   >
-                    <View
+                    <Text
                       style={
-                        {
-                          "flexDirection": "row",
-                        }
+                        [
+                          {},
+                          false,
+                        ]
                       }
                     >
-                      <Text
-                        style={
-                          [
-                            {},
-                            false,
-                          ]
-                        }
-                      >
-                         
-                      </Text>
-                    </View>
+                       
+                    </Text>
                   </View>
                 </View>
                 <View>
@@ -598,37 +503,34 @@ exports[`Mathfield Render code correctly 1`] = `
                     onStartShouldSetResponder={[Function]}
                     style={
                       {
-                        "alignContent": "center",
-                        "display": "flex",
-                        "height": "100%",
-                        "justifyContent": "center",
                         "opacity": 1,
                       }
                     }
                   >
-                    <View
+                    <Text
                       style={
-                        {
-                          "flexDirection": "row",
-                        }
+                        [
+                          {},
+                          false,
+                        ]
                       }
                     >
-                      <Text
-                        style={
-                          [
-                            {},
-                            false,
-                          ]
-                        }
-                      >
-                        8
-                      </Text>
-                    </View>
+                      8
+                    </Text>
                   </View>
                 </View>
               </View>
             </View>
           </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
           <View>
             <View
               accessible={true}
@@ -643,34 +545,31 @@ exports[`Mathfield Render code correctly 1`] = `
               onStartShouldSetResponder={[Function]}
               style={
                 {
-                  "alignContent": "center",
-                  "display": "flex",
-                  "height": "100%",
-                  "justifyContent": "center",
                   "opacity": 1,
                 }
               }
             >
-              <View
+              <Text
                 style={
-                  {
-                    "flexDirection": "row",
-                  }
+                  [
+                    {},
+                    false,
+                  ]
                 }
               >
-                <Text
-                  style={
-                    [
-                      {},
-                      false,
-                    ]
-                  }
-                >
-                   
-                </Text>
-              </View>
+                 
+              </Text>
             </View>
           </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
           <View>
             <View
               accessible={true}
@@ -685,34 +584,31 @@ exports[`Mathfield Render code correctly 1`] = `
               onStartShouldSetResponder={[Function]}
               style={
                 {
-                  "alignContent": "center",
-                  "display": "flex",
-                  "height": "100%",
-                  "justifyContent": "center",
                   "opacity": 1,
                 }
               }
             >
-              <View
+              <Text
                 style={
-                  {
-                    "flexDirection": "row",
-                  }
+                  [
+                    {},
+                    false,
+                  ]
                 }
               >
-                <Text
-                  style={
-                    [
-                      {},
-                      false,
-                    ]
-                  }
-                >
-                  +
-                </Text>
-              </View>
+                +
+              </Text>
             </View>
           </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
           <View>
             <View
               accessible={true}
@@ -727,57 +623,45 @@ exports[`Mathfield Render code correctly 1`] = `
               onStartShouldSetResponder={[Function]}
               style={
                 {
-                  "alignContent": "center",
-                  "display": "flex",
-                  "height": "100%",
-                  "justifyContent": "center",
                   "opacity": 1,
                 }
               }
             >
-              <View
+              <Text
                 style={
-                  {
-                    "flexDirection": "row",
-                  }
+                  [
+                    {},
+                    false,
+                  ]
                 }
               >
-                <Text
-                  style={
-                    [
-                      {},
-                      false,
-                    ]
-                  }
-                >
-                   
-                </Text>
-              </View>
+                 
+              </Text>
             </View>
           </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
           <View>
             <View
               style={
                 [
-                  {
-                    "alignItems": "center",
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                  },
+                  {},
                   [
                     {
                       "alignItems": "center",
-                      "flex": 1,
-                      "height": "100%",
                       "justifyContent": "center",
                       "opacity": 1,
                     },
                     false,
                   ],
-                  {
-                    "backgroundColor": "hsl(204, 50%, 90%)",
-                  },
+                  false,
                 ]
               }
             >
@@ -791,15 +675,572 @@ exports[`Mathfield Render code correctly 1`] = `
               >
                 <View>
                   <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                      t
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                      e
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                      x
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                      t
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                      V
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                      a
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                      r
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                      2
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {},
+                    false,
+                  ]
+                }
+              >
+                 
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {},
+                    false,
+                  ]
+                }
+              >
+                +
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {},
+                    false,
+                  ]
+                }
+              >
+                 
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                  },
+                  {
+                    "backgroundColor": "hsl(204, 50%, 90%)",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  {
+                    "justifyContent": "center",
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {},
+                      {
+                        "fontSize": 24,
+                      },
+                    ]
+                  }
+                >
+                  √
+                </Text>
+              </View>
+              <View
+                onLayout={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "paddingVertical": 2,
+                  }
+                }
+              >
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                      2
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                      4
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                       
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                      +
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                       
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
                     style={
                       [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexDirection": "row",
-                          "height": "100%",
-                          "justifyContent": "center",
-                        },
+                        {},
                         false,
                       ]
                     }
@@ -807,256 +1248,18 @@ exports[`Mathfield Render code correctly 1`] = `
                     <View
                       style={
                         {
-                          "display": "flex",
-                          "height": "100%",
-                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "alignSelf": "center",
+                          "flexDirection": "row",
                         }
                       }
                     >
-                      <Text
-                        style={
-                          [
-                            {},
-                            {
-                              "fontSize": 24,
-                            },
-                          ]
-                        }
-                      >
-                        √
-                      </Text>
-                    </View>
-                    <View
-                      onLayout={[Function]}
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "borderTopWidth": 1,
-                            "flexDirection": "row",
-                          },
-                        ]
-                      }
-                    >
-                      <View>
-                        <View
-                          accessible={true}
-                          collapsable={false}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            {
-                              "alignContent": "center",
-                              "display": "flex",
-                              "height": "100%",
-                              "justifyContent": "center",
-                              "opacity": 1,
-                            }
-                          }
-                        >
-                          <View
-                            style={
-                              {
-                                "flexDirection": "row",
-                              }
-                            }
-                          >
-                            <Text
-                              style={
-                                [
-                                  {},
-                                  false,
-                                ]
-                              }
-                            >
-                              2
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                      <View>
-                        <View
-                          accessible={true}
-                          collapsable={false}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            {
-                              "alignContent": "center",
-                              "display": "flex",
-                              "height": "100%",
-                              "justifyContent": "center",
-                              "opacity": 1,
-                            }
-                          }
-                        >
-                          <View
-                            style={
-                              {
-                                "flexDirection": "row",
-                              }
-                            }
-                          >
-                            <Text
-                              style={
-                                [
-                                  {},
-                                  false,
-                                ]
-                              }
-                            >
-                              4
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                      <View>
-                        <View
-                          accessible={true}
-                          collapsable={false}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            {
-                              "alignContent": "center",
-                              "display": "flex",
-                              "height": "100%",
-                              "justifyContent": "center",
-                              "opacity": 1,
-                            }
-                          }
-                        >
-                          <View
-                            style={
-                              {
-                                "flexDirection": "row",
-                              }
-                            }
-                          >
-                            <Text
-                              style={
-                                [
-                                  {},
-                                  false,
-                                ]
-                              }
-                            >
-                               
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                      <View>
-                        <View
-                          accessible={true}
-                          collapsable={false}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            {
-                              "alignContent": "center",
-                              "display": "flex",
-                              "height": "100%",
-                              "justifyContent": "center",
-                              "opacity": 1,
-                            }
-                          }
-                        >
-                          <View
-                            style={
-                              {
-                                "flexDirection": "row",
-                              }
-                            }
-                          >
-                            <Text
-                              style={
-                                [
-                                  {},
-                                  false,
-                                ]
-                              }
-                            >
-                              +
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                      <View>
-                        <View
-                          accessible={true}
-                          collapsable={false}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            {
-                              "alignContent": "center",
-                              "display": "flex",
-                              "height": "100%",
-                              "justifyContent": "center",
-                              "opacity": 1,
-                            }
-                          }
-                        >
-                          <View
-                            style={
-                              {
-                                "flexDirection": "row",
-                              }
-                            }
-                          >
-                            <Text
-                              style={
-                                [
-                                  {},
-                                  false,
-                                ]
-                              }
-                            >
-                               
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
                       <View>
                         <View
                           style={
                             [
                               {
-                                "alignContent": "center",
-                                "display": "flex",
-                                "height": "100%",
-                                "justifyContent": "center",
+                                "flexDirection": "row",
                               },
                               false,
                             ]
@@ -1065,114 +1268,41 @@ exports[`Mathfield Render code correctly 1`] = `
                           <View
                             style={
                               {
-                                "alignSelf": "center",
-                                "flexDirection": "row",
+                                "justifyContent": "center",
                               }
                             }
                           >
-                            <View>
-                              <View
-                                style={
-                                  [
-                                    {
-                                      "alignItems": "center",
-                                      "display": "flex",
-                                      "flexDirection": "row",
-                                      "height": "100%",
-                                      "justifyContent": "center",
-                                    },
-                                    false,
-                                  ]
-                                }
-                              >
-                                <View
-                                  style={
-                                    {
-                                      "display": "flex",
-                                      "height": "100%",
-                                      "justifyContent": "center",
-                                    }
-                                  }
-                                >
-                                  <Text
-                                    style={
-                                      [
-                                        {},
-                                        {
-                                          "fontSize": 24,
-                                        },
-                                      ]
-                                    }
-                                  >
-                                    √
-                                  </Text>
-                                </View>
-                                <View
-                                  onLayout={[Function]}
-                                  style={
-                                    [
-                                      {
-                                        "alignItems": "center",
-                                        "borderTopWidth": 1,
-                                        "flexDirection": "row",
-                                      },
-                                    ]
-                                  }
-                                >
-                                  <View>
-                                    <View
-                                      accessible={true}
-                                      collapsable={false}
-                                      focusable={true}
-                                      onClick={[Function]}
-                                      onResponderGrant={[Function]}
-                                      onResponderMove={[Function]}
-                                      onResponderRelease={[Function]}
-                                      onResponderTerminate={[Function]}
-                                      onResponderTerminationRequest={[Function]}
-                                      onStartShouldSetResponder={[Function]}
-                                      style={
-                                        {
-                                          "alignContent": "center",
-                                          "height": "100%",
-                                          "justifyContent": "center",
-                                          "opacity": 1,
-                                        }
-                                      }
-                                    >
-                                      <Text
-                                        style={
-                                          [
-                                            {},
-                                            false,
-                                          ]
-                                        }
-                                      >
-                                        ▢
-                                      </Text>
-                                    </View>
-                                  </View>
-                                </View>
-                              </View>
-                            </View>
+                            <Text
+                              style={
+                                [
+                                  {},
+                                  {
+                                    "fontSize": 24,
+                                  },
+                                ]
+                              }
+                            >
+                              √
+                            </Text>
                           </View>
                           <View
+                            onLayout={[Function]}
                             style={
                               {
-                                "borderBottomWidth": 1,
-                              }
-                            }
-                          />
-                          <View
-                            style={
-                              {
-                                "alignSelf": "center",
+                                "alignItems": "center",
+                                "borderTopWidth": 1,
                                 "flexDirection": "row",
+                                "paddingVertical": 2,
                               }
                             }
                           >
                             <View>
                               <View
+                                accessibilityState={
+                                  {
+                                    "disabled": false,
+                                  }
+                                }
                                 accessible={true}
                                 collapsable={false}
                                 focusable={true}
@@ -1185,9 +1315,6 @@ exports[`Mathfield Render code correctly 1`] = `
                                 onStartShouldSetResponder={[Function]}
                                 style={
                                   {
-                                    "alignContent": "center",
-                                    "height": "100%",
-                                    "justifyContent": "center",
                                     "opacity": 1,
                                   }
                                 }
@@ -1208,185 +1335,30 @@ exports[`Mathfield Render code correctly 1`] = `
                         </View>
                       </View>
                     </View>
-                  </View>
-                </View>
-                <View>
-                  <View
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "alignContent": "center",
-                        "display": "flex",
-                        "height": "100%",
-                        "justifyContent": "center",
-                        "opacity": 1,
-                      }
-                    }
-                  >
                     <View
                       style={
                         {
-                          "flexDirection": "row",
+                          "borderBottomWidth": 1,
+                          "width": "100%",
                         }
                       }
-                    >
-                      <Text
-                        style={
-                          [
-                            {},
-                            false,
-                          ]
-                        }
-                      >
-                         
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View>
-                  <View
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "alignContent": "center",
-                        "display": "flex",
-                        "height": "100%",
-                        "justifyContent": "center",
-                        "opacity": 1,
-                      }
-                    }
-                  >
+                    />
                     <View
                       style={
-                        {
-                          "flexDirection": "row",
-                        }
-                      }
-                    >
-                      <Text
-                        style={
-                          [
-                            {},
-                            false,
-                          ]
-                        }
-                      >
-                        +
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View>
-                  <View
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "alignContent": "center",
-                        "display": "flex",
-                        "height": "100%",
-                        "justifyContent": "center",
-                        "opacity": 1,
-                      }
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "flexDirection": "row",
-                        }
-                      }
-                    >
-                      <Text
-                        style={
-                          [
-                            {},
-                            false,
-                          ]
-                        }
-                      >
-                         
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View>
-                  <View
-                    style={
-                      [
                         {
                           "alignItems": "center",
-                          "display": "flex",
+                          "alignSelf": "center",
                           "flexDirection": "row",
-                          "height": "100%",
-                          "justifyContent": "center",
-                        },
-                        false,
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "display": "flex",
-                          "height": "100%",
-                          "justifyContent": "center",
                         }
-                      }
-                    >
-                      <Text
-                        style={
-                          [
-                            {},
-                            {
-                              "fontSize": 24,
-                            },
-                          ]
-                        }
-                      >
-                        √
-                      </Text>
-                    </View>
-                    <View
-                      onLayout={[Function]}
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "borderTopWidth": 1,
-                            "flexDirection": "row",
-                          },
-                        ]
                       }
                     >
                       <View>
                         <View
+                          accessibilityState={
+                            {
+                              "disabled": false,
+                            }
+                          }
                           accessible={true}
                           collapsable={false}
                           focusable={true}
@@ -1399,74 +1371,20 @@ exports[`Mathfield Render code correctly 1`] = `
                           onStartShouldSetResponder={[Function]}
                           style={
                             {
-                              "alignContent": "center",
-                              "display": "flex",
-                              "height": "100%",
-                              "justifyContent": "center",
                               "opacity": 1,
                             }
                           }
                         >
-                          <View
+                          <Text
                             style={
-                              {
-                                "flexDirection": "row",
-                              }
+                              [
+                                {},
+                                false,
+                              ]
                             }
                           >
-                            <Text
-                              style={
-                                [
-                                  {},
-                                  false,
-                                ]
-                              }
-                            >
-                              2
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                      <View>
-                        <View
-                          accessible={true}
-                          collapsable={false}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            {
-                              "alignContent": "center",
-                              "display": "flex",
-                              "height": "100%",
-                              "justifyContent": "center",
-                              "opacity": 1,
-                            }
-                          }
-                        >
-                          <View
-                            style={
-                              {
-                                "flexDirection": "row",
-                              }
-                            }
-                          >
-                            <Text
-                              style={
-                                [
-                                  {},
-                                  false,
-                                ]
-                              }
-                            >
-                              4
-                            </Text>
-                          </View>
+                            ▢
+                          </Text>
                         </View>
                       </View>
                     </View>
@@ -1475,54 +1393,58 @@ exports[`Mathfield Render code correctly 1`] = `
               </View>
             </View>
           </View>
+          <Text>
+            |
+          </Text>
         </View>
-        <View
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
+      </View>
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignSelf": "center",
+            "aspectRatio": "1/1",
+            "height": 24,
+            "opacity": 1,
+          }
+        }
+      >
+        <Image
+          source={
             {
-              "alignSelf": "center",
-              "aspectRatio": "1/1",
-              "height": "100%",
-              "maxHeight": 30,
-              "maxWidth": 30,
-              "opacity": 1,
+              "process": [Function],
             }
           }
-        >
-          <Image
-            source={
-              {
-                "process": [Function],
-              }
+          style={
+            {
+              "height": "100%",
+              "width": "100%",
             }
-            style={
-              {
-                "flex": 1,
-                "height": "100%",
-                "width": "100%",
-              }
-            }
-          />
-        </View>
+          }
+        />
       </View>
     </View>
     <Text>
+      1. serialized: 
+      3 + \\frac{4+\\placeholder{}}{16 - 8} + \\smash[{"textVar2":"metaVar2"}]{textVar2} + \\sqrt{24 + \\frac{\\sqrt{\\placeholder{}}}{\\placeholder{}}}
+    </Text>
+    <Text>
       3. ASCII: 
-      "3 + ("4+)/("16 - 8)" + sqrt("24 + (sqrt())/())" + sqrt("24)
+      "3 + ("4+)/("16 - 8)" + "textVar2" + sqrt("24 + (sqrt())/())
        
     </Text>
     <Text>
       4. ASCII meta: 
-      {"id":"metaVar2"}
+      {"textVar2":"metaVar2"}
        
     </Text>
   </View>,

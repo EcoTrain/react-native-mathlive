@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Platform, StyleSheet, View} from 'react-native';
 import {Text} from '../components/styled/Text';
-import {KB_DEFAULT_FONT_SIZE} from '../styles/defaults';
+import {KB_DEFAULT_FONT_SIZE, MF_DEFAULT_FONT_SIZE} from '../styles/defaults';
 import {Atom} from '../core/atom';
 import {MathfieldContext} from '../contexts/mathfield/MathfieldContext';
 import {UiColors} from '../contexts/uiColors';
@@ -59,14 +59,13 @@ const SqrtAtomRender = ({atom}) => {
   };
 
   const getRoot = () => {
-    const moreOneRowHeight = size.height > 40;
-    const longRootLine = !onKb && moreOneRowHeight && (
-      <Text style={{borderRightWidth: 1, flex: 1, fontSize: KB_DEFAULT_FONT_SIZE}}> </Text>
-    );
+    const defaultFontSize = onKb ? KB_DEFAULT_FONT_SIZE : MF_DEFAULT_FONT_SIZE;
+    const needSprut = !onKb && 0.5 * size.height > defaultFontSize;
     return (
       <View style={styles.rootContainer}>
-        {longRootLine}
+        {needSprut && <View style={{flex: 1, borderRightWidth: 1}} />}
         <Text style={{fontSize: onKb ? KB_DEFAULT_FONT_SIZE : Math.max(24, 0.5 * size.height)}}>√</Text>
+        {needSprut && <View style={{flex: 1}} />}
       </View>
     );
   };
@@ -74,7 +73,7 @@ const SqrtAtomRender = ({atom}) => {
   return (
     <View style={[styles.container, selectedAtom == atom && {backgroundColor: UiColors.mathfieldSelected}]}>
       {getRoot()}
-      <View style={[styles.body]} onLayout={onChangeBodySize}>
+      <View style={styles.body} onLayout={onChangeBodySize}>
         {atom.body.map((x, i) => (
           <View key={i}>{x.render()}</View>
         ))}
@@ -84,7 +83,16 @@ const SqrtAtomRender = ({atom}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {display: 'flex', height: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'},
-  body: {flexDirection: 'row', alignItems: 'center', borderTopWidth: 1},
-  rootContainer: {display: 'flex', height: '100%', justifyContent: 'center'},
+  container: {
+    flexDirection: 'row',
+  },
+  body: {
+    borderTopWidth: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 2,
+  },
+  rootContainer: {
+    justifyContent: 'center',
+  },
 });

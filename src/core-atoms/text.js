@@ -44,14 +44,11 @@ const TextAtomRender = ({atom}) => {
         showKeyboard();
         setSelectedAtom(atom);
       }}>
-      <View style={{flexDirection: 'row'}}>
-        <Text style={atom.context.placeOnKeyboard && {fontSize: KB_DEFAULT_FONT_SIZE}}>{atom.value}</Text>
-        {selectedAtom == atom && <Text>|</Text>}
-      </View>
+      <Text style={atom.context.placeOnKeyboard && {fontSize: KB_DEFAULT_FONT_SIZE}}>{atom.value}</Text>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {display: 'flex', height: '100%', justifyContent: 'center', alignContent: 'center'},
+  container: {},
 });

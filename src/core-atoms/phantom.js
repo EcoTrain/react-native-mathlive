@@ -53,9 +53,8 @@ const PhantomAtomRender = ({atom}) => {
   // width of space was calc experimental: fontSize/4  (see fontSize: 24 as example)
   const propStyle = [
     {
-      flex: 1,
       opacity: atom.isInvisible ? 0 : 1,
-      height: atom.smashHeight ? MF_DEFAULT_FONT_SIZE : '100%',
+      // height: atom.smashHeight ? MF_DEFAULT_FONT_SIZE : '100%',
       justifyContent: 'center',
       alignItems: 'center',
     },
@@ -73,6 +72,9 @@ const PhantomAtomRender = ({atom}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'},
-  body: {flexDirection: 'row', alignItems: 'center'},
+  container: {},
+  body: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 });

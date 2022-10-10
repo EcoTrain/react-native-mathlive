@@ -98,7 +98,7 @@ const KeyboardKeyWithFeedback = ({type, label, latex, insert, command}) => {
       onPressIn={() => setPressed(true)}
       onPressOut={() => setPressed(false)}
       onPress={keyCallback}>
-      <View style={{cursorPointer: 'none'}}>{keyFrontPanel}</View>
+      {keyFrontPanel}
     </TouchableOpacity>
   );
 };

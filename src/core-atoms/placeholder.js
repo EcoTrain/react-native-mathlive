@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {TouchableOpacity} from 'react-native';
+import {Platform, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Text} from '../components/styled/Text';
 import {KeyboardContext} from '../contexts/keyboard/KeyboardContext';
 import {MathfieldContext} from '../contexts/mathfield/MathfieldContext';
@@ -56,15 +56,9 @@ const PlaceholderAtomRender = ({atom}) => {
 
   return (
     <TouchableOpacity
+      disabled={atom.context.placeOnKeyboard}
       activeOpacity={1}
-      style={[
-        {
-          height: '100%',
-          justifyContent: 'center',
-          alignContent: 'center',
-        },
-        selectedAtom == atom && {backgroundColor: UiColors.mathfieldSelected},
-      ]}
+      style={[styles.container, selectedAtom == atom && {backgroundColor: UiColors.mathfieldSelected}]}
       onPress={() => {
         showKeyboard();
         setSelectedAtom(atom);
@@ -73,3 +67,7 @@ const PlaceholderAtomRender = ({atom}) => {
     </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {},
+});
