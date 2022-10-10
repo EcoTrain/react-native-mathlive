@@ -51,15 +51,22 @@ const PhantomAtomRender = ({atom}) => {
   const {selectedAtom} = useContext(MathfieldContext);
 
   // width of space was calc experimental: fontSize/4  (see fontSize: 24 as example)
-  const propStyle = {
-    visibility: atom.isInvisible ? 'hidden' : 'visible',
-    height: atom.smashHeight ? MF_DEFAULT_FONT_SIZE : '100%',
-    width: atom.smashWidth ? MF_DEFAULT_FONT_SIZE / 4 : '100%',
-    backgroundColor: selectedAtom == atom && UiColors.mathfieldSelected,
-  };
+  const propStyle = [
+    {
+      flex: 1,
+      opacity: atom.isInvisible ? 0 : 1,
+      height: atom.smashHeight ? MF_DEFAULT_FONT_SIZE : '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    atom.smashWidth && {
+      flex: 0,
+      width: MF_DEFAULT_FONT_SIZE / 4,
+    },
+  ];
 
   return (
-    <View style={[styles.container, propStyle]}>
+    <View style={[styles.container, propStyle, selectedAtom == atom && {backgroundColor: UiColors.mathfieldSelected}]}>
       <View style={styles.body}>{atom.body && atom.body.map((x, i) => <View key={i}>{x.render()}</View>)}</View>
     </View>
   );

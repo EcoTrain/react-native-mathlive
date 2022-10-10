@@ -5,12 +5,15 @@ import {MathfieldContext} from '../../contexts/mathfield/MathfieldContext';
 import {UiColors} from '../../contexts/uiColors';
 import {joinLatex} from '../../core/tokenizer';
 import {latexToAsciiMath} from '../atom-to-ascii-math';
+import {testDefaultMfValue} from './testDefaultValue';
 
 export const MathfieldElement = () => {
   const {toggleKeyboardVisibility} = useContext(KeyboardContext);
-  const {atoms} = useContext(MathfieldContext);
-  const [focused, setFocus] = useState(false);
+  const {atoms, focused} = useContext(MathfieldContext);
   const stylesThemed = styles(UiColors);
+
+  // TODO: Rm before release
+  testDefaultMfValue();
 
   const getSerializedLatex = () => {
     const serializedAtoms = atoms.map(x => x.serialize());
@@ -42,18 +45,13 @@ export const MathfieldElement = () => {
               <View key={i}>{x.render()}</View>
             ))}
           </View>
-          <TouchableOpacity
-            style={stylesThemed.mfKbBtn}
-            onPress={() => {
-              setFocus(!focused);
-              toggleKeyboardVisibility();
-            }}>
+          <TouchableOpacity style={stylesThemed.mfKbBtn} onPress={() => toggleKeyboardVisibility()}>
             <Image style={stylesThemed.mfKbIcon} source={require('../../assets/icons/keyboard.png')} />
           </TouchableOpacity>
         </View>
       </TouchableOpacity>
-      <Text>1. serialized: {getSerializedLatex()}</Text>
-      <Text>2. JSON: {JSON.stringify(getJson())}</Text>
+      {/* <Text>1. serialized: {getSerializedLatex()}</Text> */}
+      {/* <Text>2. JSON: {JSON.stringify(getJson())}</Text> */}
       <Text>3. ASCII: {ascii.asciiString} </Text>
       <Text>4. ASCII meta: {JSON.stringify(ascii.metaObject)} </Text>
     </View>
@@ -69,8 +67,28 @@ const styles = UiColors =>
       padding: 8,
       backgroundColor: UiColors.mathfieldBg,
     },
-    mathfield: {flex: 1, flexDirection: 'row', justifyContent: 'space-between'},
-    mfFormula: {flex: 1, flexDirection: 'row', flexWrap: 'wrap'},
-    mfKbBtn: {height: '100%', maxHeight: 40, aspectRatio: '1/1', marginLeft: 'auto', alignSelf: 'center'},
-    mfKbIcon: {height: '100%', width: '100%', flex: 1},
+    mathfield: {
+      flex: 1,
+      flexDirection: 'row',
+      backgroundColor: 'red',
+      justifyContent: 'space-between',
+    },
+    mfFormula: {
+      flex: 1,
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      backgroundColor: 'blue',
+    },
+    mfKbBtn: {
+      height: '100%',
+      maxHeight: 30,
+      maxWidth: 30,
+      aspectRatio: '1/1',
+      alignSelf: 'center',
+    },
+    mfKbIcon: {
+      height: '100%',
+      width: '100%',
+      flex: 1,
+    },
   });

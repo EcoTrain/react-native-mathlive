@@ -64,7 +64,12 @@ const GenfracAtomRender = ({atom}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {display: 'flex', height: '100%', justifyContent: 'center', alignContent: 'center'},
+  container: {
+    display: 'flex',
+    height: '100%',
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
   operand: {flexDirection: 'row', alignSelf: 'center'},
   delimeter: {borderBottomWidth: 1},
 });

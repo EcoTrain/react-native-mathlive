@@ -29,6 +29,7 @@ const styles = UiColors =>
   StyleSheet.create({
     container: {
       alignItems: 'center',
+      padding: 8,
     },
     mainKeyboardPanel: {
       maxWidth: 800,

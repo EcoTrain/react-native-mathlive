@@ -57,12 +57,14 @@ const PlaceholderAtomRender = ({atom}) => {
   return (
     <TouchableOpacity
       activeOpacity={1}
-      style={{
-        height: '100%',
-        justifyContent: 'center',
-        alignContent: 'center',
-        backgroundColor: selectedAtom == atom && UiColors.mathfieldSelected,
-      }}
+      style={[
+        {
+          height: '100%',
+          justifyContent: 'center',
+          alignContent: 'center',
+        },
+        selectedAtom == atom && {backgroundColor: UiColors.mathfieldSelected},
+      ]}
       onPress={() => {
         showKeyboard();
         setSelectedAtom(atom);

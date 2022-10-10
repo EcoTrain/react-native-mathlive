@@ -22,7 +22,7 @@ const KeyboardKeySeparator = ({type}) => {
 
   const widthType = type.split(' ')?.[1];
   let width = widthType.split('w')?.[1];
-  return <View style={[{flex: (1 / 10) * width}, stylesThemed.keyMargin]} />;
+  return <View style={[{flex: (1 / 10) * width}, stylesThemed.keyContainer, stylesThemed.keyMargin]} />;
 };
 
 const KeyboardKeyWithFeedback = ({type, label, latex, insert, command}) => {

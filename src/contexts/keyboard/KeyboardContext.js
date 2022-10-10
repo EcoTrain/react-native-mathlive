@@ -1,4 +1,5 @@
-import React, {createContext, useEffect, useState} from 'react';
+import React, {createContext, useContext, useEffect, useState} from 'react';
+import {MathfieldContext} from '../mathfield/MathfieldContext';
 import {defineCommands} from './commands';
 import {DEFAULT_KEYBOARDS, DEFAULT_KEYBOARD_LAYERS} from './defaultKeyboard';
 
@@ -16,6 +17,7 @@ export const KeyboardContext = createContext({
 
 export const KeyboardContextProvider = ({children, kbConfig}) => {
   const [isVisible, setIsVisible] = useState(false);
+  const {setFocus} = useContext(MathfieldContext);
 
   /**
    * Define commands for executeCommand on key press
@@ -36,12 +38,15 @@ export const KeyboardContextProvider = ({children, kbConfig}) => {
     isVisible,
     showKeyboard: () => {
       setIsVisible(true);
+      setFocus(true);
     },
     hideKeyboard: () => {
       setIsVisible(false);
+      setFocus(false);
     },
     toggleKeyboardVisibility: () => {
       setIsVisible(!isVisible);
+      setFocus(!isVisible);
     },
     virtualKeyboardLayers,
     virtualKeyboards,

@@ -55,7 +55,7 @@ const SqrtAtomRender = ({atom}) => {
   const onKb = atom.context.placeOnKeyboard;
   const onChangeBodySize = e => {
     const {width, height} = e.nativeEvent.layout;
-    setSize({width: width, height: height});
+    setSize({width, height});
   };
 
   const getRoot = () => {
@@ -66,7 +66,7 @@ const SqrtAtomRender = ({atom}) => {
     return (
       <View style={styles.rootContainer}>
         {longRootLine}
-        <Text style={{fontSize: onKb ? KB_DEFAULT_FONT_SIZE : Math.max(24, 0.6 * size.height)}}>√</Text>
+        <Text style={{fontSize: onKb ? KB_DEFAULT_FONT_SIZE : Math.max(24, 0.5 * size.height)}}>√</Text>
       </View>
     );
   };

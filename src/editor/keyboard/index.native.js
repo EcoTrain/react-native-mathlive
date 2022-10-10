@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {View, StyleSheet, Modal, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Modal, TouchableOpacity, Text} from 'react-native';
 import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
 import {UiColors} from '../../contexts/uiColors';
 import {VirtualKeyboardElement} from './keyboard';
@@ -10,19 +10,10 @@ export const VirtualKeyboard = () => {
 
   return (
     <Modal transparent visible={isVisible} animationType="fade" onRequestClose={() => {}}>
-      <TouchableOpacity
-        activeOpacity={1}
-        onPress={() => {
-          toggleKeyboardVisibility();
-        }}
-        style={{
-          // backgroundColor: 'transparent',
-          flex: 1,
-        }}>
-        <View style={stylesThemed.kbWrapper}>
-          <VirtualKeyboardElement />
-        </View>
-      </TouchableOpacity>
+      <TouchableOpacity activeOpacity={1} onPress={() => toggleKeyboardVisibility()} style={{flex: 1}} />
+      <View style={stylesThemed.kbWrapper}>
+        <VirtualKeyboardElement />
+      </View>
     </Modal>
   );
 };
@@ -31,10 +22,11 @@ export const VirtualKeyboard = () => {
 const styles = UiColors =>
   StyleSheet.create({
     kbWrapper: {
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
       width: '100%',
       minHeight: 50,
       backgroundColor: UiColors.keyboardBg,
     },
   });
-
-// https://stackoverflow.com/questions/38499269/hide-component-when-clicking-outside

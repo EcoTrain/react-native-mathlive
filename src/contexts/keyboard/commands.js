@@ -58,7 +58,6 @@ export const defineCommands = () => {
     // TODO: change latex value on remove atom
     // TODO: add serialize to atoms
     if (mfc.selectedAtom?.parent) {
-      console.log('deleteBackward atom child', {selectedAtom: mfc.selectedAtom, parent: mfc.selectedAtom.parent});
       const leftSibling = mfc.selectedAtom.leftSibling;
 
       // Set previous atom as selected
@@ -72,7 +71,6 @@ export const defineCommands = () => {
       mfc.selectedAtom.parent.removeChild(mfc.selectedAtom);
     } else {
       const ind = mfc.atoms.indexOf(mfc.selectedAtom);
-      console.log('deleteBackward atom root', {atoms: mfc.atoms, selectedAtom: mfc.selectedAtom, ind});
       if (ind > -1) {
         mfc.atoms.splice(ind, 1);
         // Set prev atom: Undefined if rm first
@@ -82,8 +80,6 @@ export const defineCommands = () => {
   };
   COMMANDS.addAtoms = ({options}) => {
     const _atoms = options.atoms || [];
-    console.log('COMMANDS addAtoms', {atoms: mfc.atoms, _atoms, selectedAtom: mfc.selectedAtom});
-
     if (mfc.selectedAtom?.parent) {
       mfc.selectedAtom.parent.addChildrenAfter(_atoms, mfc.selectedAtom);
       if (mfc.selectedAtom.type == 'placeholder') {
