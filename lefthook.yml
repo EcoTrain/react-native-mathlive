@@ -30,9 +30,9 @@ commit-msg:
 pre-push:
   parallel: true
   commands:
-    test:
-      run: yarn test
-    packages-audit:
-      run: yarn audit
+    # test:
+    #   run: yarn test
+    # packages-audit:
+    #   run: yarn audit
     coverage:
       run: yarn test:badges
