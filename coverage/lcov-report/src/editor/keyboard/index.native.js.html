@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>6/7</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">50% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>1/2</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>6/7</span>
             </div>
         
             
@@ -95,28 +95,19 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,8 +117,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -138,37 +128,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {useContext} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Modal, TouchableOpacity, Text} from 'react-native';
 import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
-import {ThemeContext} from '../../contexts/ThemeContext';
+import {UiColors} from '../../contexts/uiColors';
 import {VirtualKeyboardElement} from './keyboard';
-import {KeyboardLayer} from './layer';
 &nbsp;
 export const VirtualKeyboard = () =&gt; {
-  const {isVisible} = useContext(KeyboardContext);
-  const {UiColors} = useContext(ThemeContext);
+  const {isVisible, toggleKeyboardVisibility} = useContext(KeyboardContext);
   const stylesThemed = styles(UiColors);
 &nbsp;
   return (
-    &lt;View
-      style={[
-        stylesThemed.container,
-        {
-          visibility: isVisible ? <span class="branch-0 cbranch-no" title="branch not covered" >'visible' </span>: 'hidden',
-        },
-      ]}&gt;
-      &lt;VirtualKeyboardElement /&gt;
-    &lt;/View&gt;
+    &lt;Modal transparent visible={isVisible} animationType="fade" onRequestClose={<span class="fstat-no" title="function not covered" >()</span> =&gt; {}}&gt;
+      &lt;TouchableOpacity activeOpacity={1} onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >toggleKeyboardVisibility()}</span> style={{flex: 1}} /&gt;
+      &lt;View style={stylesThemed.kbWrapper}&gt;
+        &lt;VirtualKeyboardElement /&gt;
+      &lt;/View&gt;
+    &lt;/Modal&gt;
   );
 };
 &nbsp;
+// eslint-disable-next-line no-shadow
 const styles = UiColors =&gt;
   StyleSheet.create({
-    container: {
+    kbWrapper: {
       position: 'absolute',
       bottom: 0,
       left: 0,
-      right: 0,
       width: '100%',
       minHeight: 50,
       backgroundColor: UiColors.keyboardBg,
@@ -181,7 +166,7 @@ const styles = UiColors =&gt;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-09-10T16:34:53.567Z
+                at 2022-10-11T09:44:13.295Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
