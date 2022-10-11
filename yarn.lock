@@ -6784,13 +6784,6 @@ expect@^29.0.0, expect@^29.1.2:
     jest-message-util "^29.1.2"
     jest-util "^29.1.2"
 
-expo-app-loading@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/expo-app-loading/-/expo-app-loading-2.1.0.tgz#536d89ae70bdd23f1ad48897333edc7f60d91a7d"
-  integrity sha512-txHH76rEKveKP5KK8EvlqxzGcSpuERe4bR+D7JO5tP2QYzuIXjg7v62ktvbJq+M8DiCgp7AjCqBDHnkfGkyNxA==
-  dependencies:
-    expo-splash-screen "~0.16.0"
-
 expo-application@~4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/expo-application/-/expo-application-4.2.2.tgz#c9500819723c59eaee5ca9832bf17d1fd4139f74"
@@ -6944,7 +6937,7 @@ expo-pwa@0.0.123:
     commander "2.20.0"
     update-check "1.5.3"
 
-expo-splash-screen@~0.16.0, expo-splash-screen@~0.16.2:
+expo-splash-screen@~0.16.2:
   version "0.16.2"
   resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-0.16.2.tgz#38ecba9fc9fc2234ee38bcb818d8c88cd83cff9e"
   integrity sha512-AHSRyGwu58WNt8shW5g/4cQ9e9IzUwNTC/WGWxshHCwgbWIJmHLvK3+D45MTmzGWteOoTI8oV7KSQKBNJSTiyw==
@@ -13308,14 +13301,6 @@ react-devtools-core@4.24.0:
   dependencies:
     shell-quote "^1.6.1"
     ws "^7"
-
-react-dom@18.0.0:
-  version "18.0.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.0.0.tgz#26b88534f8f1dbb80853e1eabe752f24100d8023"
-  integrity sha512-XqX7uzmFo0pUceWFCt7Gff6IyIMzFUn7QMZrbrQfGxtaxXZIcGQzoNpRLE3fQLnS4XzLLPMZX2T9TRcSrasicw==
-  dependencies:
-    loose-envify "^1.1.0"
-    scheduler "^0.21.0"
 
 react-error-overlay@^6.0.9:
   version "6.0.11"

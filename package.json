@@ -127,13 +127,11 @@
   },
   "dependencies": {
     "expo": "^46.0.15",
-    "expo-app-loading": "^2.1.0",
     "expo-asset": "~8.6.1",
     "expo-cli": "^6.0.6",
     "expo-font": "~10.2.0",
     "expo-modules-core": "~0.11.5",
     "expo-splash-screen": "~0.16.2",
-    "jest-expo": "^46.0.1",
-    "react-dom": "18.0.0"
+    "jest-expo": "^46.0.1"
   }
 }

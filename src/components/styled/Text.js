@@ -9,7 +9,7 @@ export const Text = ({children, ...props}) => {
       style={[
         {
           // fontSize: MF_DEFAULT_FONT_SIZE,
-          fontFamily: 'KaTeX-Size1-Regular',
+          fontFamily: 'KaTeX_Size1-Regular',
         },
         props.style,
       ]}>
