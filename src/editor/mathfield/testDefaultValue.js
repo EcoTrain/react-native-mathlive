@@ -12,9 +12,9 @@ const defaultValue = [
   // '+ \\smash[{"id":"metaVar2"}]{\\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}',
   // '+ \\hphantom{\\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?}}}',
   // '+ \\vphantom{\\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?}}}',
-  '+ \\sqrt{24}',
+  // '+ \\sqrt{24}',
   // '+ \\sqrt{24 + \\frac{\\sqrt{#?}}{#?}}',
-  // '+ \\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?}}',
+  '+ \\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{#?}}{#?}}{#?}}{#?}}',
 ].join(' ');
 
 export const testDefaultMfValue = () => {

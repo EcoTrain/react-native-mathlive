@@ -2,7 +2,9 @@
 /** @type {import('@jest/types').Config.InitialOptions} */
 
 const config = {
-  preset: 'react-native',
+  preset: 'jest-expo',
+  rootDir: '../../',
+  setupFiles: ['<rootDir>/jest/setup/jestSetup.js'],
   moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx'],
   modulePathIgnorePatterns: ['<rootDir>/example/node_modules', '<rootDir>/lib/'],
   moduleNameMapper: {

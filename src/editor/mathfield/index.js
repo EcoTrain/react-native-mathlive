@@ -43,7 +43,7 @@ export const MathfieldElement = () => {
         ]}>
         <View style={stylesThemed.mfFormula}>
           {atoms.map((atom, i) => (
-            <View key={i} style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View key={i} style={{flexDirection: 'row', alignItems: 'center', marginVertical: 4}}>
               <View key={i}>{atom.render()}</View>
               {selectedAtom == atom && <Text>|</Text>}
             </View>
@@ -77,9 +77,10 @@ const styles = UiColors =>
       flexDirection: 'row',
       flexWrap: 'wrap',
       alignItems: 'center',
+      alignContent: 'center',
     },
     mfKbBtn: {
-      height: MF_DEFAULT_FONT_SIZE,
+      height: 30,
       aspectRatio: '1/1',
       alignSelf: 'center',
     },

@@ -9,8 +9,6 @@ pre-commit:
       files: git diff --name-only @{push}
       glob: '*.{js,ts, jsx, tsx}'
       run: yarn test --findRelatedTests --forceExit {staged_files}
-    coverage:
-      run: yarn test:badges
     # spelling: # Spell checking code. (check orphography)
     #   glob: '*.{js,ts,jsx,tsx,md}'
     #   run: yarn cspell {staged_files}
@@ -36,3 +34,5 @@ pre-push:
       run: yarn test
     # packages-audit:
     #   run: yarn audit
+    # coverage:
+    #   run: yarn test:badges

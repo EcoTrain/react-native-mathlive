@@ -1,15 +1,15 @@
 import React from 'react';
 import {render} from '@testing-library/react-native';
-import {Mathfield} from '../App';
-import {VirtualKeyboardElement} from '../editor/keyboard/keyboard';
+import {Mathfield} from '../../src/App';
+import {VirtualKeyboardElement} from '../../src/editor/keyboard/keyboard';
 
-beforeAll(done => {
-  done();
-});
+// beforeAll(done => {
+//   done();
+// });
 
-afterAll(done => {
-  done();
-});
+// afterAll(done => {
+//   done();
+// });
 
 describe('Mathfield', () => {
   it('Render code correctly', () => {
