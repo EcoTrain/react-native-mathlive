@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/10</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/10</span>
+                <span class='fraction'>10/10</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -111,15 +111,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -131,7 +131,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -150,16 +150,16 @@ import {UiColors} from '../../contexts/uiColors';
 import {KeyboardTopLabelsPanel} from './labelsPanel';
 import {KeyboardLayer} from './layer';
 &nbsp;
-export const VirtualKeyboardElement = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-  const {virtualKeyboards, virtualKeyboardLayers, activeKeyboardName} = <span class="cstat-no" title="statement not covered" >useContext(KeyboardContext),</span>
-    stylesThemed = <span class="cstat-no" title="statement not covered" >styles(UiColors),</span>
-    getActiveKeyboard = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-      const activeLayerName = <span class="cstat-no" title="statement not covered" >virtualKeyboards[activeKeyboardName]?.layer,</span>
-        layer = <span class="cstat-no" title="statement not covered" >virtualKeyboardLayers[activeLayerName];</span>
-<span class="cstat-no" title="statement not covered" >      return &lt;KeyboardLayer layer={layer} /&gt;;</span>
-    };
+export const VirtualKeyboardElement = () =&gt; {
+  const {virtualKeyboards, virtualKeyboardLayers, activeKeyboardName} = useContext(KeyboardContext);
+  const stylesThemed = styles(UiColors);
+  const getActiveKeyboard = () =&gt; {
+    const activeLayerName = virtualKeyboards[activeKeyboardName]?.layer;
+    const layer = virtualKeyboardLayers[activeLayerName];
+    return &lt;KeyboardLayer layer={layer} /&gt;;
+  };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;View style={stylesThemed.container}&gt;
       &lt;View style={stylesThemed.mainKeyboardPanel}&gt;
         &lt;KeyboardTopLabelsPanel /&gt;
@@ -170,8 +170,8 @@ export const VirtualKeyboardElement = <span class="fstat-no" title="function not
 };
 &nbsp;
 // eslint-disable-next-line no-shadow
-const styles = <span class="fstat-no" title="function not covered" >Ui</span>Colors =&gt;
-<span class="cstat-no" title="statement not covered" >  StyleSheet.create({</span>
+const styles = UiColors =&gt;
+  StyleSheet.create({
     container: {
       alignItems: 'center',
       padding: 8,
@@ -190,7 +190,7 @@ const styles = <span class="fstat-no" title="function not covered" >Ui</span>Col
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-10-11T09:44:13.295Z
+                at 2022-10-11T10:19:50.713Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

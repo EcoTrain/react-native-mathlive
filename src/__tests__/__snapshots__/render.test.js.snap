@@ -221,6 +221,377 @@ exports[`Mathfield Render code correctly 1`] = `
                 style={
                   {
                     "alignItems": "center",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                      9
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                      8
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                       
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                      -
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          false,
+                        ]
+                      }
+                    >
+                       
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <View
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                        },
+                        false,
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        {
+                          "justifyContent": "center",
+                        }
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {},
+                            {
+                              "fontSize": 24,
+                            },
+                          ]
+                        }
+                      >
+                        √
+                      </Text>
+                    </View>
+                    <View
+                      onLayout={[Function]}
+                      style={
+                        {
+                          "alignItems": "center",
+                          "borderTopWidth": 1,
+                          "flexDirection": "row",
+                          "paddingVertical": 2,
+                        }
+                      }
+                    >
+                      <View>
+                        <View
+                          accessible={true}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            {
+                              "opacity": 1,
+                            }
+                          }
+                        >
+                          <Text
+                            style={
+                              [
+                                {},
+                                false,
+                              ]
+                            }
+                          >
+                            6
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {},
+                    false,
+                  ]
+                }
+              >
+                 
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {},
+                    false,
+                  ]
+                }
+              >
+                +
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {},
+                    false,
+                  ]
+                }
+              >
+                 
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                [
+                  {},
+                  false,
+                ]
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
                     "alignSelf": "center",
                     "flexDirection": "row",
                   }
@@ -520,6 +891,167 @@ exports[`Mathfield Render code correctly 1`] = `
                   </View>
                 </View>
               </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {},
+                    false,
+                  ]
+                }
+              >
+                 
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {},
+                    false,
+                  ]
+                }
+              >
+                +
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {},
+                    false,
+                  ]
+                }
+              >
+                 
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <View
+              accessibilityState={
+                {
+                  "disabled": false,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {},
+                    false,
+                  ]
+                }
+              >
+                ▢
+              </Text>
             </View>
           </View>
         </View>
@@ -1146,250 +1678,6 @@ exports[`Mathfield Render code correctly 1`] = `
                     </Text>
                   </View>
                 </View>
-                <View>
-                  <View
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "opacity": 1,
-                      }
-                    }
-                  >
-                    <Text
-                      style={
-                        [
-                          {},
-                          false,
-                        ]
-                      }
-                    >
-                       
-                    </Text>
-                  </View>
-                </View>
-                <View>
-                  <View
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "opacity": 1,
-                      }
-                    }
-                  >
-                    <Text
-                      style={
-                        [
-                          {},
-                          false,
-                        ]
-                      }
-                    >
-                      +
-                    </Text>
-                  </View>
-                </View>
-                <View>
-                  <View
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      {
-                        "opacity": 1,
-                      }
-                    }
-                  >
-                    <Text
-                      style={
-                        [
-                          {},
-                          false,
-                        ]
-                      }
-                    >
-                       
-                    </Text>
-                  </View>
-                </View>
-                <View>
-                  <View
-                    style={
-                      [
-                        {},
-                        false,
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        {
-                          "alignItems": "center",
-                          "alignSelf": "center",
-                          "flexDirection": "row",
-                        }
-                      }
-                    >
-                      <View>
-                        <View
-                          style={
-                            [
-                              {
-                                "flexDirection": "row",
-                              },
-                              false,
-                            ]
-                          }
-                        >
-                          <View
-                            style={
-                              {
-                                "justifyContent": "center",
-                              }
-                            }
-                          >
-                            <Text
-                              style={
-                                [
-                                  {},
-                                  {
-                                    "fontSize": 24,
-                                  },
-                                ]
-                              }
-                            >
-                              √
-                            </Text>
-                          </View>
-                          <View
-                            onLayout={[Function]}
-                            style={
-                              {
-                                "alignItems": "center",
-                                "borderTopWidth": 1,
-                                "flexDirection": "row",
-                                "paddingVertical": 2,
-                              }
-                            }
-                          >
-                            <View>
-                              <View
-                                accessibilityState={
-                                  {
-                                    "disabled": false,
-                                  }
-                                }
-                                accessible={true}
-                                collapsable={false}
-                                focusable={true}
-                                onClick={[Function]}
-                                onResponderGrant={[Function]}
-                                onResponderMove={[Function]}
-                                onResponderRelease={[Function]}
-                                onResponderTerminate={[Function]}
-                                onResponderTerminationRequest={[Function]}
-                                onStartShouldSetResponder={[Function]}
-                                style={
-                                  {
-                                    "opacity": 1,
-                                  }
-                                }
-                              >
-                                <Text
-                                  style={
-                                    [
-                                      {},
-                                      false,
-                                    ]
-                                  }
-                                >
-                                  ▢
-                                </Text>
-                              </View>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      style={
-                        {
-                          "borderBottomWidth": 1,
-                          "width": "100%",
-                        }
-                      }
-                    />
-                    <View
-                      style={
-                        {
-                          "alignItems": "center",
-                          "alignSelf": "center",
-                          "flexDirection": "row",
-                        }
-                      }
-                    >
-                      <View>
-                        <View
-                          accessibilityState={
-                            {
-                              "disabled": false,
-                            }
-                          }
-                          accessible={true}
-                          collapsable={false}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            {
-                              "opacity": 1,
-                            }
-                          }
-                        >
-                          <Text
-                            style={
-                              [
-                                {},
-                                false,
-                              ]
-                            }
-                          >
-                            ▢
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
               </View>
             </View>
           </View>
@@ -1435,11 +1723,15 @@ exports[`Mathfield Render code correctly 1`] = `
     </View>
     <Text>
       1. serialized: 
-      3 + \\frac{4+\\placeholder{}}{16 - 8} + \\smash[{"textVar2":"metaVar2"}]{textVar2} + \\sqrt{24 + \\frac{\\sqrt{\\placeholder{}}}{\\placeholder{}}}
+      3 + {98 - \\sqrt{6}} + \\frac{4+\\placeholder{}}{16 - 8} + \\placeholder{} + \\smash[{"textVar2":"metaVar2"}]{textVar2} + \\sqrt{24}
+    </Text>
+    <Text>
+      2. JSON: 
+      [{"type":"text","mode":"text","value":"3"},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"+"},{"type":"text","mode":"text","value":" "},{"type":"group","body":[{"type":"text","mode":"text","value":"9"},{"type":"text","mode":"text","value":"8"},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"-"},{"type":"text","mode":"text","value":" "},{"type":"sqrt","command":"\\\\sqrt","body":[{"type":"text","mode":"text","value":"6"}]}],"latexOpen":"{","latexClose":"}"},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"+"},{"type":"text","mode":"text","value":" "},{"type":"genfrac","command":"\\\\frac","above":[{"type":"text","mode":"text","value":"4"},{"type":"text","mode":"text","value":"+"},{"type":"placeholder","command":"\\\\placeholder"}],"below":[{"type":"text","mode":"text","value":"1"},{"type":"text","mode":"text","value":"6"},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"-"},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"8"}]},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"+"},{"type":"text","mode":"text","value":" "},{"type":"placeholder","command":"\\\\placeholder"},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"+"},{"type":"text","mode":"text","value":" "},{"type":"phantom","command":"\\\\smash","metaObject":{"textVar2":"metaVar2"},"body":[{"type":"text","mode":"text","value":"t"},{"type":"text","mode":"text","value":"e"},{"type":"text","mode":"text","value":"x"},{"type":"text","mode":"text","value":"t"},{"type":"text","mode":"text","value":"V"},{"type":"text","mode":"text","value":"a"},{"type":"text","mode":"text","value":"r"},{"type":"text","mode":"text","value":"2"}]},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"+"},{"type":"text","mode":"text","value":" "},{"type":"sqrt","command":"\\\\sqrt","body":[{"type":"text","mode":"text","value":"2"},{"type":"text","mode":"text","value":"4"}]}]
     </Text>
     <Text>
       3. ASCII: 
-      "3 + ("4+)/("16 - 8)" + "textVar2" + sqrt("24 + (sqrt())/())
+      "3 + "98 - sqrt("6)" + ("4+)/("16 - 8)" + " + "textVar2" + sqrt("24)
        
     </Text>
     <Text>
@@ -1456,4 +1748,1269 @@ exports[`Mathfield Render code correctly 1`] = `
     visible={false}
   />,
 ]
+`;
+
+exports[`VirtualKeyboardElement Render code correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "padding": 8,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "marginHorizontal": 10,
+        "marginVertical": 10,
+        "maxWidth": 800,
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "flex": 1,
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "opacity": 1,
+            "padding": 5,
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "fontWeight": "bold",
+              },
+              {
+                "color": "hsl(204, 50%, 50%)",
+              },
+            ]
+          }
+        >
+          Basic
+        </Text>
+      </View>
+    </View>
+    <View>
+      <View
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            7
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            8
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            9
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            +
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "flex": 0.5,
+              },
+              {
+                "alignItems": "center",
+                "borderRadius": 4,
+                "flex": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "minWidth": 40,
+                "overflow": "hidden",
+              },
+              {
+                "margin": 2,
+                "padding": 5,
+              },
+            ]
+          }
+        />
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            (
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            )
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            4
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            5
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            6
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            -
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "flex": 1,
+              },
+              {
+                "alignItems": "center",
+                "borderRadius": 4,
+                "flex": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "minWidth": 40,
+                "overflow": "hidden",
+              },
+              {
+                "margin": 2,
+                "padding": 5,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "flex": 0.5,
+              },
+              {
+                "alignItems": "center",
+                "borderRadius": 4,
+                "flex": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "minWidth": 40,
+                "overflow": "hidden",
+              },
+              {
+                "margin": 2,
+                "padding": 5,
+              },
+            ]
+          }
+        />
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                  },
+                  false,
+                ]
+              }
+            >
+              <View
+                style={
+                  {
+                    "justifyContent": "center",
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {},
+                      {
+                        "fontSize": 14,
+                      },
+                    ]
+                  }
+                >
+                  √
+                </Text>
+              </View>
+              <View
+                onLayout={[Function]}
+                style={
+                  {
+                    "alignItems": "center",
+                    "borderTopWidth": 1,
+                    "flexDirection": "row",
+                    "paddingVertical": 2,
+                  }
+                }
+              >
+                <View>
+                  <View
+                    accessibilityState={
+                      {
+                        "disabled": true,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          {
+                            "fontSize": 14,
+                          },
+                        ]
+                      }
+                    >
+                      ▢
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            1
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            2
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            3
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            *
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "flex": 0.5,
+              },
+              {
+                "alignItems": "center",
+                "borderRadius": 4,
+                "flex": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "minWidth": 40,
+                "overflow": "hidden",
+              },
+              {
+                "margin": 2,
+                "padding": 5,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "flex": 1,
+              },
+              {
+                "alignItems": "center",
+                "borderRadius": 4,
+                "flex": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "minWidth": 40,
+                "overflow": "hidden",
+              },
+              {
+                "margin": 2,
+                "padding": 5,
+              },
+            ]
+          }
+        />
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            x
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "flex": 1,
+              },
+              {
+                "alignItems": "center",
+                "borderRadius": 4,
+                "flex": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "minWidth": 40,
+                "overflow": "hidden",
+              },
+              {
+                "margin": 2,
+                "padding": 5,
+              },
+            ]
+          }
+        />
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            0
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            ,
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                [
+                  {},
+                  false,
+                ]
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "center",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <View>
+                  <View
+                    accessibilityState={
+                      {
+                        "disabled": true,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          {
+                            "fontSize": 14,
+                          },
+                        ]
+                      }
+                    >
+                      ▢
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "borderBottomWidth": 1,
+                    "width": "100%",
+                  }
+                }
+              />
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "center",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <View>
+                  <View
+                    accessibilityState={
+                      {
+                        "disabled": true,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {},
+                          {
+                            "fontSize": 14,
+                          },
+                        ]
+                      }
+                    >
+                      ▢
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "flex": 0.5,
+              },
+              {
+                "alignItems": "center",
+                "borderRadius": 4,
+                "flex": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "minWidth": 40,
+                "overflow": "hidden",
+              },
+              {
+                "margin": 2,
+                "padding": 5,
+              },
+            ]
+          }
+        />
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            ᐸ
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "hsl(204, 20%, 100%)",
+              "borderRadius": 4,
+              "elevation": 20,
+              "flex": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "margin": 2,
+              "minWidth": 40,
+              "opacity": 1,
+              "overflow": "hidden",
+              "padding": 5,
+              "shadowColor": "hsl(0, 0%, 50%)",
+              "shadowOffset": {
+                "height": 0,
+                "width": 0,
+              },
+              "shadowOpacity": 0.02,
+              "shadowRadius": 7.794871794871795,
+            }
+          }
+        >
+          <Text>
+            ᐳ
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
 `;

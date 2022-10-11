@@ -54,7 +54,7 @@ export const MathfieldElement = () => {
         </TouchableOpacity>
       </TouchableOpacity>
       <Text>1. serialized: {getSerializedLatex()}</Text>
-      {/* <Text>2. JSON: {JSON.stringify(getJson())}</Text> */}
+      <Text>2. JSON: {JSON.stringify(getJson())}</Text>
       <Text>3. ASCII: {ascii.asciiString} </Text>
       <Text>4. ASCII meta: {JSON.stringify(ascii.metaObject)} </Text>
     </View>

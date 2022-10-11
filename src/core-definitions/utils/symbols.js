@@ -22,13 +22,13 @@ function newSymbol(symbol, value, type = 'mord') {
  * Define a set of single-character symbols
  */
 export function newSymbols(value, inType) {
-  if (typeof value === 'string') {
-    for (let i = 0; i < value.length; i++) {
-      const ch = value.charAt(i);
-      newSymbol(ch, ch.codePointAt(0));
-    }
-    return;
-  }
+  // if (typeof value === 'string') {
+  //   for (let i = 0; i < value.length; i++) {
+  //     const ch = value.charAt(i);
+  //     newSymbol(ch, ch.codePointAt(0));
+  //   }
+  //   return;
+  // }
   for (const [symbol, val, type] of value) {
     newSymbol(symbol, val, type ?? inType);
   }

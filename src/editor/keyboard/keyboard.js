@@ -6,13 +6,13 @@ import {KeyboardTopLabelsPanel} from './labelsPanel';
 import {KeyboardLayer} from './layer';
 
 export const VirtualKeyboardElement = () => {
-  const {virtualKeyboards, virtualKeyboardLayers, activeKeyboardName} = useContext(KeyboardContext),
-    stylesThemed = styles(UiColors),
-    getActiveKeyboard = () => {
-      const activeLayerName = virtualKeyboards[activeKeyboardName]?.layer,
-        layer = virtualKeyboardLayers[activeLayerName];
-      return <KeyboardLayer layer={layer} />;
-    };
+  const {virtualKeyboards, virtualKeyboardLayers, activeKeyboardName} = useContext(KeyboardContext);
+  const stylesThemed = styles(UiColors);
+  const getActiveKeyboard = () => {
+    const activeLayerName = virtualKeyboards[activeKeyboardName]?.layer;
+    const layer = virtualKeyboardLayers[activeLayerName];
+    return <KeyboardLayer layer={layer} />;
+  };
 
   return (
     <View style={stylesThemed.container}>

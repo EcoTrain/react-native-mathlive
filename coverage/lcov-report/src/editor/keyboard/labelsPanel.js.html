@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.78% </span>
+                <span class="strong">94.73% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/19</span>
+                <span class='fraction'>18/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>5/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.78% </span>
+                <span class="strong">94.73% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/19</span>
+                <span class='fraction'>18/19</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -127,30 +127,30 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -167,7 +167,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -184,37 +184,37 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {KeyboardContext} from '../../contexts/keyboard/KeyboardContext';
 import {UiColors} from '../../contexts/uiColors';
 &nbsp;
-export const KeyboardTopLabelsPanel = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-  const {virtualKeyboards, actualKeyboards} = <span class="cstat-no" title="statement not covered" >useContext(KeyboardContext);</span>
-  const stylesThemed = <span class="cstat-no" title="statement not covered" >styles(UiColors);</span>
+export const KeyboardTopLabelsPanel = () =&gt; {
+  const {virtualKeyboards, actualKeyboards} = useContext(KeyboardContext);
+  const stylesThemed = styles(UiColors);
 &nbsp;
-  const getKeyboardLabels = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-    const labels = <span class="cstat-no" title="statement not covered" >[];</span>
-<span class="cstat-no" title="statement not covered" >    actualKeyboards.map(<span class="fstat-no" title="function not covered" >(k</span>bLayoutName, ikb) =&gt; {</span>
-      const keyboardLayout = <span class="cstat-no" title="statement not covered" >virtualKeyboards[kbLayoutName];</span>
-<span class="cstat-no" title="statement not covered" >      if (keyboardLayout) {</span>
-<span class="cstat-no" title="statement not covered" >        labels.push(&lt;KeyboardTopLabelItem key={ikb} label={keyboardLayout.label} kbName={kbLayoutName} /&gt;);</span>
+  const getKeyboardLabels = () =&gt; {
+    const labels = [];
+    actualKeyboards.map((kbLayoutName, ikb) =&gt; {
+      const keyboardLayout = virtualKeyboards[kbLayoutName];
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (keyboardLayout) {
+        labels.push(&lt;KeyboardTopLabelItem key={ikb} label={keyboardLayout.label} kbName={kbLayoutName} /&gt;);
       }
     });
-<span class="cstat-no" title="statement not covered" >    return labels;</span>
+    return labels;
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return &lt;View style={stylesThemed.labelsPanel}&gt;{getKeyboardLabels()}&lt;/View&gt;;</span>
+  return &lt;View style={stylesThemed.labelsPanel}&gt;{getKeyboardLabels()}&lt;/View&gt;;
 };
 &nbsp;
-const KeyboardTopLabelItem = <span class="fstat-no" title="function not covered" >({</span>label, kbName}) =&gt; {
-  const {activeKeyboardName, setActiveKeyboardName} = <span class="cstat-no" title="statement not covered" >useContext(KeyboardContext);</span>
-  const stylesThemed = <span class="cstat-no" title="statement not covered" >styles(UiColors);</span>
+const KeyboardTopLabelItem = ({label, kbName}) =&gt; {
+  const {activeKeyboardName, setActiveKeyboardName} = useContext(KeyboardContext);
+  const stylesThemed = styles(UiColors);
 &nbsp;
-  const isActive = <span class="cstat-no" title="statement not covered" >activeKeyboardName == kbName;</span>
+  const isActive = activeKeyboardName == kbName;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;TouchableOpacity style={stylesThemed.labelPanelItem} onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setActiveKeyboardName(kbName)}</span>&gt;
       &lt;Text
         style={[
           stylesThemed.labelPanelItemText,
           {
-            color: isActive ? UiColors.textSelected : UiColors.textCold,
+            color: isActive ? UiColors.textSelected : <span class="branch-1 cbranch-no" title="branch not covered" >UiColors.textCold,</span>
           },
         ]}&gt;
         {label}
@@ -224,8 +224,8 @@ const KeyboardTopLabelItem = <span class="fstat-no" title="function not covered"
 };
 &nbsp;
 // eslint-disable-next-line no-shadow
-const styles = <span class="fstat-no" title="function not covered" >Ui</span>Colors =&gt;
-<span class="cstat-no" title="statement not covered" >  StyleSheet.create({</span>
+const styles = UiColors =&gt;
+  StyleSheet.create({
     labelsPanel: {
       flex: 1,
       flexDirection: 'row',
@@ -244,7 +244,7 @@ const styles = <span class="fstat-no" title="function not covered" >Ui</span>Col
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-10-11T09:44:13.295Z
+                at 2022-10-11T10:19:50.713Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

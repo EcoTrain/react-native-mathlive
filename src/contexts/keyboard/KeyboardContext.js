@@ -8,10 +8,10 @@ export const KeyboardContext = createContext({
   showKeyboard: () => {},
   hideKeyboard: () => {},
   toggleKeyboardVisibility: () => {},
-  virtualKeyboardLayers: {},
-  virtualKeyboards: {},
-  actualKeyboards: [],
-  activeKeyboardName: '',
+  virtualKeyboardLayers: DEFAULT_KEYBOARD_LAYERS || {},
+  virtualKeyboards: DEFAULT_KEYBOARDS || {},
+  actualKeyboards: Object.keys(DEFAULT_KEYBOARDS) || {},
+  activeKeyboardName: Object.keys(DEFAULT_KEYBOARDS)[0] || '',
   setActiveKeyboardName: () => {},
 });
 
