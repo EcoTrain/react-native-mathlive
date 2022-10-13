@@ -31,7 +31,7 @@ export const MathfieldElement = () => {
 
   // TODO: mfFormula overflow X (long frac)
   return (
-    <View style={{flex: 1}}>
+    <View>
       <TouchableOpacity
         activeOpacity={1}
         style={[
@@ -53,8 +53,8 @@ export const MathfieldElement = () => {
           <Image style={stylesThemed.mfKbIcon} source={require('../../assets/icons/keyboard.png')} />
         </TouchableOpacity>
       </TouchableOpacity>
-      <Text>1. serialized: {getSerializedLatex()}</Text>
-      <Text>2. JSON: {JSON.stringify(getJson())}</Text>
+      {/* <Text>1. serialized: {getSerializedLatex()}</Text> */}
+      {/* <Text>2. JSON: {JSON.stringify(getJson())}</Text> */}
       <Text>3. ASCII: {ascii.asciiString} </Text>
       <Text>4. ASCII meta: {JSON.stringify(ascii.metaObject)} </Text>
     </View>
@@ -81,7 +81,7 @@ const styles = UiColors =>
     },
     mfKbBtn: {
       height: 30,
-      aspectRatio: '1/1',
+      width: 30,
       alignSelf: 'center',
     },
     mfKbIcon: {

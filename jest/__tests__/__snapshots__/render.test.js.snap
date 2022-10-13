@@ -1,21 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Mathfield Render code correctly 1`] = `
-<View
-  onLayout={[Function]}
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    style={
-      {
-        "flex": 1,
-      }
-    }
-  >
+[
+  <View>
     <View
       accessible={true}
       collapsable={false}
@@ -2249,9 +2236,9 @@ exports[`Mathfield Render code correctly 1`] = `
         style={
           {
             "alignSelf": "center",
-            "aspectRatio": "1/1",
             "height": 30,
             "opacity": 1,
+            "width": 30,
           }
         }
       >
@@ -2271,14 +2258,6 @@ exports[`Mathfield Render code correctly 1`] = `
       </View>
     </View>
     <Text>
-      1. serialized: 
-      3 + {98 - \\sqrt{6}} + \\frac{4+\\placeholder{}}{16 - 8} + \\placeholder{} + \\smash[{"textVar2":"metaVar2"}]{textVar2} + \\sqrt{24 + \\frac{\\frac{\\frac{\\frac{3}{\\placeholder{}}}{\\placeholder{}}}{\\placeholder{}}}{\\placeholder{}}}
-    </Text>
-    <Text>
-      2. JSON: 
-      [{"type":"text","mode":"text","value":"3"},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"+"},{"type":"text","mode":"text","value":" "},{"type":"group","body":[{"type":"text","mode":"text","value":"9"},{"type":"text","mode":"text","value":"8"},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"-"},{"type":"text","mode":"text","value":" "},{"type":"sqrt","command":"\\\\sqrt","body":[{"type":"text","mode":"text","value":"6"}]}],"latexOpen":"{","latexClose":"}"},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"+"},{"type":"text","mode":"text","value":" "},{"type":"genfrac","command":"\\\\frac","above":[{"type":"text","mode":"text","value":"4"},{"type":"text","mode":"text","value":"+"},{"type":"placeholder","command":"\\\\placeholder"}],"below":[{"type":"text","mode":"text","value":"1"},{"type":"text","mode":"text","value":"6"},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"-"},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"8"}]},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"+"},{"type":"text","mode":"text","value":" "},{"type":"placeholder","command":"\\\\placeholder"},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"+"},{"type":"text","mode":"text","value":" "},{"type":"phantom","command":"\\\\smash","metaObject":{"textVar2":"metaVar2"},"body":[{"type":"text","mode":"text","value":"t"},{"type":"text","mode":"text","value":"e"},{"type":"text","mode":"text","value":"x"},{"type":"text","mode":"text","value":"t"},{"type":"text","mode":"text","value":"V"},{"type":"text","mode":"text","value":"a"},{"type":"text","mode":"text","value":"r"},{"type":"text","mode":"text","value":"2"}]},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"+"},{"type":"text","mode":"text","value":" "},{"type":"sqrt","command":"\\\\sqrt","body":[{"type":"text","mode":"text","value":"2"},{"type":"text","mode":"text","value":"4"},{"type":"text","mode":"text","value":" "},{"type":"text","mode":"text","value":"+"},{"type":"text","mode":"text","value":" "},{"type":"genfrac","command":"\\\\frac","above":[{"type":"genfrac","command":"\\\\frac","above":[{"type":"genfrac","command":"\\\\frac","above":[{"type":"genfrac","command":"\\\\frac","above":[{"type":"text","mode":"text","value":"3"}],"below":[{"type":"placeholder","command":"\\\\placeholder"}]}],"below":[{"type":"placeholder","command":"\\\\placeholder"}]}],"below":[{"type":"placeholder","command":"\\\\placeholder"}]}],"below":[{"type":"placeholder","command":"\\\\placeholder"}]}]}]
-    </Text>
-    <Text>
       3. ASCII: 
       "3 + "98 - sqrt("6)" + ("4+)/("16 - 8)" + " + "textVar2" + sqrt("24 + (((("3)/())/())/())/())
        
@@ -2288,15 +2267,15 @@ exports[`Mathfield Render code correctly 1`] = `
       {"textVar2":"metaVar2"}
        
     </Text>
-  </View>
+  </View>,
   <Modal
     animationType="fade"
     hardwareAccelerated={false}
     onRequestClose={[Function]}
     transparent={true}
     visible={false}
-  />
-</View>
+  />,
+]
 `;
 
 exports[`VirtualKeyboardElement Render code correctly 1`] = `

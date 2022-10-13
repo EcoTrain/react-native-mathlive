@@ -21,9 +21,9 @@ export const Mathfield = ({customKeyboardLayers, customKeyboards, mergeKeyboards
     prepare();
   }, []);
 
-  const onLayoutRootView = useCallback(async () => {
+  useEffect(() => {
     if (fontsLoaded) {
-      await SplashScreen.hideAsync();
+      SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
 
@@ -34,10 +34,8 @@ export const Mathfield = ({customKeyboardLayers, customKeyboards, mergeKeyboards
   return (
     <MathfieldContextProvider>
       <KeyboardContextProvider kbConfig={{customKeyboardLayers, customKeyboards, mergeKeyboards}}>
-        <View style={{flex: 1}} onLayout={onLayoutRootView}>
-          <MathfieldElement />
-          <VirtualKeyboard />
-        </View>
+        <MathfieldElement />
+        <VirtualKeyboard />
       </KeyboardContextProvider>
     </MathfieldContextProvider>
   );
