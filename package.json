@@ -1,6 +1,6 @@
 {
   "name": "react-native-mathlive",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Beautiful display and editing of formulas",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
