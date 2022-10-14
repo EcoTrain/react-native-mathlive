@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {KeyboardContextProvider} from './contexts/keyboard/KeyboardContext';
 import {MathfieldContextProvider} from './contexts/mathfield/MathfieldContext';
 import {VirtualKeyboard} from './editor/keyboard';
@@ -6,7 +6,6 @@ import {MathfieldElement} from './editor/mathfield';
 
 import {useFonts} from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import {View} from 'react-native';
 
 export const Mathfield = ({customKeyboardLayers, customKeyboards, mergeKeyboards}) => {
   const [fontsLoaded] = useFonts({
